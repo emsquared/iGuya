@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */; };
 		4C68AF4A22F406E900AA2401 /* iGuyaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */; };
 		4C68AF4C22F4070900AA2401 /* iGuyaAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756022F3F5F200D73686 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		4C68AF2C22F3FD8E00AA2401 /* BuildFrameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BuildFrameworks.sh; path = "Build Scripts/BuildFrameworks.sh"; sourceTree = "<group>"; };
 		4C68AF2D22F3FD8E00AA2401 /* UpdateVersionInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = UpdateVersionInfo.sh; path = "Build Scripts/UpdateVersionInfo.sh"; sourceTree = "<group>"; };
 		4C68AF3122F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				4CB0756022F3F5F200D73686 /* AppDelegate.swift */,
 				4CB0756222F3F5F200D73686 /* ViewController.swift */,
+				4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
 				4CB0756322F3F5F200D73686 /* ViewController.swift in Sources */,
 				4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */,
 			);

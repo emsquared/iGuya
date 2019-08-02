@@ -39,11 +39,20 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate
 {
+	func requestBooks()
+	{
+		do {
+			try BookManager.shared.requestBooks()
+		} catch let error {
+			print("Error: \(error)")
+		}
+	}
+
 	func applicationDidFinishLaunching(_ aNotification: Notification)
 	{
-		// Insert code here to initialize your application
+		requestBooks()
 	}
-	
+
 	func applicationWillTerminate(_ aNotification: Notification)
 	{
 		// Insert code here to tear down your application
