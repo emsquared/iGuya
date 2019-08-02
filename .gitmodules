@@ -1,0 +1,3 @@
+[submodule "Frameworks/iGuya API"]
+	path = Frameworks/iGuya API
+	url = https://github.com/emsquared/iGuya-API-Framework

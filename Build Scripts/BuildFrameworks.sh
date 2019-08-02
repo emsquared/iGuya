@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+CONFIGURATION_BUILD_DIR="${IGUYA_WORKSPACE_TEMP_DIR}/SharedBuildProducts-Frameworks"
+
+# iGuya API
+cd "${IGUYA_WORKSPACE_DIR}/Frameworks/iGuya API/"
+
+xcodebuild -target "iGuya API" \
+ -configuration "${CONFIGURATION}" \
+ CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
+ CONFIGURATION_BUILD_DIR="${CONFIGURATION_BUILD_DIR}" \
+ DEVELOPMENT_TEAM="${DEVELOPMENT_TEAM}" \
+ PROVISIONING_PROFILE_SPECIFIER=""
+
+exit 0;
