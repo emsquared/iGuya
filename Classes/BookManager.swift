@@ -70,6 +70,7 @@ class BookManager
 	///
 	/// - Returns: `true` on success creating request. `false` otherwise.
 	///
+	@discardableResult
 	func requestBooks(_ completionHandler: Request<Books>.CompletionHandler? = nil) -> Bool
 	{
 		if (requestingBooks) {
