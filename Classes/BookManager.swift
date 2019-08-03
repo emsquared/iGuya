@@ -47,24 +47,7 @@ class BookManager
 	///
 	/// List of books.
 	///
-	/// This property is backed by a private store which
-	/// means it cannot be observed for changes.
-	///
-	/// Observe `requestingBooks` for an idea of when the
-	/// contents of this property changes.
-	///
-	var books: Books
-	{
-		get {
-			return booksStore
-		}
-	}
-
-	///
-	/// Private store for list of books so it cannot be
-	/// modified from outside the book manager.
-	///
-	fileprivate var booksStore: Books = []
+	fileprivate(set) var books: Books?
 
 	///
 	/// The books request.
@@ -77,39 +60,24 @@ class BookManager
 	fileprivate(set) var requestingBooks = false
 
 	///
-	/// Errors thrown by `BookManager` when requesting books.
-	///
-	enum RequestError : Error
-	{
-		///
-		/// A books request is already in progress.
-		///
-		case requestInProgress
-
-		///
-		/// Error originated from the books request.
-		///
-		/// - Parameter error: error returned by the books request.
-		///
-		case requestError(_ error: Request<Books>.Failure)
-	}
-
-	///
 	/// Request books.
 	///
 	/// The API is designed to cache books which means the books
 	/// returned may be those already cached in memory and/or disk.
 	///
-	/// - Throws: `RequestError.requestInProgress`
+	/// - Parameter completionHandler: An optional completion handler
+	/// to call when request is finished.
 	///
-	func requestBooks() throws
+	/// - Returns: `true` on success creating request. `false` otherwise.
+	///
+	func requestBooks(_ completionHandler: Request<Books>.CompletionHandler? = nil) -> Bool
 	{
 		if (requestingBooks) {
-			throw RequestError.requestInProgress
+			return false
 		}
 
 		let request = Gateway.getBooks { (result) in
-			self.requestBooksCompleted(with: result)
+			self.requestBooksCompleted(with: result, completionHandler: completionHandler)
 		}
 
 		booksRequest = request
@@ -117,24 +85,25 @@ class BookManager
 		requestingBooks = true
 
 		request.start()
+
+		return true
 	}
 
 	///
 	/// Callback handler for books request.
 	///
-	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult)
+	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult, completionHandler: Request<Books>.CompletionHandler?)
 	{
 		booksRequest = nil
 
 		requestingBooks = false
 
-		switch result {
-			case .failure(let error):
-				print("Failed: \(error)")
-			case .success(let data):
-				print("Success: \(data)")
+		if case .success(let data) = result {
+			books = data
+		}
 
-				booksStore = data
+		if let completionHandler = completionHandler {
+			completionHandler(result)
 		}
 	}
 }

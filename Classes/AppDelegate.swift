@@ -42,7 +42,14 @@ class AppDelegate: NSObject, NSApplicationDelegate
 	func requestBooks()
 	{
 		do {
-			try BookManager.shared.requestBooks()
+			try BookManager.shared.requestBooks { (result) in
+				switch (result) {
+					case .failure(let error):
+						print("Error: \(error)")
+					case .success(let books):
+						print("Success: \(books)")
+				}
+			}
 		} catch let error {
 			print("Error: \(error)")
 		}
