@@ -50,6 +50,16 @@ class BookManager
 	fileprivate(set) var books: Books?
 
 	///
+	/// Find book with identifier.
+	///
+	/// - Parameter identifier: The identifier of the book.
+	///
+	func book(withIdentifier identifier: String) -> Book?
+	{
+		return books?.first { $0.identifier == identifier }
+	}
+
+	///
 	/// The books request.
 	///
 	fileprivate var booksRequest: Request<Books>?
