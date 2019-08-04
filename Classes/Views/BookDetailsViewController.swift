@@ -35,20 +35,54 @@
 *********************************************************************** */
 
 import Cocoa
+import iGuyaAPI
 
-class ViewController: NSViewController
+class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
 {
+	var book: Book!
+
+	@IBOutlet weak var bookCoverImageView: NSImageView!
+
+	@IBOutlet var chapterList: NSArrayController!
+	@IBOutlet weak var chapterListTable: NSTableView!
+
+	@IBOutlet weak var chapterSearchField: NSSearchField!
+	@IBOutlet weak var chapterNoResultsField: NSTextField!
+
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
-		
-		// Do any additional setup after loading the view.
+
+		representedObject = book
+
+		chapterListTable.sortDescriptors = [
+			NSSortDescriptor(key: "number", ascending: false)
+		]
+
+		chapterList.add(contentsOf: book.chapters)
+		chapterList.addObserver(self, forKeyPath: "arrangedObjects", options: [.initial, .new], context: nil)
 	}
-	
-	override var representedObject: Any?
-		{
-		didSet {
-			// Update the view, if already loaded.
+
+	override func viewWillDisappear()
+	{
+		super.viewWillDisappear()
+
+		chapterList.removeObserver(self, forKeyPath: "arrangedObjects")
+	}
+
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
+	{
+		if (keyPath == "arrangedObjects") {
+			updateNoResultsField()
 		}
+	}
+
+	func updateNoResultsField()
+	{
+		guard let objects = chapterList.arrangedObjects as? [Any] else {
+			return
+		}
+
+		chapterNoResultsField.isHidden = (objects.count > 0)
 	}
 }

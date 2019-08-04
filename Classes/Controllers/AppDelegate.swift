@@ -39,21 +39,9 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate
 {
-	func requestBooks()
-	{
-		BookManager.shared.requestBooks { (result) in
-			switch (result) {
-				case .failure(let error):
-					print("Error: \(error)")
-				case .success(let books):
-					print("Success: \(books)")
-			}
-		}
-	}
-
 	func applicationDidFinishLaunching(_ aNotification: Notification)
 	{
-		requestBooks()
+		BookManager.shared.requestBooks()
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification)

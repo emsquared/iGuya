@@ -22,13 +22,16 @@
 
 /* Begin PBXBuildFile section */
 		4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */; };
-		4C68AF4A22F406E900AA2401 /* iGuyaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */; };
-		4C68AF4C22F4070900AA2401 /* iGuyaAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C0B96D222F672E40067BF34 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B96D122F672E40067BF34 /* BookDetailsViewController.swift */; };
+		4CAAB92422F69885007ED15C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB92322F69885007ED15C /* API.swift */; };
+		4CAAB92D22F69C26007ED15C /* API.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CAAB92B22F69C26007ED15C /* API.strings */; };
+		4CAAB93D22F6A870007ED15C /* iGuyaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; };
 		4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756022F3F5F200D73686 /* AppDelegate.swift */; };
-		4CB0756322F3F5F200D73686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756222F3F5F200D73686 /* ViewController.swift */; };
+		4CB0756322F3F5F200D73686 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756222F3F5F200D73686 /* BookListViewController.swift */; };
 		4CB0756522F3F5F400D73686 /* Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0756422F3F5F400D73686 /* Main.xcassets */; };
 		4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0757522F3F81E00D73686 /* LICENSE.txt */; };
 		4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0758522F3FA6300D73686 /* Main.storyboard */; };
+		4CBAD98822F6B21200207C84 /* iGuyaAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C68AF4C22F4070900AA2401 /* iGuyaAPI.framework in Copy Frameworks */,
+				4CBAD98822F6B21200207C84 /* iGuyaAPI.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
+		4C0B96D122F672E40067BF34 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 		4C68AF2C22F3FD8E00AA2401 /* BuildFrameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BuildFrameworks.sh; path = "Build Scripts/BuildFrameworks.sh"; sourceTree = "<group>"; };
 		4C68AF2D22F3FD8E00AA2401 /* UpdateVersionInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = UpdateVersionInfo.sh; path = "Build Scripts/UpdateVersionInfo.sh"; sourceTree = "<group>"; };
 		4C68AF3122F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
@@ -64,10 +68,12 @@
 		4C68AF3522F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
 		4C68AF3622F3FFD600AA2401 /* Foundation.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Foundation.xcconfig; sourceTree = "<group>"; };
 		4C68AF3722F3FFD600AA2401 /* Foundation Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Foundation Debug.xcconfig"; sourceTree = "<group>"; };
-		4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iGuyaAPI.framework; path = ".tmp/SharedBuildProducts-Frameworks/iGuyaAPI.framework"; sourceTree = "<group>"; };
+		4CAAB92322F69885007ED15C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		4CAAB92C22F69C26007ED15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/API.strings; sourceTree = "<group>"; };
+		4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iGuyaAPI.framework; path = ".tmp/SharedBuildProducts-Frameworks/iGuyaAPI.framework"; sourceTree = "<group>"; };
 		4CB0755D22F3F5F200D73686 /* iGuya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGuya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB0756022F3F5F200D73686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CB0756222F3F5F200D73686 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CB0756222F3F5F200D73686 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		4CB0756422F3F5F400D73686 /* Main.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Main.xcassets; sourceTree = "<group>"; };
 		4CB0757522F3F81E00D73686 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		4CB0757D22F3F86400D73686 /* iGuya.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = iGuya.entitlements; path = Configurations/Sandbox/iGuya.entitlements; sourceTree = SOURCE_ROOT; };
@@ -80,13 +86,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C68AF4A22F406E900AA2401 /* iGuyaAPI.framework in Frameworks */,
+				4CAAB93D22F6A870007ED15C /* iGuyaAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C080E6D22F5461A00BC8C28 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		4C080E6F22F5464600BC8C28 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CB0756022F3F5F200D73686 /* AppDelegate.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4C080E7022F5465E00BC8C28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C0B96D122F672E40067BF34 /* BookDetailsViewController.swift */,
+				4CB0756222F3F5F200D73686 /* BookListViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4C68AF2B22F3FD7500AA2401 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +156,22 @@
 			path = Configurations/Build/Common;
 			sourceTree = "<group>";
 		};
+		4CAAB92222F69865007ED15C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4CAAB92322F69885007ED15C /* API.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4CAAB92522F69BBE007ED15C /* Language Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CAAB92B22F69C26007ED15C /* API.strings */,
+			);
+			path = "Language Files";
+			sourceTree = "<group>";
+		};
 		4CAF7FBB22F3FBC000173D34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +183,7 @@
 		4CAF7FBC22F3FBD400173D34 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				4C68AF4922F406E900AA2401 /* iGuyaAPI.framework */,
+				4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -163,9 +210,10 @@
 		4CB0757022F3F7DF00D73686 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4CB0756022F3F5F200D73686 /* AppDelegate.swift */,
-				4CB0756222F3F5F200D73686 /* ViewController.swift */,
-				4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */,
+				4C080E6F22F5464600BC8C28 /* Controllers */,
+				4CAAB92222F69865007ED15C /* Extensions */,
+				4C080E6D22F5461A00BC8C28 /* Library */,
+				4C080E7022F5465E00BC8C28 /* Views */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -175,6 +223,7 @@
 			children = (
 				4CB0758822F3FA7500D73686 /* Assets */,
 				4CB0757422F3F80B00D73686 /* Documentation */,
+				4CAAB92522F69BBE007ED15C /* Language Files */,
 				4CB0758422F3FA3500D73686 /* User Interface */,
 			);
 			path = Resources;
@@ -309,6 +358,7 @@
 				4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */,
 				4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */,
 				4CB0756522F3F5F400D73686 /* Main.xcassets in Resources */,
+				4CAAB92D22F69C26007ED15C /* API.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,8 +408,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
-				4CB0756322F3F5F200D73686 /* ViewController.swift in Sources */,
+				4CB0756322F3F5F200D73686 /* BookListViewController.swift in Sources */,
+				4C0B96D222F672E40067BF34 /* BookDetailsViewController.swift in Sources */,
 				4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */,
+				4CAAB92422F69885007ED15C /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +426,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4CAAB92B22F69C26007ED15C /* API.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CAAB92C22F69C26007ED15C /* Base */,
+			);
+			name = API.strings;
+			sourceTree = "<group>";
+		};
 		4CB0758522F3FA6300D73686 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
