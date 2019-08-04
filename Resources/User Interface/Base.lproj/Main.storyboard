@@ -786,7 +786,7 @@ Kaguya Shinomiya and Miyuki Shirogane are two geniuses who stand atop their pres
                                             <tableColumns>
                                                 <tableColumn identifier="number" width="40" minWidth="40" maxWidth="1000" id="hFS-Zs-6Iw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -827,7 +827,7 @@ Kaguya Shinomiya and Miyuki Shirogane are two geniuses who stand atop their pres
                                                 </tableColumn>
                                                 <tableColumn identifier="title" width="305" minWidth="40" maxWidth="1000" id="a32-jM-SPd">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -867,7 +867,7 @@ Kaguya Shinomiya and Miyuki Shirogane are two geniuses who stand atop their pres
                                                 </tableColumn>
                                                 <tableColumn identifier="group" width="203" minWidth="10" maxWidth="3.4028234663852886e+38" id="bnR-Jg-Map">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Group">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -1087,6 +1087,9 @@ Available</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="4sO-uR-S8H">
+                                <rect key="frame" x="98" y="417" width="32" height="32"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="uTO-oV-htK" firstAttribute="leading" secondItem="bVx-Qx-Wll" secondAttribute="leading" id="0Q3-tD-tgJ"/>
@@ -1102,7 +1105,9 @@ Available</string>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yq2-iZ-NEU" secondAttribute="bottom" constant="20" id="M4F-qT-z0N"/>
                             <constraint firstItem="xDL-9u-vV2" firstAttribute="top" secondItem="i5k-Fr-oQh" secondAttribute="top" constant="20" id="MO5-hC-2Vk"/>
                             <constraint firstItem="FJe-U7-XBG" firstAttribute="trailing" secondItem="bVx-Qx-Wll" secondAttribute="trailing" id="Rzs-co-lyM"/>
+                            <constraint firstItem="4sO-uR-S8H" firstAttribute="centerX" secondItem="xDL-9u-vV2" secondAttribute="centerX" id="TU8-j7-mKQ"/>
                             <constraint firstItem="cDn-At-2kg" firstAttribute="top" secondItem="c4c-Tn-zYG" secondAttribute="bottom" constant="8" id="XvS-rV-n8L"/>
+                            <constraint firstItem="4sO-uR-S8H" firstAttribute="centerY" secondItem="xDL-9u-vV2" secondAttribute="centerY" id="cZ8-9w-Ida"/>
                             <constraint firstItem="5eM-ra-FlS" firstAttribute="centerX" secondItem="xDL-9u-vV2" secondAttribute="centerX" id="eS1-3u-2ag"/>
                             <constraint firstItem="c4c-Tn-zYG" firstAttribute="leading" secondItem="uTO-oV-htK" secondAttribute="trailing" constant="8" id="fws-nb-BE0"/>
                             <constraint firstItem="bVx-Qx-Wll" firstAttribute="top" secondItem="zH3-zM-MWJ" secondAttribute="bottom" constant="18" id="gUl-vP-HOT"/>
@@ -1123,6 +1128,8 @@ Available</string>
                     </view>
                     <connections>
                         <outlet property="bookCoverImageView" destination="xDL-9u-vV2" id="o9y-kZ-gbe"/>
+                        <outlet property="bookCoverNotAvailField" destination="5eM-ra-FlS" id="972-Ig-Oon"/>
+                        <outlet property="bookCoverProgressWheel" destination="4sO-uR-S8H" id="TrX-Gy-DG1"/>
                         <outlet property="chapterList" destination="QgU-WH-4wK" id="dFc-5f-aOw"/>
                         <outlet property="chapterListTable" destination="l5q-NJ-eHI" id="zGP-RE-dvp"/>
                         <outlet property="chapterNoResultsField" destination="4AX-GG-4tE" id="Hau-71-XD4"/>

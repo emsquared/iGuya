@@ -35,13 +35,17 @@
 *********************************************************************** */
 
 import Cocoa
+import Dispatch
 import iGuyaAPI
+import os.log
 
 class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
 {
 	var book: Book!
 
 	@IBOutlet weak var bookCoverImageView: NSImageView!
+	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
+	@IBOutlet weak var bookCoverProgressWheel: NSProgressIndicator!
 
 	@IBOutlet var chapterList: NSArrayController!
 	@IBOutlet weak var chapterListTable: NSTableView!
@@ -61,6 +65,8 @@ class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
 
 		chapterList.add(contentsOf: book.chapters)
 		chapterList.addObserver(self, forKeyPath: "arrangedObjects", options: [.initial, .new], context: nil)
+
+		updateBookCoverImage()
 	}
 
 	override func viewWillDisappear()
@@ -84,5 +90,30 @@ class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
 		}
 
 		chapterNoResultsField.isHidden = (objects.count > 0)
+	}
+
+	func updateBookCoverImage()
+	{
+		bookCoverNotAvailField.isHidden = true
+
+		bookCoverProgressWheel.startAnimation(nil)
+
+		ImageManager.shared.image(at: book.cover) { [weak self] (result) in
+			switch (result) {
+				case .success(let image):
+					DispatchQueue.main.async {
+						self?.bookCoverImageView.image = image
+					}
+				case .failure(let error):
+					self?.bookCoverNotAvailField.isHidden = false
+
+					os_log("Failed to download cover image with error: %@",
+						   log: Logging.Subsystem.general, type: .error, error.localizedDescription)
+			}
+
+			DispatchQueue.main.async {
+				self?.bookCoverProgressWheel.stopAnimation(nil)
+			}
+		} // ImageManager
 	}
 }

@@ -32,6 +32,8 @@
 		4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0757522F3F81E00D73686 /* LICENSE.txt */; };
 		4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0758522F3FA6300D73686 /* Main.storyboard */; };
 		4CBAD98822F6B21200207C84 /* iGuyaAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD98922F6CC9100207C84 /* ImageManager.swift */; };
+		4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD99222F6D7FE00207C84 /* Logging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		4CB0757D22F3F86400D73686 /* iGuya.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = iGuya.entitlements; path = Configurations/Sandbox/iGuya.entitlements; sourceTree = SOURCE_ROOT; };
 		4CB0758122F3F9BE00D73686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		4CB0758622F3FA6300D73686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4CBAD98922F6CC9100207C84 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		4CBAD99222F6D7FE00207C84 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */,
+				4CBAD98922F6CC9100207C84 /* ImageManager.swift */,
+				4CBAD99222F6D7FE00207C84 /* Logging.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -407,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */,
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
+				4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */,
 				4CB0756322F3F5F200D73686 /* BookListViewController.swift in Sources */,
 				4C0B96D222F672E40067BF34 /* BookDetailsViewController.swift in Sources */,
 				4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */,
