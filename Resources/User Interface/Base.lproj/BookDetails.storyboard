@@ -327,12 +327,12 @@ Kaguya Shinomiya and Miyuki Shirogane are two geniuses who stand atop their pres
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rSZ-U0-Qq2">
-                                <rect key="frame" x="633" y="299" width="161" height="24"/>
+                                <rect key="frame" x="727" y="299" width="67" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="EVc-2b-lZc">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="Detailed" selected="YES"/>
-                                        <segment label="Compact" tag="1"/>
+                                        <segment image="NSListViewTemplate" selected="YES"/>
+                                        <segment image="NSIconViewTemplate" tag="1"/>
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
@@ -414,6 +414,7 @@ Available</string>
                         <outlet property="chapterListTable" destination="TlT-KW-6H3" id="yS7-3g-4K8"/>
                         <outlet property="chapterNoResultsField" destination="lR8-iX-8PS" id="CGu-fp-Scc"/>
                         <outlet property="chapterSearchField" destination="sdC-wL-9K8" id="TAR-6f-oGe"/>
+                        <outlet property="descriptionField" destination="X3I-MR-cFs" id="vfE-Ah-gsl"/>
                     </connections>
                 </viewController>
             </objects>
@@ -421,6 +422,8 @@ Available</string>
         </scene>
     </scenes>
     <resources>
+        <image name="NSIconViewTemplate" width="14" height="10"/>
+        <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="PlaceholderBookCover" width="1443" height="2048"/>
     </resources>
 </document>
