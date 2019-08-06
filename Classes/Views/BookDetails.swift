@@ -52,18 +52,15 @@ class BookDetailsView : NSViewController, BookCoverImage
 	@IBOutlet weak var chapterSearchField: NSSearchField!
 	@IBOutlet weak var chapterNoResultsField: NSTextField!
 
-	func assignBook(_ book: Book)
-	{
-		if (self.book == nil) {
-			self.book = book
-		}
-	}
-
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
 
-		representedObject = book
+		if let book = representedObject as? Book {
+			self.book = book
+		} else {
+			fatalError("Error: Book not assigned to represented object.")
+		}
 
 		chapterListTable.sortDescriptors = [
 			NSSortDescriptor(key: "number", ascending: false)
