@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Book List View-->
+        <scene sceneID="hIz-AP-VOD">
+            <objects>
+                <viewController id="XfG-lQ-9wD" customClass="BookListView" customModule="iGuya" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ePL-OC-eXy">
+                                <rect key="frame" x="164" y="118" width="153" height="32"/>
+                                <buttonCell key="cell" type="push" title="Show Book Details" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OHt-sS-deY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="presentBook:" target="XfG-lQ-9wD" id="NCy-we-ITh"/>
+                                    <segue destination="kj3-Er-n4W" kind="custom" customClass="CrossfadeStoryboardSegue" customModule="iGuya" customModuleProvider="target" id="e3Z-y6-Ylo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ePL-OC-eXy" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="0pb-Ae-ndQ"/>
+                            <constraint firstItem="ePL-OC-eXy" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="D5X-f7-1IL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="702"/>
+        </scene>
+        <!--BookDetails-->
+        <scene sceneID="gcI-PU-rqs">
+            <objects>
+                <controllerPlaceholder storyboardName="BookDetails" id="kj3-Er-n4W" sceneMemberID="viewController"/>
+                <customObject id="jPI-DZ-Br1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="997"/>
+        </scene>
+    </scenes>
+</document>

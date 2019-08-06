@@ -35,13 +35,51 @@
 *********************************************************************** */
 
 import Cocoa
+import iGuyaAPI
 
-class BookListViewController: NSViewController
+class MainWindow : NSWindowController
 {
-	override func prepare(for segue: NSStoryboardSegue, sender: Any?)
+	override func windowDidLoad()
 	{
-		if let vc = segue.destinationController as? BookDetailsViewController {
-			vc.book = BookManager.shared.book(withIdentifier: "Kaguya-Wants-To-Be-Confessed-To")
+		super.windowDidLoad()
+
+		guard 	let contentView = contentViewController as? MainWindowContentView,
+				let bookListView = instantiateBookList() else {
+			fatalError("Main window storyboard views are missing.")
 		}
+
+		contentView.assignInitialView(bookListView)
+	}
+
+	fileprivate func instantiateBookList() -> BookListView?
+	{
+		let controller = storyboard?.instantiateController(withIdentifier: "BookList") as? BookListView
+
+		return controller
+	}
+}
+
+class MainWindowContentView : NSViewController
+{
+	func assignInitialView(_ controller: NSViewController)
+	{
+		if (children.count > 0) {
+			return
+		}
+
+		addChild(controller)
+	}
+
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		guard let firstView = children.first?.view else {
+			fatalError("Content view has no children view.")
+		}
+
+		view.addSubview(firstView)
+
+		firstView.hugEdgesOfSuperview()
 	}
 }

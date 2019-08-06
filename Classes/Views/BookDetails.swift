@@ -39,9 +39,9 @@ import Dispatch
 import iGuyaAPI
 import os.log
 
-class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
+class BookDetailsView : NSViewController
 {
-	var book: Book!
+	fileprivate var book: Book!
 
 	@IBOutlet weak var bookCoverImageView: NSImageView!
 	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
@@ -52,6 +52,13 @@ class BookDetailsViewController : NSViewController, NSControlTextEditingDelegate
 
 	@IBOutlet weak var chapterSearchField: NSSearchField!
 	@IBOutlet weak var chapterNoResultsField: NSTextField!
+
+	func assignBook(_ book: Book)
+	{
+		if (self.book == nil) {
+			self.book = book
+		}
+	}
 
 	override func viewDidLoad()
 	{
