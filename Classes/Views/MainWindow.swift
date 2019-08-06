@@ -43,28 +43,29 @@ class MainWindow : NSWindowController
 	{
 		super.windowDidLoad()
 
-		guard 	let contentView = contentViewController as? MainWindowContentView,
-				let bookListView = instantiateBookList() else {
-			fatalError("Main window storyboard views are missing.")
-		}
+		let bookListView = instantiateBookList()
 
 		contentView.assignInitialView(bookListView)
 	}
 
-	fileprivate func instantiateBookList() -> BookListView?
+	fileprivate func instantiateBookList() -> BookListView
 	{
-		let controller = storyboard?.instantiateController(withIdentifier: "BookList") as? BookListView
+		guard let controller = storyboard?.instantiateController(withIdentifier: "BookList") as? BookListView else {
+			fatalError("Error: Storyboard does not contain a 'BooksList' controller.")
+		}
 
 		return controller
 	}
 }
+
+/* ------------------------------------------------------ */
 
 class MainWindowContentView : NSViewController
 {
 	func assignInitialView(_ controller: NSViewController)
 	{
 		if (children.count > 0) {
-			return
+			fatalError("Error: Tried to assign an initial view to a controller that already has children.")
 		}
 
 		addChild(controller)
@@ -75,7 +76,7 @@ class MainWindowContentView : NSViewController
 		super.viewWillAppear()
 
 		guard let firstView = children.first?.view else {
-			fatalError("Content view has no children view.")
+			fatalError("Error: Controller does not have any children.")
 		}
 
 		view.addSubview(firstView)

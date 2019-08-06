@@ -96,7 +96,7 @@ class BookDetailsView : NSViewController, BookCoverImage
 	func updateNoResultsField()
 	{
 		guard let objects = chapterList.arrangedObjects as? [Any] else {
-			return
+			fatalError("Error: Chapter list is not an array.")
 		}
 
 		chapterNoResultsField.isHidden = (objects.count > 0)
