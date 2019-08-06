@@ -43,46 +43,7 @@ class CrossfadeStoryboardSegue : NSStoryboardSegue
 {
     override func perform()
 	{
-		let nextController = destinationController as! NSViewController
-		let prevController = sourceController as! NSViewController
-		let containerController = prevController.parent! as NSViewController
-
-		/* Disable top, bottom, right, left anchors on superview. */
-		prevController.view.hugEdgesOfSuperview(false)
-
-		/* Add next controller as child of container. */
-		containerController.insertChild(nextController, at: 1)
-
-		/* Ask for layers to make transition smoother. */
-		prevController.view.wantsLayer = true
-		nextController.view.wantsLayer = true
-
-		/* Perform transition using crossfade. */
-		containerController.transition(from: prevController, to: nextController, options: .crossfade) {
-			containerController.removeChild(at: 0)
-		}
-
-		/* Enable top, bottom, right, left anchors on superview. */
-		nextController.view.hugEdgesOfSuperview()
-
-		/* Adjust window frame so that new window is centered in position of old window. */
-		let window = containerController.view.window!
-
-		if (window.isFullscreen) {
-			return
-		}
-
-		let oldFrameSize = containerController.view.frame.size
-		let newFrameSize = nextController.view.frame.size
-
-		let horizontalChange = ((newFrameSize.width - oldFrameSize.width) / 2.0)
-		let verticalChange = ((newFrameSize.height - oldFrameSize.height) / 2.0)
-
-		var windowFrame = window.frame
-
-		windowFrame.origin.x -= horizontalChange
-		windowFrame.origin.y += verticalChange // TODO: why is this + and not - ?
-
-		window.setFrame(windowFrame, display: true, animate: true)
+		NSViewController.crossfade(from: sourceController as! NSViewController,
+								   to: destinationController as! NSViewController)
     }
 }

@@ -65,6 +65,93 @@ extension NSView
 	}
 }
 
+extension NSViewController
+{
+	///
+	/// Perform crossfade transition to a view controller.
+	///
+	/// - Warning: This function assumes there is ever only one child
+	/// view controller in the host view (self).
+	/// Breaking this assumption will result in undefined behavior.
+	///
+	/// - Parameter nextController: View controller to transition to.
+	///
+	/// - Returns: `true` on success. `false` otherwise.
+	///
+	@discardableResult
+	func crossfade(to nextController: NSViewController) -> Bool
+	{
+		guard let prevController = children.first else {
+			return false
+		}
+
+		return NSViewController.crossfade(from: prevController, to: nextController)
+	}
+
+	///
+	/// Perform crossfade transition to a view controller.
+	///
+	/// - Parameter prevController: View controller to transition from.
+	/// - Parameter nextController: View controller to transition to.
+	///
+	/// - Warning: This function assumes there is ever only one child
+	/// view controller in the host view (parent of `prevController`).
+	/// Breaking this assumption will result in undefined behavior.
+	///
+	/// - Returns: `true` on success. `false` otherwise.
+	///
+	@discardableResult
+	static func crossfade(from prevController: NSViewController, to nextController: NSViewController) -> Bool
+	{
+		/* Let's be sane. */
+		if (prevController == nextController) {
+			return false
+		}
+
+		/* Disable top, bottom, right, left anchors on superview. */
+		prevController.view.hugEdgesOfSuperview(false)
+
+		/* Add next controller as child of container. */
+		let containerController = prevController.parent!
+
+		containerController.insertChild(nextController, at: 1)
+
+		/* Ask for layers to make transition smoother. */
+		prevController.view.wantsLayer = true
+		nextController.view.wantsLayer = true
+
+		/* Perform transition using crossfade. */
+		containerController.transition(from: prevController, to: nextController, options: .crossfade) {
+			containerController.removeChild(at: 0)
+		}
+
+		/* Enable top, bottom, right, left anchors on superview. */
+		nextController.view.hugEdgesOfSuperview()
+
+		/* Adjust window frame so that new window is centered in position of old window. */
+		let window = containerController.view.window!
+
+		if (window.isFullscreen) {
+			return false
+		}
+
+		let oldFrameSize = containerController.view.frame.size
+		let newFrameSize = nextController.view.frame.size
+
+		let horizontalChange = ((newFrameSize.width - oldFrameSize.width) / 2.0)
+		let verticalChange = ((newFrameSize.height - oldFrameSize.height) / 2.0)
+
+		var windowFrame = window.frame
+
+		windowFrame.origin.x -= horizontalChange
+		windowFrame.origin.y += verticalChange // TODO: why is this + and not - ?
+
+		window.setFrame(windowFrame, display: true, animate: true)
+
+		return true
+	}
+}
+
 extension NSWindow
 {
 	///
