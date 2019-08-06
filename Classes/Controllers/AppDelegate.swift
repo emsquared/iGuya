@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
 {
 	func applicationDidFinishLaunching(_ aNotification: Notification)
 	{
-		BookManager.shared.requestBooks()
+
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification)
