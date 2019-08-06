@@ -35,73 +35,39 @@
 *********************************************************************** */
 
 import Cocoa
-import Dispatch
-import iGuyaAPI
+import os.log
 
-class BookDetailsView : NSViewController, BookCoverImage
+protocol BookCoverImage : class
 {
-	fileprivate var book: Book!
+	var bookCoverImageView: NSImageView! { get set }
+	var bookCoverNotAvailField: NSTextField! { get set }
+	var bookCoverProgressWheel: NSProgressIndicator! { get set }
 
-	@IBOutlet weak var bookCoverImageView: NSImageView!
-	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
-	@IBOutlet weak var bookCoverProgressWheel: NSProgressIndicator!
+	func loadBookCoverImage(at url: URL)
+}
 
-	@IBOutlet var chapterList: NSArrayController!
-	@IBOutlet weak var chapterListTable: NSTableView!
-
-	@IBOutlet weak var chapterSearchField: NSSearchField!
-	@IBOutlet weak var chapterNoResultsField: NSTextField!
-
-	func assignBook(_ book: Book)
+extension BookCoverImage
+{
+	func loadBookCoverImage(at url: URL)
 	{
-		if (self.book == nil) {
-			self.book = book
-		}
-	}
+		bookCoverNotAvailField.isHidden = true
 
-	override func viewDidLoad()
-	{
-		super.viewDidLoad()
+		bookCoverProgressWheel.startAnimation(nil)
 
-		representedObject = book
+		ImageManager.shared.image(at: url) { [weak self] (result) in
+			DispatchQueue.main.async {
+				switch (result) {
+					case .success(let image):
+						self?.bookCoverImageView.image = image
+					case .failure(let error):
+						self?.bookCoverNotAvailField.isHidden = false
 
-		chapterListTable.sortDescriptors = [
-			NSSortDescriptor(key: "number", ascending: false)
-		]
+						os_log("Failed to download cover image with error: %@",
+							   log: Logging.Subsystem.general, type: .error, error.localizedDescription)
+				}
 
-		chapterList.add(contentsOf: book.chapters)
-		chapterList.addObserver(self, forKeyPath: "arrangedObjects", options: [.initial, .new], context: nil)
-
-		loadBookCoverImage(at: book.cover)
-	}
-
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
-
-		view.window?.title = LocalizedString("iGuya - Manga: %@", table: "MainWindow", book.title)
-	}
-
-	override func viewWillDisappear()
-	{
-		super.viewWillDisappear()
-
-		chapterList.removeObserver(self, forKeyPath: "arrangedObjects")
-	}
-
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
-	{
-		if (keyPath == "arrangedObjects") {
-			updateNoResultsField()
-		}
-	}
-
-	func updateNoResultsField()
-	{
-		guard let objects = chapterList.arrangedObjects as? [Any] else {
-			return
-		}
-
-		chapterNoResultsField.isHidden = (objects.count > 0)
+				self?.bookCoverProgressWheel.stopAnimation(nil)
+			}
+		} // ImageManager
 	}
 }
