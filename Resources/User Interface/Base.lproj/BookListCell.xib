@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BookListCell" customModule="iGuya" customModuleProvider="target">
+            <connections>
+                <outlet property="cell" destination="m7F-fb-kSw" id="Uly-Lj-D9H"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="385"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Faa-xQ-E4h">
+                    <rect key="frame" x="20" y="70" width="210" height="295"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="210" id="7pv-ki-qd1"/>
+                        <constraint firstAttribute="height" constant="295" id="jIw-wS-C8W"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PlaceholderBookCover" id="z8r-39-vuI"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JeY-dj-zJJ">
+                    <rect key="frame" x="18" y="20" width="214" height="42"/>
+                    <textFieldCell key="cell" title="Kaguya Wants To Be Confessed To" id="6Ug-LQ-nY8">
+                        <font key="font" metaFont="system" size="18"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="m7F-fb-kSw" name="value" keyPath="representedObject.title" id="owh-QW-qzT"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ps3-g9-QXU">
+                    <rect key="frame" x="88" y="189" width="75" height="57"/>
+                    <textFieldCell key="cell" alignment="center" id="2Lr-cb-aaj">
+                        <font key="font" metaFont="systemBold" size="15"/>
+                        <string key="title">Cover
+Not
+Available</string>
+                        <color key="textColor" red="0.17868136870000001" green="0.17868136870000001" blue="0.17868136870000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="HJc-di-ADg">
+                    <rect key="frame" x="109" y="202" width="32" height="32"/>
+                </progressIndicator>
+            </subviews>
+            <constraints>
+                <constraint firstItem="JeY-dj-zJJ" firstAttribute="top" secondItem="Faa-xQ-E4h" secondAttribute="bottom" constant="8" id="0Mb-mN-8Ui"/>
+                <constraint firstItem="HJc-di-ADg" firstAttribute="centerY" secondItem="Faa-xQ-E4h" secondAttribute="centerY" id="5h7-Hi-tL8"/>
+                <constraint firstAttribute="trailing" secondItem="Faa-xQ-E4h" secondAttribute="trailing" constant="20" id="EJ2-TO-bRd"/>
+                <constraint firstItem="Faa-xQ-E4h" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="IEA-vy-qn8"/>
+                <constraint firstItem="JeY-dj-zJJ" firstAttribute="trailing" secondItem="Faa-xQ-E4h" secondAttribute="trailing" id="VKw-TL-izk"/>
+                <constraint firstItem="ps3-g9-QXU" firstAttribute="centerX" secondItem="Faa-xQ-E4h" secondAttribute="centerX" id="gqd-TU-KQm"/>
+                <constraint firstItem="JeY-dj-zJJ" firstAttribute="leading" secondItem="Faa-xQ-E4h" secondAttribute="leading" id="hn1-Hj-PrX"/>
+                <constraint firstItem="HJc-di-ADg" firstAttribute="centerX" secondItem="Faa-xQ-E4h" secondAttribute="centerX" id="iaA-Nu-6GF"/>
+                <constraint firstAttribute="bottom" secondItem="JeY-dj-zJJ" secondAttribute="bottom" constant="20" id="n5L-Ej-D6l"/>
+                <constraint firstItem="Faa-xQ-E4h" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="y0C-UH-Uwk"/>
+                <constraint firstItem="ps3-g9-QXU" firstAttribute="centerY" secondItem="Faa-xQ-E4h" secondAttribute="centerY" id="y8w-99-Qbx"/>
+            </constraints>
+            <point key="canvasLocation" x="-63" y="118.5"/>
+        </customView>
+        <customObject id="m7F-fb-kSw" customClass="BookListCell" customModule="iGuya" customModuleProvider="target">
+            <connections>
+                <outlet property="bookCoverImageView" destination="Faa-xQ-E4h" id="Yvz-f1-8Mn"/>
+                <outlet property="bookCoverNotAvailField" destination="ps3-g9-QXU" id="InN-3d-lUE"/>
+                <outlet property="bookCoverProgressWheel" destination="HJc-di-ADg" id="iJ8-yB-a4D"/>
+                <outlet property="textField" destination="JeY-dj-zJJ" id="neO-PN-TXC"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="u9q-rX-lfc"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="PlaceholderBookCover" width="1443" height="2048"/>
+    </resources>
+</document>

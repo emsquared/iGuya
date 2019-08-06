@@ -35,9 +35,36 @@
 *********************************************************************** */
 
 import Cocoa
+import iGuyaAPI
+import os.log
 
-class BookListView: NSViewController
+class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout
 {
+	@IBOutlet var list: NSArrayController!
+	@IBOutlet var listCollection: NSCollectionView!
+
+	@IBOutlet var listProgressView: NSView!
+	@IBOutlet var listProgressWheel: NSProgressIndicator!
+
+	fileprivate var listSizingCell: BookListCell?
+
+	fileprivate var bookClicked: Book?
+
+	override func viewDidLoad()
+	{
+		super.viewDidLoad()
+
+		loadBooks()
+
+		guard let cell = NSNib(nibNamed: "BookListCell", bundle: nil) else {
+			fatalError("Error: Book list cell nib could not be loaded.")
+		}
+
+		listCollection.register(cell, forItemWithIdentifier: NSUserInterfaceItemIdentifier("BookListCell"))
+
+		instantiateSizingTemplate(in: cell)
+	}
+
 	override func viewDidAppear()
 	{
 		super.viewDidAppear()
@@ -48,9 +75,110 @@ class BookListView: NSViewController
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?)
 	{
 		if let vc = segue.destinationController as? BookDetailsView {
-			let book = BookManager.shared.book(withIdentifier: "Kaguya-Wants-To-Be-Confessed-To")
-
-			vc.assignBook(book!)
+			vc.representedObject = bookClicked
 		}
+	}
+
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize
+	{
+		guard let size = calculateSize(forItemAt: indexPath) else {
+			fatalError("Error: Failed to calculate size of cell.")
+		}
+
+		return size
+	}
+
+	func collectionView(_ collectionView: NSCollectionView, shouldSelectItemsAt indexPaths: Set<IndexPath>) -> Set<IndexPath>
+	{
+		return indexPaths
+	}
+
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>)
+	{
+		/* Single section is the only type of selection we allow so only
+		 have to grab the first index path to determine the book chosen. */
+		transitionToBook(at: indexPaths.first!)
+	}
+
+	fileprivate func transitionToBook(at indexPath: IndexPath)
+	{
+		guard let book = book(at: indexPath) else {
+			return
+		}
+
+		bookClicked = book
+
+		performSegue(withIdentifier: "ShowBookDetails", sender: self)
+	}
+
+	fileprivate func book(at indexPath: IndexPath) -> Book?
+	{
+		guard let books = list.arrangedObjects as? [Book] else {
+			return nil
+		}
+
+		return books[indexPath.item]
+	}
+
+	fileprivate func calculateSize(forItemAt indexPath: IndexPath) -> NSSize?
+	{
+		guard let book = book(at: indexPath) else {
+			return nil
+		}
+
+		/* Change represented object to force title (which
+		 is bound to the represented object) to update. */
+		listSizingCell?.representedObject = book
+
+		/* Ask the cell to perform layout. */
+		listSizingCell?.view.layoutSubtreeIfNeeded()
+
+		return listSizingCell?.view.fittingSize
+	}
+
+	fileprivate func instantiateSizingTemplate(in nib: NSNib)
+	{
+		let template = BookListCell()
+
+		var topLevelObjects: NSArray?
+
+		guard nib.instantiate(withOwner: template, topLevelObjects: &topLevelObjects) else {
+			fatalError("Error: Sizing template could not be instantiated.")
+		}
+
+		guard let objects = topLevelObjects as? [Any] else {
+			fatalError("Error: Sizing template objects cannot be read.")
+		}
+
+		for object in objects {
+			if let cell = object as? BookListCell {
+				listSizingCell = cell
+
+				return
+			}
+		} // for
+	}
+
+	fileprivate func loadBooks()
+	{
+		listProgressView.isHidden = false
+		listProgressWheel.startAnimation(nil)
+
+		BookManager.shared.requestBooks { [weak self] (result) in
+			switch (result) {
+				case .success(let books):
+					self?.list.add(contentsOf: books)
+				case .failure(let error):
+					#warning("TODO: Handle errors")
+
+					os_log("Failed to load books with error: %@",
+						   log: Logging.Subsystem.general, type: .error, error.localizedDescription)
+			}
+
+			DispatchQueue.main.async {
+				self?.listProgressView.isHidden = true
+				self?.listProgressWheel.stopAnimation(nil)
+			}
+		} // BookManager
 	}
 }

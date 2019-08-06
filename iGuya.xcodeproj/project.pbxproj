@@ -25,6 +25,8 @@
 		4C0B96D222F672E40067BF34 /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B96D122F672E40067BF34 /* BookDetails.swift */; };
 		4C4B5B6322F91FC700E77A30 /* MainWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6122F91FC700E77A30 /* MainWindow.strings */; };
 		4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6422F9213700E77A30 /* Localization.swift */; };
+		4C6AE9B022F9388E00ECF3DF /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9AE22F9388E00ECF3DF /* BookListCell.swift */; };
+		4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B222F938B100ECF3DF /* BookListCell.xib */; };
 		4C6AE9B622F9481A00ECF3DF /* BookCoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */; };
 		4CAAB92422F69885007ED15C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB92322F69885007ED15C /* API.swift */; };
 		4CAAB92D22F69C26007ED15C /* API.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CAAB92B22F69C26007ED15C /* API.strings */; };
@@ -80,6 +82,8 @@
 		4C68AF3522F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
 		4C68AF3622F3FFD600AA2401 /* Foundation.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Foundation.xcconfig; sourceTree = "<group>"; };
 		4C68AF3722F3FFD600AA2401 /* Foundation Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Foundation Debug.xcconfig"; sourceTree = "<group>"; };
+		4C6AE9AE22F9388E00ECF3DF /* BookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCell.swift; sourceTree = "<group>"; };
+		4C6AE9B322F938B100ECF3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BookListCell.xib; sourceTree = "<group>"; };
 		4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverImage.swift; sourceTree = "<group>"; };
 		4CAAB92322F69885007ED15C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4CAAB92C22F69C26007ED15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/API.strings; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */,
 				4C0B96D122F672E40067BF34 /* BookDetails.swift */,
+				4C6AE9AE22F9388E00ECF3DF /* BookListCell.swift */,
 				4CB0756222F3F5F200D73686 /* BookListView.swift */,
 				4CB6FD5922F818B900A2783C /* MainWindow.swift */,
 			);
@@ -306,6 +311,7 @@
 			children = (
 				4CB6FD5322F814C900A2783C /* BookDetails.storyboard */,
 				4CB6FD5B22F818E800A2783C /* BookList.storyboard */,
+				4C6AE9B222F938B100ECF3DF /* BookListCell.xib */,
 				4CB0758522F3FA6300D73686 /* Main.storyboard */,
 			);
 			path = "User Interface";
@@ -393,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */,
 				4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */,
 				4CB6FD5D22F818E800A2783C /* BookList.storyboard in Resources */,
 				4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */,
@@ -448,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6AE9B022F9388E00ECF3DF /* BookListCell.swift in Sources */,
 				4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */,
 				4C6AE9B622F9481A00ECF3DF /* BookCoverImage.swift in Sources */,
 				4CAFD9F622F85D9C00458644 /* Views.swift in Sources */,
@@ -480,6 +488,14 @@
 				4C4B5B6222F91FC700E77A30 /* Base */,
 			);
 			name = MainWindow.strings;
+			sourceTree = "<group>";
+		};
+		4C6AE9B222F938B100ECF3DF /* BookListCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C6AE9B322F938B100ECF3DF /* Base */,
+			);
+			name = BookListCell.xib;
 			sourceTree = "<group>";
 		};
 		4CAAB92B22F69C26007ED15C /* API.strings */ = {

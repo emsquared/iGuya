@@ -688,8 +688,45 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="812" height="586"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="9D08CEE3-7378-4D17-80F9-540B4BDCD4AB" centeredItem="aZ6-Cc-17H" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="small" id="rsI-2C-zBv">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="J0t-Kt-03Y"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="m4j-ya-jRT"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="een-45-a1H"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="gjs-5c-eRn"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="XWr-uK-4F0"/>
+                                <toolbarItem implicitItemIdentifier="D9CDDE59-7A5F-42C7-85DA-E611442D9A10" label="Home" paletteLabel="Home" tag="-1" image="NSHomeTemplate" id="aZ6-Cc-17H">
+                                    <size key="minSize" width="14" height="14"/>
+                                    <size key="maxSize" width="14" height="14"/>
+                                    <connections>
+                                        <action selector="selectHomeViewController:" target="B8D-0N-5wS" id="wCg-SF-vno"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="77144A84-CA9B-4DA8-9389-BD7509E6B5E8" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="vCl-lD-NWT">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="xrf-q6-EBE">
+                                        <rect key="frame" x="7" y="14" width="63" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="momentary" id="vJ7-Ko-nup">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment image="NSGoBackTemplate" width="28" enabled="NO"/>
+                                                <segment image="NSGoForwardTemplate" width="28" enabled="NO" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="F5785F07-4DAD-4F61-8744-4B4A1AAD3BAD" label="Preferences" paletteLabel="Preferences" tag="-1" image="NSActionTemplate" sizingBehavior="auto" id="URh-1k-cXt"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="vCl-lD-NWT"/>
+                                <toolbarItem reference="aZ6-Cc-17H"/>
+                                <toolbarItem reference="XWr-uK-4F0"/>
+                                <toolbarItem reference="URh-1k-cXt"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -707,13 +744,13 @@
             <objects>
                 <viewController id="q2b-PX-hhh" customClass="MainWindowContentView" customModule="iGuya" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="7E8-5p-Lwi">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="586"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="0ep-gU-6wM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="693"/>
+            <point key="canvasLocation" x="75" y="1075"/>
         </scene>
         <!--BookList-->
         <scene sceneID="p3B-SI-5bM">
@@ -721,7 +758,13 @@
                 <customObject id="VTH-qe-i3V" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <controllerPlaceholder storyboardIdentifier="BookList" storyboardName="BookList" id="Spt-8v-8uS" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="66" y="929"/>
+            <point key="canvasLocation" x="76" y="1582"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
+        <image name="NSGoForwardTemplate" width="9" height="12"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
+    </resources>
 </document>

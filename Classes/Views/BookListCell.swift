@@ -34,38 +34,30 @@
 *
 *********************************************************************** */
 
-import Foundation
+import Cocoa
 import iGuyaAPI
 
-extension Book
+class BookListCell : NSCollectionViewItem, BookCoverImage
 {
-	@objc
-	var numberOfChapters: String
-	{
-//		return chapters.count
+	@IBOutlet weak var bookCoverImageView: NSImageView!
+	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
+	@IBOutlet weak var bookCoverProgressWheel: NSProgressIndicator!
 
-		/* Show chapter number for latest chapter as the count instead
-		 of the count of `chapters` because special pages are treated
-		 as chapters so showing user there is 177 chapters when the
-		 latest chapter is numbered 158 can be confusing. */
-		/* Sort of `chapters` is stable so we only need last one. */
-		guard let last = chapters.last else {
-			return "0"
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		/* representedObject is set after viewDidLoad() is called
+		 but before the view appears so load the cover from here. */
+		/* BookListView retains one copy of this class which it uses
+		 as a template for sizing. That's not a problem for this
+	 	 section of code because the view will never appear on
+		 screen. It's still good to document this here in case
+		 the codebase of the cell if ever expanded. */
+		guard let book = representedObject as? Book else {
+			fatalError("Represented object is of unexpected type.")
 		}
 
-		return last.numberFormatted
-	}
-}
-
-extension Chapter
-{
-	@objc
-	var groupsFormatted: String
-	{
-		if (groups.count == 1) {
-			return groups.first!.name
-		} else {
-			return LocalizedString("Multiple groups", table: "API")
-		}
+		loadBookCoverImage(at: book.cover)
 	}
 }

@@ -11,27 +11,95 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="BookListView" customModule="iGuya" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="586"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ePL-OC-eXy">
-                                <rect key="frame" x="164" y="118" width="153" height="32"/>
-                                <buttonCell key="cell" type="push" title="Show Book Details" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OHt-sS-deY">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="presentBook:" target="XfG-lQ-9wD" id="NCy-we-ITh"/>
-                                    <segue destination="kj3-Er-n4W" kind="custom" customClass="CrossfadeStoryboardSegue" customModule="iGuya" customModuleProvider="target" id="e3Z-y6-Ylo"/>
-                                </connections>
-                            </button>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sw6-Ee-W2V">
+                                <rect key="frame" x="20" y="20" width="772" height="474"/>
+                                <clipView key="contentView" copiesOnScroll="NO" id="t94-d3-Qc9">
+                                    <rect key="frame" x="1" y="1" width="770" height="472"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" allowsMultipleSelection="YES" id="VFk-XK-J9W">
+                                            <rect key="frame" x="0.0" y="0.0" width="770" height="472"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="aFA-Xt-ODD">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="v1E-B6-5qq" name="content" keyPath="arrangedObjects" id="Owd-rg-aNP"/>
+                                                <binding destination="v1E-B6-5qq" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Owd-rg-aNP" id="BBw-ip-9eh"/>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="vmC-j6-aTK"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="dt5-IR-ztN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="wcj-3b-43b"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Pin-hb-KZK">
+                                    <rect key="frame" x="-100" y="-100" width="348" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xBH-Vw-1EA">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e2f-hS-r7i">
+                                <rect key="frame" x="276" y="509" width="260" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="ATa-bc-VtT"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="BookListTitle" id="Mhg-vb-KST"/>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YqW-u2-Zem">
+                                <rect key="frame" x="274" y="209" width="264" height="96"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ybs-Zk-EXD">
+                                        <rect key="frame" x="56" y="56" width="152" height="23"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Loading manga…" id="61m-bI-jji">
+                                            <font key="font" metaFont="system" size="20"/>
+                                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cC8-IM-qFP">
+                                        <rect key="frame" x="116" y="16" width="32" height="32"/>
+                                    </progressIndicator>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cC8-IM-qFP" firstAttribute="centerX" secondItem="Ybs-Zk-EXD" secondAttribute="centerX" id="0MZ-gl-aCl"/>
+                                    <constraint firstAttribute="bottom" secondItem="cC8-IM-qFP" secondAttribute="bottom" constant="16" id="BUP-Pv-pYT"/>
+                                    <constraint firstItem="cC8-IM-qFP" firstAttribute="top" secondItem="Ybs-Zk-EXD" secondAttribute="bottom" constant="8" id="N1d-u7-rHt"/>
+                                    <constraint firstItem="Ybs-Zk-EXD" firstAttribute="centerX" secondItem="YqW-u2-Zem" secondAttribute="centerX" id="b4O-pV-IUc"/>
+                                    <constraint firstItem="Ybs-Zk-EXD" firstAttribute="top" secondItem="YqW-u2-Zem" secondAttribute="top" constant="17" id="jW7-bD-nmz"/>
+                                    <constraint firstAttribute="width" constant="264" id="vwY-h4-yl5"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ePL-OC-eXy" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="0pb-Ae-ndQ"/>
-                            <constraint firstItem="ePL-OC-eXy" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="D5X-f7-1IL"/>
+                            <constraint firstItem="YqW-u2-Zem" firstAttribute="centerX" secondItem="sw6-Ee-W2V" secondAttribute="centerX" id="3vy-IT-L6E"/>
+                            <constraint firstItem="sw6-Ee-W2V" firstAttribute="top" secondItem="e2f-hS-r7i" secondAttribute="bottom" constant="15" id="CA4-Ru-Fd1"/>
+                            <constraint firstItem="e2f-hS-r7i" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Hn5-cA-3aZ"/>
+                            <constraint firstAttribute="trailing" secondItem="sw6-Ee-W2V" secondAttribute="trailing" constant="20" id="KyY-sa-vNS"/>
+                            <constraint firstAttribute="bottom" secondItem="sw6-Ee-W2V" secondAttribute="bottom" constant="20" id="TTC-Hm-Rjh"/>
+                            <constraint firstItem="sw6-Ee-W2V" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Zc4-K8-AVa"/>
+                            <constraint firstItem="e2f-hS-r7i" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="dgN-GW-F8J"/>
+                            <constraint firstItem="YqW-u2-Zem" firstAttribute="centerY" secondItem="sw6-Ee-W2V" secondAttribute="centerY" id="pxJ-Rc-TJB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="list" destination="v1E-B6-5qq" id="iLD-QU-Vrf"/>
+                        <outlet property="listCollection" destination="VFk-XK-J9W" id="k0H-Xb-B6k"/>
+                        <outlet property="listProgressView" destination="YqW-u2-Zem" id="43J-sU-SHe"/>
+                        <outlet property="listProgressWheel" destination="cC8-IM-qFP" id="35r-1i-bqK"/>
+                        <segue destination="kj3-Er-n4W" kind="custom" identifier="ShowBookDetails" customClass="CrossfadeStoryboardSegue" customModule="iGuya" customModuleProvider="target" id="98c-DK-dyh"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController objectClassName="iGuyaAPI.Book" preservesSelection="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="v1E-B6-5qq"/>
             </objects>
             <point key="canvasLocation" x="75" y="702"/>
         </scene>
@@ -41,7 +109,10 @@
                 <controllerPlaceholder storyboardName="BookDetails" id="kj3-Er-n4W" sceneMemberID="viewController"/>
                 <customObject id="jPI-DZ-Br1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="997"/>
+            <point key="canvasLocation" x="76" y="1174"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BookListTitle" width="260" height="80"/>
+    </resources>
 </document>

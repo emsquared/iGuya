@@ -36,9 +36,48 @@
 
 import Cocoa
 import iGuyaAPI
+import os.log
 
 class MainWindow : NSWindowController
 {
+	@IBAction func selectHomeViewController(_ sender: Any?)
+	{
+		if (onHomeViewController) {
+			os_log("Tried to transition to home while on home",
+				   log: Logging.Subsystem.general, type: .fault)
+
+			return
+		}
+
+		let bookListView = instantiateBookList()
+
+		present(viewController: bookListView)
+	}
+
+	fileprivate func present(viewController: NSViewController)
+	{
+		contentView.crossfade(to: viewController)
+	}
+
+	fileprivate var onHomeViewController: Bool
+	{
+		return childView is BookListView
+	}
+
+	fileprivate var contentView: MainWindowContentView
+	{
+		guard let contentView = contentViewController as? MainWindowContentView else {
+			fatalError("Error: Content view is not of type 'MainWindowContentView'")
+		}
+
+		return contentView
+	}
+
+	fileprivate var childView: NSViewController?
+	{
+		return contentView.children.first
+	}
+
 	override func windowDidLoad()
 	{
 		super.windowDidLoad()
@@ -62,7 +101,7 @@ class MainWindow : NSWindowController
 
 class MainWindowContentView : NSViewController
 {
-	func assignInitialView(_ controller: NSViewController)
+	fileprivate func assignInitialView(_ controller: NSViewController)
 	{
 		if (children.count > 0) {
 			fatalError("Error: Tried to assign an initial view to a controller that already has children.")
