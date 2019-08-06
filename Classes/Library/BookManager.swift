@@ -36,6 +36,7 @@
 
 import Foundation
 import iGuyaAPI
+import os.log
 
 class BookManager
 {
@@ -65,16 +66,28 @@ class BookManager
 	/// The API is designed to cache books which means the books
 	/// returned may be those already cached in memory and/or disk.
 	///
-	/// - Parameter completionHandler: An optional completion handler
+	/// - Parameter returningLocalCache: If `true`, then the contents of
+	/// `BookManager.books` is returned if it is already set.
+	/// This parameter **does not disable caching performed by API**.
+	/// - Parameter completionHandler: A completion handler
 	/// to call when request is finished.
 	///
 	/// - Returns: `true` on success creating request. `false` otherwise.
 	///
 	@discardableResult
-	func requestBooks(_ completionHandler: Request<Books>.CompletionHandler? = nil) -> Bool
+	func requestBooks(returningLocalCache: Bool = true, _ completionHandler: @escaping Request<Books>.CompletionHandler) -> Bool
 	{
 		if (requestingBooks) {
 			return false
+		}
+
+		if (returningLocalCache && books != nil) {
+			os_log("Returning books from local cache.",
+				   log: Logging.Subsystem.general, type: .debug)
+
+			completionHandler(.success(books!))
+
+			return true
 		}
 
 		let request = Gateway.getBooks { (result) in
@@ -93,7 +106,7 @@ class BookManager
 	///
 	/// Callback handler for books request.
 	///
-	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult, completionHandler: Request<Books>.CompletionHandler?)
+	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult, completionHandler: Request<Books>.CompletionHandler)
 	{
 		booksRequest = nil
 
@@ -103,8 +116,6 @@ class BookManager
 			books = data
 		}
 
-		if let completionHandler = completionHandler {
-			completionHandler(result)
-		}
+		completionHandler(result)
 	}
 }
