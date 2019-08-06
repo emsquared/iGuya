@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */; };
 		4C0B96D222F672E40067BF34 /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B96D122F672E40067BF34 /* BookDetails.swift */; };
+		4C4B5B6322F91FC700E77A30 /* MainWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6122F91FC700E77A30 /* MainWindow.strings */; };
+		4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6422F9213700E77A30 /* Localization.swift */; };
 		4CAAB92422F69885007ED15C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAAB92322F69885007ED15C /* API.swift */; };
 		4CAAB92D22F69C26007ED15C /* API.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CAAB92B22F69C26007ED15C /* API.strings */; };
 		4CAAB93D22F6A870007ED15C /* iGuyaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; };
@@ -68,6 +70,8 @@
 /* Begin PBXFileReference section */
 		4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		4C0B96D122F672E40067BF34 /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
+		4C4B5B6222F91FC700E77A30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/MainWindow.strings; sourceTree = "<group>"; };
+		4C4B5B6422F9213700E77A30 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4C68AF2C22F3FD8E00AA2401 /* BuildFrameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BuildFrameworks.sh; path = "Build Scripts/BuildFrameworks.sh"; sourceTree = "<group>"; };
 		4C68AF2D22F3FD8E00AA2401 /* UpdateVersionInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = UpdateVersionInfo.sh; path = "Build Scripts/UpdateVersionInfo.sh"; sourceTree = "<group>"; };
 		4C68AF3122F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */,
 				4CBAD98922F6CC9100207C84 /* ImageManager.swift */,
+				4C4B5B6422F9213700E77A30 /* Localization.swift */,
 				4CBAD99222F6D7FE00207C84 /* Logging.swift */,
 			);
 			path = Library;
@@ -185,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAAB92B22F69C26007ED15C /* API.strings */,
+				4C4B5B6122F91FC700E77A30 /* MainWindow.strings */,
 			);
 			path = "Language Files";
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				4CB6FD5D22F818E800A2783C /* BookList.storyboard in Resources */,
 				4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */,
 				4CB0756522F3F5F400D73686 /* Main.xcassets in Resources */,
+				4C4B5B6322F91FC700E77A30 /* MainWindow.strings in Resources */,
 				4CAAB92D22F69C26007ED15C /* API.strings in Resources */,
 				4CB6FD5522F814C900A2783C /* BookDetails.storyboard in Resources */,
 			);
@@ -440,6 +447,7 @@
 			files = (
 				4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */,
 				4CAFD9F622F85D9C00458644 /* Views.swift in Sources */,
+				4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */,
 				4CB6FD5A22F818B900A2783C /* MainWindow.swift in Sources */,
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
 				4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */,
@@ -462,6 +470,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4C4B5B6122F91FC700E77A30 /* MainWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C4B5B6222F91FC700E77A30 /* Base */,
+			);
+			name = MainWindow.strings;
+			sourceTree = "<group>";
+		};
 		4CAAB92B22F69C26007ED15C /* API.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

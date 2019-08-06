@@ -76,6 +76,13 @@ class BookDetailsView : NSViewController
 		updateBookCoverImage()
 	}
 
+	override func viewDidAppear()
+	{
+		super.viewDidAppear()
+
+		view.window?.title = LocalizedString("iGuya - Manga: %@", table: "MainWindow", book.title)
+	}
+
 	override func viewWillDisappear()
 	{
 		super.viewWillDisappear()

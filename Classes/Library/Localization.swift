@@ -34,23 +34,18 @@
 *
 *********************************************************************** */
 
-import Cocoa
+import Foundation
 
-class BookListView: NSViewController
+///
+/// Performs localization with input string.
+///
+public func LocalizedString(_ string: String, table: String? = nil, bundle: Bundle = Bundle.main, _ arguments: CVarArg...) -> String
 {
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
+	let formatter = bundle.localizedString(forKey: string, value: string, table: table)
 
-		view.window?.title = LocalizedString("iGuya - Home", table: "MainWindow")
+	if (arguments.isEmpty) {
+		return formatter
 	}
 
-	override func prepare(for segue: NSStoryboardSegue, sender: Any?)
-	{
-		if let vc = segue.destinationController as? BookDetailsView {
-			let book = BookManager.shared.book(withIdentifier: "Kaguya-Wants-To-Be-Confessed-To")
-
-			vc.assignBook(book!)
-		}
-	}
+	return String(format: formatter, arguments: arguments)
 }

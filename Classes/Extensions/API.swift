@@ -54,7 +54,7 @@ extension Chapter
 		if (groups.count == 1) {
 			return groups.first!.name
 		} else {
-			return NSLocalizedString("Multiple groups", tableName: "API", comment: "")
+			return LocalizedString("Multiple groups", table: "API")
 		}
 	}
 }

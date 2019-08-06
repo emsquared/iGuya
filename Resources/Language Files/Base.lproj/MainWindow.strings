@@ -34,23 +34,5 @@
 *
 *********************************************************************** */
 
-import Cocoa
-
-class BookListView: NSViewController
-{
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
-
-		view.window?.title = LocalizedString("iGuya - Home", table: "MainWindow")
-	}
-
-	override func prepare(for segue: NSStoryboardSegue, sender: Any?)
-	{
-		if let vc = segue.destinationController as? BookDetailsView {
-			let book = BookManager.shared.book(withIdentifier: "Kaguya-Wants-To-Be-Confessed-To")
-
-			vc.assignBook(book!)
-		}
-	}
-}
+"iGuya - Home" = "iGuya - Home";
+"iGuya - Manga: %@" = "iGuya - Manga: %@";
