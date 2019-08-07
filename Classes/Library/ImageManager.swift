@@ -1,5 +1,6 @@
 
 import Cocoa
+import os.log
 
 ///
 /// `ImageManager` is responsible for downloading all external image
@@ -79,11 +80,17 @@ class ImageManager
 	///
 	func image(at url: URL, _ completionHandler: @escaping CompletionHandler)
 	{
+		os_log("Preparing to load cover at URL: '%{public}@'.",
+			   log: Logging.Subsystem.general, type: .debug, url.description)
+
 		/* Hash of URL is used as a way to map tasks to a dictionary. */
 		let key = url.hashValue
 
 		/* Do not allow more than one task to run for the same URL. */
 		if let task = tasks[key] {
+			os_log("Load cancelled becauase another is already in progress.",
+				   log: Logging.Subsystem.general, type: .fault)
+
 			return
 		}
 
@@ -96,12 +103,18 @@ class ImageManager
 			}
 
 			if let error = error {
+				os_log("Loading cover at '%{public}@' failed with error: '%{public}@'.",
+					   log: Logging.Subsystem.general, type: .error, url.description, error.localizedDescription)
+
 				completionHandler(.failure(.sessionError(error)))
 
 				return
 			}
 
 			guard let response = response as? HTTPURLResponse else {
+				os_log("Loading cover at '%{public}@' failed because response is not HTTP.",
+					   log: Logging.Subsystem.general, type: .error, url.description)
+
 				completionHandler(.failure(.responseNotHTTP))
 
 				return
@@ -110,6 +123,9 @@ class ImageManager
 			let statusCode = response.statusCode
 
 			guard statusCode == 200 else {
+				os_log("Loading cover at '%{public}@' failed because Not-OK status code: %{public}ld.",
+					   log: Logging.Subsystem.general, type: .error, url.description, statusCode)
+
 				completionHandler(.failure(.responseNotOK(statusCode: statusCode)))
 
 				return
@@ -118,6 +134,9 @@ class ImageManager
 			/* data should never be nil because we already checked if error is. */
 			/* I have this check because I want to be sane as possible. */
 			guard let data = data else {
+				os_log("Loading cover at '%{public}@' failed because data is malformed.",
+					   log: Logging.Subsystem.general, type: .error, url.description)
+
 				completionHandler(.failure(.dataMalformed))
 
 				return
@@ -125,10 +144,16 @@ class ImageManager
 
 			/* Create image from data */
 			guard let image = NSImage(data: data) else {
+				os_log("Loading cover at '%{public}@' failed because an image could not be created.",
+					   log: Logging.Subsystem.general, type: .error, url.description)
+
 				completionHandler(.failure(.dataMalformed))
 
 				return
 			}
+
+			os_log("Loading cover at '%{public}@' completed.",
+				   log: Logging.Subsystem.general, type: .debug, url.description)
 
 			completionHandler(.success(image))
 		} // sessionTask
@@ -138,5 +163,8 @@ class ImageManager
 
 		/* Start task */
 		sessionTask.resume()
+
+		os_log("Queued task to load cover at '%{public}@' as task '%{public}@'.",
+			   log: Logging.Subsystem.general, type: .debug, url.description, sessionTask)
 	}
 }

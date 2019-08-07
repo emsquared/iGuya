@@ -59,11 +59,8 @@ extension BookCoverImage
 				switch (result) {
 					case .success(let image):
 						self?.bookCoverImageView.image = image
-					case .failure(let error):
+					case .failure(_):
 						self?.bookCoverNotAvailField.isHidden = false
-
-						os_log("Failed to download cover image with error: %@",
-							   log: Logging.Subsystem.general, type: .error, error.localizedDescription)
 				}
 
 				self?.bookCoverProgressWheel.stopAnimation(nil)
