@@ -11,6 +11,8 @@ class BookChaptersView: NSViewController, BookWindowAccessors
 	@IBOutlet weak var chapterSearchField: NSSearchField!
 	@IBOutlet weak var chapterNoResultsField: NSTextField!
 
+	fileprivate var chapterListObserver: NSKeyValueObservation?
+
 	override func viewWillAppear()
 	{
 		super.viewWillAppear()
@@ -20,7 +22,11 @@ class BookChaptersView: NSViewController, BookWindowAccessors
 		]
 
 		chapterList.add(contentsOf: book.chapters)
-		chapterList.addObserver(self, forKeyPath: "arrangedObjects", options: [.initial, .new], context: nil)
+
+		chapterListObserver =
+		chapterList.observe(\.arrangedObjects, options: [.initial, .new]) { [weak self] (list, changes) in
+			self?.updateNoResultsField()
+		}
 	}
 
 	override func viewDidAppear()
@@ -34,14 +40,8 @@ class BookChaptersView: NSViewController, BookWindowAccessors
 	{
 		super.viewWillDisappear()
 
-		chapterList.removeObserver(self, forKeyPath: "arrangedObjects")
-	}
-
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
-	{
-		if (keyPath == "arrangedObjects") {
-			updateNoResultsField()
-		}
+		chapterListObserver?.invalidate()
+		chapterListObserver = nil
 	}
 
 	func updateNoResultsField()
