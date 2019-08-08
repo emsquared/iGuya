@@ -59,7 +59,7 @@ extension BookCoverImage
 				switch (result) {
 					case .success(let image):
 						self?.bookCoverImageView.image = image
-					case .failure(_):
+					case .failure:
 						self?.bookCoverNotAvailField.isHidden = false
 				}
 
