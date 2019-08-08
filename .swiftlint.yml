@@ -1,0 +1,20 @@
+disabled_rules:
+  - control_statement
+  - file_length
+  - function_body_length
+  - identifier_name
+  - line_length
+  - nesting
+  - opening_brace
+  - switch_case_alignment
+  - type_name
+opt_in_rules:
+  - empty_count
+  - empty_string
+  - lower_acl_than_parent
+  - overridden_super_call
+  - private_action
+  - private_outlet
+  - redundant_objc_attribute
+  - redundant_type_annotation
+force_cast: warning
