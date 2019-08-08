@@ -44,6 +44,7 @@
 		4CBAD98822F6B21200207C84 /* iGuyaAPI.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD98922F6CC9100207C84 /* ImageManager.swift */; };
 		4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD99222F6D7FE00207C84 /* Logging.swift */; };
+		4CCA1BED22FACA1E00DC6AD5 /* Reader.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA1BEC22FACA1E00DC6AD5 /* Reader.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		4CB6FD5E22F8202100A2783C /* CrossfadeStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossfadeStoryboard.swift; sourceTree = "<group>"; };
 		4CBAD98922F6CC9100207C84 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		4CBAD99222F6D7FE00207C84 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		4CCA1BEC22FACA1E00DC6AD5 /* Reader.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Reader.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB0756422F3F5F400D73686 /* Main.xcassets */,
+				4CCA1BEC22FACA1E00DC6AD5 /* Reader.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */,
+				4CCA1BED22FACA1E00DC6AD5 /* Reader.xcassets in Resources */,
 				4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */,
 				4CB6FD5D22F818E800A2783C /* BookList.storyboard in Resources */,
 				4CB0758722F3FA6300D73686 /* Main.storyboard in Resources */,
