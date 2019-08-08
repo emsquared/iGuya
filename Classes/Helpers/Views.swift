@@ -38,7 +38,7 @@ import Cocoa
 
 extension NSView
 {
-	struct HugEdgesOfSuperviewOptions : OptionSet
+	struct HugEdgesOfSuperviewOptions: OptionSet
 	{
 		let rawValue: Int
 

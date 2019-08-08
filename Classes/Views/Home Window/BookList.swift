@@ -40,11 +40,11 @@ import os.log
 
 class BookListView: NSViewController, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout
 {
-	@IBOutlet var list: NSArrayController!
-	@IBOutlet var listCollection: NSCollectionView!
+	@IBOutlet private var list: NSArrayController!
+	@IBOutlet private var listCollection: NSCollectionView!
 
-	@IBOutlet var listProgressView: NSView!
-	@IBOutlet var listProgressWheel: NSProgressIndicator!
+	@IBOutlet private var listProgressView: NSView!
+	@IBOutlet private var listProgressWheel: NSProgressIndicator!
 
 	fileprivate var listSizingCell: BookListCell?
 
