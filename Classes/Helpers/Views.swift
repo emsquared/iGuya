@@ -38,17 +38,30 @@ import Cocoa
 
 extension NSView
 {
+	struct HugEdgesOfSuperviewOptions : OptionSet
+	{
+		let rawValue: Int
+
+		static let top			= Self(rawValue: 1 << 0)
+		static let bottom		= Self(rawValue: 1 << 1)
+		static let leading		= Self(rawValue: 1 << 2)
+		static let trailing		= Self(rawValue: 1 << 3)
+
+		static let all: Self = [.top, .bottom, .leading, .trailing]
+	}
 	///
 	/// Toggle auto layout top, bottom, left, right anchors against superview.
 	///
 	/// - Parameter hug: `true` to enable anchors.
 	///                  `false` to disable anchors.
 	///                      Defaults to `true`.
+	/// - Parameter options: Which edges of superview to apply to.
+	///                      Defaults to all edges.
 	///
 	/// - Returns: `true` on success. `false` otherwise.
 	///
 	@discardableResult
-	func hugEdgesOfSuperview(_ hug: Bool = true) -> Bool
+	func hugEdgesOfSuperview(_ hug: Bool = true, options: HugEdgesOfSuperviewOptions = .all) -> Bool
 	{
 		guard let superview = superview else {
 			return false
@@ -56,10 +69,21 @@ extension NSView
 
 		translatesAutoresizingMaskIntoConstraints = false
 
-		topAnchor.constraint(equalTo: superview.topAnchor, constant: 0.0).isActive = hug
-		bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0.0).isActive = hug
-		leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0.0).isActive = hug
-		trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0.0).isActive = hug
+		if (options.contains(.top)) {
+			topAnchor.constraint(equalTo: superview.topAnchor, constant: 0.0).isActive = hug
+		}
+
+		if (options.contains(.bottom)) {
+			bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0.0).isActive = hug
+		}
+
+		if (options.contains(.leading)) {
+			leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0.0).isActive = hug
+		}
+
+		if (options.contains(.trailing)) {
+			trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0.0).isActive = hug
+		}
 
 		return true
 	}
