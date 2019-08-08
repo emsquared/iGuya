@@ -37,27 +37,31 @@
 import Cocoa
 import iGuyaAPI
 
-class BookListCell : NSCollectionViewItem, BookCoverImage
+class BookDetailsView : NSViewController
 {
-	@IBOutlet weak var bookCoverImageView: NSImageView!
-	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
-	@IBOutlet weak var bookCoverProgressWheel: NSProgressIndicator!
-
-	override func viewWillAppear()
+	@IBAction func readNewestChapter(_ sender: Any?)
 	{
-		super.viewWillAppear()
+		readBook(navigationAction: .newestChapter)
+	}
 
-		/* representedObject is set after viewDidLoad() is called
-		 but before the view appears so load the cover from here. */
-		/* BookListView retains one copy of this class which it uses
-		 as a template for sizing. That's not a problem for this
-	 	 section of code because the view will never appear on
-		 screen. It's still good to document this here in case
-		 the codebase of the cell if ever expanded. */
+	@IBAction func readOldestChapter(_ sender: Any?)
+	{
+		readBook(navigationAction: .oldestChapter)
+	}
+
+	@IBAction func viewChapterList(_ sender: Any?)
+	{
+		readBook(navigationAction: .chapterList)
+	}
+
+	fileprivate func readBook(navigationAction: BookWindow.NavigationAction)
+	{
+		dismiss(nil)
+
 		guard let book = representedObject as? Book else {
-			fatalError("Represented object is of unexpected type.")
+			fatalError("Error: Book not assigned to represented object.")
 		}
 
-		loadBookCoverImage(at: book.cover)
+		BookWindows.shared.presentWindow(forBook: book, navigationAction: navigationAction)
 	}
 }

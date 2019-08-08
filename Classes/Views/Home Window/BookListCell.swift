@@ -35,70 +35,78 @@
 *********************************************************************** */
 
 import Cocoa
-import Dispatch
 import iGuyaAPI
+import os.log
 
-class BookDetailsView : NSViewController, BookCoverImage
+class BookListCell : NSCollectionViewItem, BookCoverImage
 {
-	fileprivate var book: Book!
-
 	@IBOutlet weak var bookCoverImageView: NSImageView!
 	@IBOutlet weak var bookCoverNotAvailField: NSTextField!
 	@IBOutlet weak var bookCoverProgressWheel: NSProgressIndicator!
 
-	@IBOutlet var chapterList: NSArrayController!
-	@IBOutlet weak var chapterListTable: NSTableView!
+	fileprivate var bookDetailsPopover: NSViewController?
 
-	@IBOutlet weak var chapterSearchField: NSSearchField!
-	@IBOutlet weak var chapterNoResultsField: NSTextField!
-
-	override func viewDidLoad()
+	override func mouseDown(with event: NSEvent)
 	{
-		super.viewDidLoad()
+		super.mouseDown(with: event)
 
-		if let book = representedObject as? Book {
-			self.book = book
-		} else {
-			fatalError("Error: Book not assigned to represented object.")
+		presentBookDetails()
+	}
+
+	override func dismiss(_ viewController: NSViewController)
+	{
+		super.dismiss(viewController)
+
+		if (bookDetailsPopover == viewController) {
+			os_log("Dismissing details popover.",
+				   log: Logging.Subsystem.general, type: .debug)
+
+			bookDetailsPopover = nil
+		}
+	}
+
+	fileprivate func presentBookDetails()
+	{
+		os_log("Preparing to present details popover.",
+			   log: Logging.Subsystem.general, type: .debug)
+
+		if (bookDetailsPopover != nil) {
+			os_log("Cancelled details popover because one already is visible.",
+				   log: Logging.Subsystem.general, type: .fault)
+
+			return
 		}
 
-		chapterListTable.sortDescriptors = [
-			NSSortDescriptor(key: "number", ascending: false)
-		]
+		guard let delegate = collectionView?.delegate as? BookListView else {
+			fatalError("Error: Delegate of collection view is not of type 'BookListView'")
+		}
 
-		chapterList.add(contentsOf: book.chapters)
-		chapterList.addObserver(self, forKeyPath: "arrangedObjects", options: [.initial, .new], context: nil)
+		guard let controller = delegate.storyboard?.instantiateController(withIdentifier: "BookDetails") as? NSViewController else {
+			fatalError("Error: Storyboard does not contain a 'BookDetails' controller.")
+		}
+
+		controller.representedObject = representedObject
+
+		present(controller, asPopoverRelativeTo: view.bounds, of: view, preferredEdge: .maxX, behavior: .semitransient)
+
+		bookDetailsPopover = controller
+	}
+
+	override func viewWillAppear()
+	{
+		super.viewWillAppear()
+
+		/* representedObject is set after viewDidLoad() is called
+		 but before the view appears so load the cover from here. */
+		/* BookListView retains one copy of this class which it uses
+		 as a template for sizing. That's not a problem for this
+	 	 section of code because the view will never appear on
+		 screen. It's still good to document this here in case
+		 the codebase of the cell if ever expanded. */
+		guard let book = representedObject as? Book else {
+			fatalError("Represented object is of unexpected type.")
+		}
 
 		loadBookCoverImage(at: book.cover)
-	}
-
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
-
-		view.window?.title = LocalizedString("iGuya - Manga: %@", table: "MainWindow", book.title)
-	}
-
-	override func viewWillDisappear()
-	{
-		super.viewWillDisappear()
-
-		chapterList.removeObserver(self, forKeyPath: "arrangedObjects")
-	}
-
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
-	{
-		if (keyPath == "arrangedObjects") {
-			updateNoResultsField()
-		}
-	}
-
-	func updateNoResultsField()
-	{
-		guard let objects = chapterList.arrangedObjects as? [Any] else {
-			fatalError("Error: Chapter list is not an array.")
-		}
-
-		chapterNoResultsField.isHidden = (objects.count > 0)
 	}
 }

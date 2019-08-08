@@ -48,8 +48,6 @@ class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionVie
 
 	fileprivate var listSizingCell: BookListCell?
 
-	fileprivate var bookClicked: Book?
-
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -65,20 +63,6 @@ class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionVie
 		instantiateSizingTemplate(in: cell)
 	}
 
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
-
-		view.window?.title = LocalizedString("iGuya - Home", table: "MainWindow")
-	}
-
-	override func prepare(for segue: NSStoryboardSegue, sender: Any?)
-	{
-		if let vc = segue.destinationController as? BookDetailsView {
-			vc.representedObject = bookClicked
-		}
-	}
-
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize
 	{
 		guard let size = calculateSize(forItemAt: indexPath) else {
@@ -86,29 +70,6 @@ class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionVie
 		}
 
 		return size
-	}
-
-	func collectionView(_ collectionView: NSCollectionView, shouldSelectItemsAt indexPaths: Set<IndexPath>) -> Set<IndexPath>
-	{
-		return indexPaths
-	}
-
-    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>)
-	{
-		/* Single section is the only type of selection we allow so only
-		 have to grab the first index path to determine the book chosen. */
-		transitionToBook(at: indexPaths.first!)
-	}
-
-	fileprivate func transitionToBook(at indexPath: IndexPath)
-	{
-		guard let book = book(at: indexPath) else {
-			return
-		}
-
-		bookClicked = book
-
-		performSegue(withIdentifier: "ShowBookDetails", sender: self)
 	}
 
 	fileprivate func book(at indexPath: IndexPath) -> Book?
@@ -171,7 +132,7 @@ class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionVie
 				case .failure(let error):
 					#warning("TODO: Handle errors")
 
-					os_log("Failed to load books with error: %@",
+					os_log("Failed to load books with error: '%{public}@'",
 						   log: Logging.Subsystem.general, type: .error, error.localizedDescription)
 			}
 
