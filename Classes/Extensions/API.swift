@@ -69,3 +69,12 @@ extension Chapter
 		}
 	}
 }
+
+extension Chapter.Release
+{
+	@objc
+	var numberOfPages: Int
+	{
+		return pages.count
+	}
+}
