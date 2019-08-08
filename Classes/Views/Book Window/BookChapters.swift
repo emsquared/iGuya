@@ -3,7 +3,7 @@ import Cocoa
 import iGuyaAPI
 import os.log
 
-class BookChaptersView : NSViewController, BookWindowAccessors
+class BookChaptersView: NSViewController, BookWindowAccessors
 {
 	@IBOutlet var chapterList: NSArrayController!
 	@IBOutlet weak var chapterListTable: NSTableView!

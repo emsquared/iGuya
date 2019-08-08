@@ -38,7 +38,7 @@ import Cocoa
 import iGuyaAPI
 import os.log
 
-class BookListView : NSViewController, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout
+class BookListView: NSViewController, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout
 {
 	@IBOutlet var list: NSArrayController!
 	@IBOutlet var listCollection: NSCollectionView!

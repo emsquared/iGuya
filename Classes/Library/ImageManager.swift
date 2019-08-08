@@ -21,7 +21,7 @@ class ImageManager
 	///
 	/// Errors thrown by `ImageManager`.
 	///
-	public enum Failure : Error
+	public enum Failure: Error
 	{
 		///
 		/// Data received from endpoint is in a form which

@@ -37,7 +37,7 @@
 import Cocoa
 import os.log
 
-protocol BookCoverImage : class
+protocol BookCoverImage: class
 {
 	var bookCoverImageView: NSImageView! { get set }
 	var bookCoverNotAvailField: NSTextField! { get set }
