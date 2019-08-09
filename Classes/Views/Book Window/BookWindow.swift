@@ -61,10 +61,27 @@ class BookWindow: NSWindowController
 		case oldestChapter
 
 		///
+		/// Navigate to the next chapter in the book.
+		///
+		/// This action is linear. Once it reaches the
+		/// end of the book, it will not loop around.
+		///
+		case nextChapter
+
+		///
+		/// Navigation to the previous chapter in the book.
+		///
+		/// This action is linear. Once it reaches the
+		/// beginning of the book, it will not loop around.
+		///
+		case previousChapter
+
+		///
 		/// Navigate to a specific chapter of the book.
 		///
 		/// An optional `page` parameter can be assigned
 		/// to navigate to a specific page within the chapter.
+		///
 		/// Page numbers begin at **1**.
 		///
 		case chapter(_ chapter: Double, page: Int = 1)
@@ -75,15 +92,23 @@ class BookWindow: NSWindowController
 		/// If the page does not exist in the chapter, then
 		/// nothing happens.
 		///
+		/// Page numbers begin at **1**
+		///
 		case page(_ page: Int)
 
 		///
 		/// Navigate to next page.
 		///
+		/// This action is linear. Once it reaches the
+		/// end of the book, it will not loop around.
+		///
 		case nextPage
 
 		///
 		/// Navigate to previous page.
+		///
+		/// This action is linear. Once it reaches the
+		/// beginning of the book, it will not loop around.
 		///
 		case previousPage
 
