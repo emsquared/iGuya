@@ -629,10 +629,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EW6G6S6J99;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/.tmp/SharedBuildProducts-Frameworks",
-				);
 				INFOPLIST_FILE = "${IGUYA_WORKSPACE_TEMP_DIR}/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = app.unstable.iGuya;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -647,10 +643,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EW6G6S6J99;
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/.tmp/SharedBuildProducts-Frameworks",
-				);
 				INFOPLIST_FILE = "${IGUYA_WORKSPACE_TEMP_DIR}/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = app.unstable.iGuya;
 				PRODUCT_NAME = "$(TARGET_NAME)";
