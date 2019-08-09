@@ -70,6 +70,24 @@ class BookWindow: NSWindowController
 		case chapter(_ chapter: Double, page: Int = 1)
 
 		///
+		/// Navigate to a specific page in the current chapter.
+		///
+		/// If the page does not exist in the chapter, then
+		/// nothing happens.
+		///
+		case page(_ page: Int)
+
+		///
+		/// Navigate to next page.
+		///
+		case nextPage
+
+		///
+		/// Navigate to previous page.
+		///
+		case previousPage
+
+		///
 		/// Do not perform a navigation action.
 		///
 		case none
