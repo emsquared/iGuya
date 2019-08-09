@@ -34,4 +34,22 @@
 *
 *********************************************************************** */
 
-"iGuya - %@" = "iGuya - %@";
+import Cocoa
+
+extension NSMenuItem
+{
+	static func item(title: String, target: AnyObject, action: Selector, tag: Int = 0, representedObject: Any? = nil, keyEquivalent: String = "", keyEquivalentMask: NSEvent.ModifierFlags = []) -> NSMenuItem
+	{
+		let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
+
+		item.target = target
+
+		item.tag = tag
+
+		item.representedObject = representedObject
+
+		item.keyEquivalentModifierMask = keyEquivalentMask
+
+		return item
+	}
+}

@@ -23,12 +23,13 @@
 /* Begin PBXBuildFile section */
 		4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */; };
 		4C0B96D222F672E40067BF34 /* BookDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B96D122F672E40067BF34 /* BookDetails.swift */; };
+		4C47435F22FD66CC00A20399 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47435E22FD66CC00A20399 /* Menus.swift */; };
 		4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6422F9213700E77A30 /* Localization.swift */; };
 		4C6AE9B022F9388E00ECF3DF /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9AE22F9388E00ECF3DF /* BookListCell.swift */; };
 		4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B222F938B100ECF3DF /* BookListCell.xib */; };
 		4C6AE9B622F9481A00ECF3DF /* BookCoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */; };
 		4C91038E22FA947A005D63C7 /* BookWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91038D22FA947A005D63C7 /* BookWindows.swift */; };
-		4C91039122FABA68005D63C7 /* Windows.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C91038F22FABA68005D63C7 /* Windows.strings */; };
+		4C91039122FABA68005D63C7 /* BookWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C91038F22FABA68005D63C7 /* BookWindow.strings */; };
 		4C91039322FABB0D005D63C7 /* BookReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C91039222FABB0D005D63C7 /* BookReader.swift */; };
 		4C91039522FABB50005D63C7 /* BookChapters.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C91039422FABB4F005D63C7 /* BookChapters.storyboard */; };
 		4C91039822FABB85005D63C7 /* BookReader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C91039622FABB85005D63C7 /* BookReader.storyboard */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		4C080E6B22F4AFFC00BC8C28 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		4C0B96D122F672E40067BF34 /* BookDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetails.swift; sourceTree = "<group>"; };
+		4C47435E22FD66CC00A20399 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
 		4C4B5B6422F9213700E77A30 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4C68AF2C22F3FD8E00AA2401 /* BuildFrameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BuildFrameworks.sh; path = "Build Scripts/BuildFrameworks.sh"; sourceTree = "<group>"; };
 		4C68AF2D22F3FD8E00AA2401 /* UpdateVersionInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = UpdateVersionInfo.sh; path = "Build Scripts/UpdateVersionInfo.sh"; sourceTree = "<group>"; };
@@ -93,7 +95,7 @@
 		4C6AE9B322F938B100ECF3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BookListCell.xib; sourceTree = "<group>"; };
 		4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCoverImage.swift; sourceTree = "<group>"; };
 		4C91038D22FA947A005D63C7 /* BookWindows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindows.swift; sourceTree = "<group>"; };
-		4C91039022FABA68005D63C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Windows.strings; sourceTree = "<group>"; };
+		4C91039022FABA68005D63C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/BookWindow.strings; sourceTree = "<group>"; };
 		4C91039222FABB0D005D63C7 /* BookReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReader.swift; sourceTree = "<group>"; };
 		4C91039422FABB4F005D63C7 /* BookChapters.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BookChapters.storyboard; path = Base.lproj/BookChapters.storyboard; sourceTree = "<group>"; };
 		4C91039722FABB85005D63C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BookReader.storyboard; sourceTree = "<group>"; };
@@ -214,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				4CAAB92B22F69C26007ED15C /* API.strings */,
-				4C91038F22FABA68005D63C7 /* Windows.strings */,
+				4C91038F22FABA68005D63C7 /* BookWindow.strings */,
 			);
 			path = "Language Files";
 			sourceTree = "<group>";
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB6FD5E22F8202100A2783C /* CrossfadeStoryboard.swift */,
+				4C47435E22FD66CC00A20399 /* Menus.swift */,
 				4CAFD9F522F85D9C00458644 /* Views.swift */,
 			);
 			path = Helpers;
@@ -403,7 +406,6 @@
 				4CB0755A22F3F5F200D73686 /* Frameworks */,
 				4C68AF4B22F406FA00AA2401 /* Copy Frameworks */,
 				4CB0755B22F3F5F200D73686 /* Resources */,
-				4C68AF3D22F402EB00AA2401 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -462,7 +464,7 @@
 				4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */,
 				4CCA1BED22FACA1E00DC6AD5 /* Reader.xcassets in Resources */,
 				4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */,
-				4C91039122FABA68005D63C7 /* Windows.strings in Resources */,
+				4C91039122FABA68005D63C7 /* BookWindow.strings in Resources */,
 				4CB6FD5D22F818E800A2783C /* BookList.storyboard in Resources */,
 				4CC8AD3222FA61D400C96941 /* BookWindow.storyboard in Resources */,
 				4C91039522FABB50005D63C7 /* BookChapters.storyboard in Resources */,
@@ -476,23 +478,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4C68AF3D22F402EB00AA2401 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
 		4C68AF4622F406B000AA2401 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -526,6 +511,7 @@
 				4CB097AE22FD3FD2009886D9 /* API.m in Sources */,
 				4CC8AD3722FA798100C96941 /* BookWindow.swift in Sources */,
 				4C91038E22FA947A005D63C7 /* BookWindows.swift in Sources */,
+				4C47435F22FD66CC00A20399 /* Menus.swift in Sources */,
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
 				4C91039322FABB0D005D63C7 /* BookReader.swift in Sources */,
 				4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */,
@@ -556,12 +542,12 @@
 			name = BookListCell.xib;
 			sourceTree = "<group>";
 		};
-		4C91038F22FABA68005D63C7 /* Windows.strings */ = {
+		4C91038F22FABA68005D63C7 /* BookWindow.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4C91039022FABA68005D63C7 /* Base */,
 			);
-			name = Windows.strings;
+			name = BookWindow.strings;
 			sourceTree = "<group>";
 		};
 		4C91039622FABB85005D63C7 /* BookReader.storyboard */ = {

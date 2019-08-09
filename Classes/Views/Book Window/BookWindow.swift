@@ -178,6 +178,8 @@ class BookWindow: NSWindowController
 		}
 
 		updateTitle()
+
+		populateChapterListPopup() // requires access to book
 	}
 
 	///
@@ -267,7 +269,7 @@ class BookWindow: NSWindowController
 	///
 	fileprivate func updateTitle()
 	{
-		window?.title = LocalizedString("iGuya - %@", table: "Windows",	book.title)
+		window?.title = LocalizedString("iGuya - %@", table: "BookWindow",	book.title)
 	}
 
 	///
@@ -287,6 +289,62 @@ class BookWindow: NSWindowController
 
 		contentBorderView.hugEdgesOfSuperview(options: [.bottom, .leading, .trailing])
 		contentBorderView.heightAnchor.constraint(equalToConstant: borderThickness).isActive = true
+	}
+
+	///
+	/// Action for chapter changes in the chapter list popup button.
+	///
+	@objc
+	func chapterListPopupChanged(_ sender: Any?)
+	{
+
+	}
+
+	///
+	/// Action to present chapter list sheet in the chapter list popup button.
+	///
+	@objc
+	func chapterListPopupPresentList(_ sender: Any?)
+	{
+		presentChapterList()
+	}
+
+	///
+	/// Constructor for chapter list popup button.
+	///
+	fileprivate func populateChapterListPopup()
+	{
+		let menu = tbChaptersPopup.menu
+
+		/* Remove all items already present in the menu. */
+		menu?.removeAllItems()
+
+		/* Add item to access detailed chapter list. */
+		let clsItem = NSMenuItem.item(title: LocalizedString("Detailed chapter list...", table: "BookWindow"),
+									  target: self,
+									  action: #selector(chapterListPopupPresentList))
+
+		menu?.addItem(clsItem)
+		menu?.addItem(NSMenuItem.separator())
+
+		/* Add item for each chapter. */
+		/* TODO: Investigate making this more efficient.
+		 We can't just make the menu item tag the chapter number because
+		 the chapter number is a double. We could always use an offset
+		 of two (detailed list item and separator) to refer to a chapter
+		 in the popup, but that makes maintainability hard unless we
+		 expose a function whose sole responsibility is to handle that
+		 logic so there aren't a bunch of offsets spread around. */
+		for chapter in book.chapters.reversed() {
+			let title = "\(chapter.numberFormatted) - \(chapter.title)"
+
+			let item = NSMenuItem.item(title: title,
+									   target: self,
+									   action: #selector(chapterListPopupChanged),
+									   representedObject: chapter)
+
+			menu?.addItem(item)
+		}
 	}
 }
 

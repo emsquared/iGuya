@@ -35,17 +35,19 @@
                                         </popUpButtonCell>
                                     </popUpButton>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="49F95F75-4A77-4E9B-9730-CB976DDE2545" label="Chapter" paletteLabel="Chapter" sizingBehavior="auto" id="hFo-ei-WfT">
+                                <toolbarItem implicitItemIdentifier="49F95F75-4A77-4E9B-9730-CB976DDE2545" label="Chapter" paletteLabel="Chapter" id="hFo-ei-WfT">
                                     <nil key="toolTip"/>
+                                    <size key="minSize" width="200" height="24"/>
+                                    <size key="maxSize" width="200" height="24"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yI0-xm-D9t">
                                         <rect key="frame" x="0.0" y="14" width="200" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1 - I Want to be Invited to a Movie" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="A4i-6g-pXx" id="VNH-Mu-8Wk">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="1 - I Want to be Invited to a Movie" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="A4i-6g-pXx" id="VNH-Mu-8Wk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="DHH-Mb-IUV">
                                                 <items>
-                                                    <menuItem title="1 - I Want to be Invited to a Movie" state="on" id="A4i-6g-pXx"/>
+                                                    <menuItem title="1 - I Want to be Invited to a Movie" id="A4i-6g-pXx"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -223,7 +225,7 @@
                             <rect key="frame" x="485" y="2" width="173" height="18"/>
                             <popUpButtonCell key="cell" type="bevel" title="Fans Scans | Jaimini's~Box~" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <menu key="menu" id="rYH-xs-1Ua">
                                     <items>
                                         <menuItem title="Fans Scans | Jaimini's~Box~" id="yZu-4a-Shq"/>
@@ -234,7 +236,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-lM-qXB">
                             <rect key="frame" x="18" y="4" width="62" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Page ? of ?" id="ceE-Q8-BoY">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -242,7 +244,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7mT-OB-yXo">
                             <rect key="frame" x="447" y="4" width="40" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Group:" id="B8q-0x-IYs">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
