@@ -182,6 +182,7 @@ class BookWindow: NSWindowController
 
 		updateTitle()
 
+		populatePageListPopup() // requires access to book
 		populateChapterListPopup() // requires access to book
 		populateVolumeListPopup() // requires access to book
 	}
@@ -390,6 +391,40 @@ class BookWindow: NSWindowController
 
 			menu?.addItem(item)
 		}
+	}
+
+	///
+	/// Action for page changes in the page list popup button.
+	///
+	@objc
+	func pageListPopupChanged(_ sender: Any?)
+	{
+
+	}
+
+	///
+	/// Constructor for page list popup button.
+	///
+	fileprivate func populatePageListPopup()
+	{
+		let menu = tbPagePopup.menu
+
+		/* Remove all items already present in the menu. */
+		menu?.removeAllItems()
+
+		/* Show message if a chapter isn't selected. */
+		guard let chapter = selectedChapter else {
+			let item = NSMenuItem.item(title: LocalizedString("Select a chapter to read", table: "BookWindow"))
+
+			item.isEnabled = false
+
+			menu?.addItem(item)
+
+			return
+		}
+
+		/* Add item for each page. */
+		#warning("TODO: Implement logic for populating page list popup.")
 	}
 }
 

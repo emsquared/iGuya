@@ -154,12 +154,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yKq-RW-RHT">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="yyT-Ba-ybm">
                                                 <items>
-                                                    <menuItem title="1" state="on" id="fMD-gW-agk"/>
+                                                    <menuItem title="1" id="fMD-gW-agk"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -168,16 +168,16 @@
                                 <toolbarItem implicitItemIdentifier="8684DF30-E3E3-4E1B-9FA8-8AC6EC2BF8CE" label="Volume" paletteLabel="Volume" id="fkn-ds-siB">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="46" height="24"/>
-                                    <size key="maxSize" width="46" height="24"/>
+                                    <size key="maxSize" width="47" height="24"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="WaP-ae-3Yd">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Y4j-B5-hoh" id="blf-P4-SVh">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="Y4j-B5-hoh" id="blf-P4-SVh">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="3mA-Fb-qxd">
                                                 <items>
-                                                    <menuItem title="1" state="on" id="Y4j-B5-hoh"/>
+                                                    <menuItem title="1" id="Y4j-B5-hoh"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -208,7 +208,7 @@
                         <outlet property="tbGroupPopup" destination="IDa-on-d0d" id="fbG-BK-md9"/>
                         <outlet property="tbLayoutButton" destination="yY7-ti-nNT" id="UUN-uj-smR"/>
                         <outlet property="tbPageNavigator" destination="AYo-bl-wOi" id="k9d-AX-VHm"/>
-                        <outlet property="tbPagePopup" destination="S8V-Q1-gnU" id="FpS-qO-eeb"/>
+                        <outlet property="tbPagePopup" destination="yKq-RW-RHT" id="Sqz-7k-k5b"/>
                         <outlet property="tbPreloadButton" destination="yit-U0-h3O" id="9xp-o0-Jln"/>
                         <outlet property="tbScalingButton" destination="WOW-KY-d3K" id="2Gd-CG-cAs"/>
                         <outlet property="tbVolumePopup" destination="WaP-ae-3Yd" id="Mp7-EO-o8T"/>
@@ -225,7 +225,7 @@
                             <rect key="frame" x="485" y="2" width="173" height="18"/>
                             <popUpButtonCell key="cell" type="bevel" title="Fans Scans | Jaimini's~Box~" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <menu key="menu" id="rYH-xs-1Ua">
                                     <items>
                                         <menuItem title="Fans Scans | Jaimini's~Box~" id="yZu-4a-Shq"/>
@@ -236,7 +236,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-lM-qXB">
                             <rect key="frame" x="18" y="4" width="62" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Page ? of ?" id="ceE-Q8-BoY">
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -244,7 +244,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7mT-OB-yXo">
                             <rect key="frame" x="447" y="4" width="40" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Group:" id="B8q-0x-IYs">
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
