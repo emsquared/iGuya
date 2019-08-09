@@ -145,10 +145,13 @@ class BookWindow: NSWindowController
 
 	fileprivate var chapterListView: BookChaptersView?
 
-	var selectedPage: Chapter.Release.Page?
+	typealias Release = Chapter.Release
+	typealias Page = Chapter.Release.Page
+
+	var selectedPage: Page?
 
 	@inlinable
-	var selectedRelease: Chapter.Release?
+	var selectedRelease: Release?
 	{
 		return selectedPage?.release
 	}
@@ -221,6 +224,16 @@ class BookWindow: NSWindowController
 			default:
 				break
 		}
+	}
+
+	///
+	/// Change page in the window to `page`.
+	///
+	/// - Parameter page: Page to change the window to.
+	///
+	func changePage(toPage: Page)
+	{
+
 	}
 
 	///
