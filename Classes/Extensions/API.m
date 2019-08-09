@@ -34,47 +34,71 @@
 *
 *********************************************************************** */
 
-import Foundation
-import iGuyaAPI
+#import <Foundation/Foundation.h>
+#import <iGuyaAPI/iGuyaAPI-Swift.h>
 
-extension Book
+#import "LocalizationPrivate.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+#pragma mark -
+
+@interface Book (iGuyaHelper)
+@property (nonatomic, copy, readonly) NSString *numberOfChapters;
+@end
+
+@implementation Book (iGuyaHelper)
+
+- (NSString *)numberOfChapters
 {
-	@objc
-	var numberOfChapters: String
-	{
-//		return chapters.count
+	/* Show chapter number for latest chapter as the count instead
+	 of the count of `chapters` because special pages are treated
+	 as chapters so showing user there is 177 chapters when the
+	 latest chapter is numbered 158 can be confusing. */
+	/* Sort of `chapters` is stable so we only need last one. */
+	Chapter *lastChapter = self.chapters.lastObject;
 
-		/* Show chapter number for latest chapter as the count instead
-		 of the count of `chapters` because special pages are treated
-		 as chapters so showing user there is 177 chapters when the
-		 latest chapter is numbered 158 can be confusing. */
-		/* Sort of `chapters` is stable so we only need last one. */
-		guard let last = chapters.last else {
-			return "0"
-		}
+	if (lastChapter == nil) {
+		return @"0";
+	}
 
-		return last.numberFormatted
+	return lastChapter.numberFormatted;
+}
+
+@end
+
+#pragma mark -
+
+@interface Chapter (iGuyaHelper)
+@property (nonatomic, copy, readonly) NSString *groupsFormatted;
+@end
+
+@implementation Chapter (iGuyaHelper)
+
+- (NSString *)groupsFormatted
+{
+	if (self.groups.count == 1) {
+		return self.groups.firstObject.name;
+	} else {
+		return LocalizedString(@"Multiple groups", @"API");
 	}
 }
 
-extension Chapter
+@end
+
+#pragma mark -
+
+@interface Release (iGuyaHelper)
+@property (nonatomic, readonly) NSUInteger numberOfPages;
+@end
+
+@implementation Release (iGuyaHelper)
+
+- (NSUInteger)numberOfPages
 {
-	@objc
-	var groupsFormatted: String
-	{
-		if (groups.count == 1) {
-			return groups.first!.name
-		} else {
-			return LocalizedString("Multiple groups", table: "API")
-		}
-	}
+	return self.pages.count;
 }
 
-extension Chapter.Release
-{
-	@objc
-	var numberOfPages: Int
-	{
-		return pages.count
-	}
-}
+@end
+
+NS_ASSUME_NONNULL_END
