@@ -183,6 +183,7 @@ class BookWindow: NSWindowController
 		updateTitle()
 
 		populateChapterListPopup() // requires access to book
+		populateVolumeListPopup() // requires access to book
 	}
 
 	///
@@ -301,6 +302,38 @@ class BookWindow: NSWindowController
 
 		contentBorderView.hugEdgesOfSuperview(options: [.bottom, .leading, .trailing])
 		contentBorderView.heightAnchor.constraint(equalToConstant: borderThickness).isActive = true
+	}
+
+	///
+	/// Action for volume changes in the volume list popup button.
+	///
+	@objc
+	func volumeListPopupChanged(_ sender: Any?)
+	{
+
+	}
+
+	///
+	/// Constructor for volume list popup button.
+	///
+	fileprivate func populateVolumeListPopup()
+	{
+		let menu = tbVolumePopup.menu
+
+		/* Remove all items already present in the menu. */
+		menu?.removeAllItems()
+
+		/* Add item for each volume. */
+		for volume in book.volumes {
+			let title = String(volume.number)
+
+			let item = NSMenuItem.item(title: title,
+									   target: self,
+									   action: #selector(volumeListPopupChanged),
+									   representedObject: volume)
+
+			menu?.addItem(item)
+		}
 	}
 
 	///
