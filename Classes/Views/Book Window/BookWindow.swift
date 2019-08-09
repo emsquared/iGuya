@@ -129,19 +129,19 @@ class BookWindow: NSWindowController
 
 	fileprivate(set) var book: Book!
 
-	@IBOutlet private var contentBorderView: NSView!
-	@IBOutlet private var cbvCurrentPageField: NSTextField!
-	@IBOutlet private var cbvGroupPopup: NSPopUpButton!
+	@IBOutlet private(set) var contentBorderView: NSView!
+	@IBOutlet private(set) var cbvCurrentPageField: NSTextField!
+	@IBOutlet private(set) var cbvGroupPopup: NSPopUpButton!
 
-	@IBOutlet private var toolbar: NSToolbar!
-	@IBOutlet private var tbLayoutButton: NSButton!
-	@IBOutlet private var tbPreloadButton: NSButton!
-	@IBOutlet private var tbScalingButton: NSButton!
-	@IBOutlet private var tbPageNavigator: NSSegmentedControl!
-	@IBOutlet private var tbGroupPopup: NSPopUpButton!
-	@IBOutlet private var tbChaptersPopup: NSPopUpButton!
-	@IBOutlet private var tbPagePopup: NSPopUpButton!
-	@IBOutlet private var tbVolumePopup: NSPopUpButton!
+	@IBOutlet private(set) var toolbar: NSToolbar!
+	@IBOutlet private(set) var tbLayoutButton: NSButton!
+	@IBOutlet private(set) var tbPreloadButton: NSButton!
+	@IBOutlet private(set) var tbScalingButton: NSButton!
+	@IBOutlet private(set) var tbPageNavigator: NSSegmentedControl!
+	@IBOutlet private(set) var tbGroupPopup: NSPopUpButton!
+	@IBOutlet private(set) var tbChaptersPopup: NSPopUpButton!
+	@IBOutlet private(set) var tbPagePopup: NSPopUpButton!
+	@IBOutlet private(set) var tbVolumePopup: NSPopUpButton!
 
 	fileprivate var chapterListView: BookChaptersView?
 
@@ -284,147 +284,6 @@ class BookWindow: NSWindowController
 	fileprivate func updateTitle()
 	{
 		window?.title = LocalizedString("iGuya - %@", table: "BookWindow",	book.title)
-	}
-
-	///
-	/// Attach content border view to bottom of window.
-	///
-	fileprivate func attachContentBorderView()
-	{
-		guard let superview = window?.contentView else {
-			fatalError("Error: Window has no content view.")
-		}
-
-		guard let borderThickness = window?.contentBorderThickness(for: .minY) else {
-			fatalError("Error: Window has no bottom content border.")
-		}
-
-		superview.addSubview(contentBorderView)
-
-		contentBorderView.hugEdgesOfSuperview(options: [.bottom, .leading, .trailing])
-		contentBorderView.heightAnchor.constraint(equalToConstant: borderThickness).isActive = true
-	}
-
-	///
-	/// Action for volume changes in the volume list popup button.
-	///
-	@objc
-	func volumeListPopupChanged(_ sender: Any?)
-	{
-
-	}
-
-	///
-	/// Constructor for volume list popup button.
-	///
-	fileprivate func populateVolumeListPopup()
-	{
-		let menu = tbVolumePopup.menu
-
-		/* Remove all items already present in the menu. */
-		menu?.removeAllItems()
-
-		/* Add item for each volume. */
-		for volume in book.volumes {
-			let title = String(volume.number)
-
-			let item = NSMenuItem.item(title: title,
-									   target: self,
-									   action: #selector(volumeListPopupChanged),
-									   representedObject: volume)
-
-			menu?.addItem(item)
-		}
-	}
-
-	///
-	/// Action for chapter changes in the chapter list popup button.
-	///
-	@objc
-	func chapterListPopupChanged(_ sender: Any?)
-	{
-
-	}
-
-	///
-	/// Action to present chapter list sheet in the chapter list popup button.
-	///
-	@objc
-	func chapterListPopupPresentList(_ sender: Any?)
-	{
-		presentChapterList()
-	}
-
-	///
-	/// Constructor for chapter list popup button.
-	///
-	fileprivate func populateChapterListPopup()
-	{
-		let menu = tbChaptersPopup.menu
-
-		/* Remove all items already present in the menu. */
-		menu?.removeAllItems()
-
-		/* Add item to access detailed chapter list. */
-		let clsItem = NSMenuItem.item(title: LocalizedString("Detailed chapter list...", table: "BookWindow"),
-									  target: self,
-									  action: #selector(chapterListPopupPresentList))
-
-		menu?.addItem(clsItem)
-		menu?.addItem(NSMenuItem.separator())
-
-		/* Add item for each chapter. */
-		/* TODO: Investigate making this more efficient.
-		 We can't just make the menu item tag the chapter number because
-		 the chapter number is a double. We could always use an offset
-		 of two (detailed list item and separator) to refer to a chapter
-		 in the popup, but that makes maintainability hard unless we
-		 expose a function whose sole responsibility is to handle that
-		 logic so there aren't a bunch of offsets spread around. */
-		for chapter in book.chapters.reversed() {
-			let title = "\(chapter.numberFormatted) - \(chapter.title)"
-
-			let item = NSMenuItem.item(title: title,
-									   target: self,
-									   action: #selector(chapterListPopupChanged),
-									   representedObject: chapter)
-
-			menu?.addItem(item)
-		}
-	}
-
-	///
-	/// Action for page changes in the page list popup button.
-	///
-	@objc
-	func pageListPopupChanged(_ sender: Any?)
-	{
-
-	}
-
-	///
-	/// Constructor for page list popup button.
-	///
-	fileprivate func populatePageListPopup()
-	{
-		let menu = tbPagePopup.menu
-
-		/* Remove all items already present in the menu. */
-		menu?.removeAllItems()
-
-		/* Show message if a chapter isn't selected. */
-		guard let chapter = selectedChapter else {
-			let item = NSMenuItem.item(title: LocalizedString("Select a chapter to read", table: "BookWindow"))
-
-			item.isEnabled = false
-
-			menu?.addItem(item)
-
-			return
-		}
-
-		/* Add item for each page. */
-		#warning("TODO: Implement logic for populating page list popup.")
 	}
 }
 
