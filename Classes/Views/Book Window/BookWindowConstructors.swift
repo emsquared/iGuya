@@ -58,7 +58,6 @@ extension BookWindow
 		contentBorderView.heightAnchor.constraint(equalToConstant: borderThickness).isActive = true
 	}
 
-
 	///
 	/// Constructor for volume list popup button.
 	///
@@ -70,18 +69,19 @@ extension BookWindow
 		menu?.removeAllItems()
 
 		/* Add item for each volume. */
-		for volume in book.volumes {
+		/* Represented object for the item is the index of object
+		 in the `volumes` array. */
+		for (index, volume) in book.volumes.enumerated() {
 			let title = String(volume.number)
 
 			let item = NSMenuItem.item(title: title,
 									   target: self,
 									   action: #selector(volumeListPopupChanged),
-									   representedObject: volume)
+									   representedObject: index)
 
 			menu?.addItem(item)
 		}
 	}
-
 
 	///
 	/// Constructor for chapter list popup button.
@@ -93,34 +93,44 @@ extension BookWindow
 		/* Remove all items already present in the menu. */
 		menu?.removeAllItems()
 
-		/* Add item to access detailed chapter list. */
-		let clsItem = NSMenuItem.item(title: LocalizedString("Detailed chapter list...", table: "BookWindow"),
-									  target: self,
-									  action: #selector(chapterListPopupPresentList))
+		/* Create item for each chapter. */
+		/* Represented object for the item is the index of object
+		 in the `chapters` array. */
+		var items: [NSMenuItem] = []
 
-		menu?.addItem(clsItem)
-		menu?.addItem(NSMenuItem.separator())
-
-		/* Add item for each chapter. */
-		/* TODO: Investigate making this more efficient.
-		 We can't just make the menu item tag the chapter number because
-		 the chapter number is a double. We could always use an offset
-		 of two (detailed list item and separator) to refer to a chapter
-		 in the popup, but that makes maintainability hard unless we
-		 expose a function whose sole responsibility is to handle that
-		 logic so there aren't a bunch of offsets spread around. */
-		for chapter in book.chapters.reversed() {
+		for (index, chapter) in book.chapters.enumerated() {
 			let title = "\(chapter.numberFormatted) - \(chapter.title)"
 
 			let item = NSMenuItem.item(title: title,
 									   target: self,
 									   action: #selector(chapterListPopupChanged),
-									   representedObject: chapter)
+									   representedObject: index)
 
-			menu?.addItem(item)
+			items.append(item)
 		}
-	}
 
+		/* Reverse order of items. */
+		/* Items are reversed after enumeration so that the index
+		 assigned to `representedObject` is equal to what it is
+		 in the original array. Not the reversed array.
+		 That way we don't have to reverse the array every time
+		 we want to access an index. */
+		 /* This function is only called once so this overhead is
+		  actually not that worrisome. */
+		items.reverse()
+
+		/* Add item to access detailed chapter list. */
+		items.insert(NSMenuItem.separator(), at: 0)
+
+		let clsItem = NSMenuItem.item(title: LocalizedString("Detailed chapter list...", table: "BookWindow"),
+									  target: self,
+									  action: #selector(chapterListPopupPresentList))
+
+		items.insert(clsItem, at: 0)
+
+		/* Add items to menu. */
+		menu?.setItemList(items)
+	}
 
 	///
 	/// Constructor for page list popup button.
@@ -133,10 +143,8 @@ extension BookWindow
 		menu?.removeAllItems()
 
 		/* Show message if a chapter isn't selected. */
-		guard let chapter = selectedChapter else {
-			let item = NSMenuItem.item(title: LocalizedString("Select a chapter to read", table: "BookWindow"))
-
-			item.isEnabled = false
+		guard let release = selectedRelease else {
+			let item = NSMenuItem.selectChapterItem
 
 			menu?.addItem(item)
 
@@ -144,6 +152,31 @@ extension BookWindow
 		}
 
 		/* Add item for each page. */
-		#warning("TODO: Implement logic for populating page list popup.")
+		/* Represented object for the item is the index of object
+		 in the `pages` array. */
+		for (index, page) in release.pages.enumerated() {
+			 let title = String(page.number)
+
+			 let item = NSMenuItem.item(title: title,
+										target: self,
+										action: #selector(pageListPopupChanged),
+										representedObject: index)
+
+			 menu?.addItem(item)
+		 }
+	}
+}
+
+/* ------------------------------------------------------ */
+
+fileprivate extension NSMenuItem
+{
+	static var selectChapterItem: NSMenuItem
+	{
+		let item = NSMenuItem.item(title: LocalizedString("Select a chapter to read", table: "BookWindow"))
+
+		item.isEnabled = false
+
+		return item
 	}
 }

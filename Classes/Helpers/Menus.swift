@@ -36,6 +36,23 @@
 
 import Cocoa
 
+extension NSMenu
+{
+	func setItemList(_ itemList: [NSMenuItem])
+	{
+		/* "This property is settable in macOS 10.14 and later." */
+		if #available(macOS 10.14, *) {
+			items = itemList
+		} else {
+			removeAllItems()
+
+			for item in itemList {
+				addItem(item)
+			}
+		}
+	} // setItemList
+}
+
 extension NSMenuItem
 {
 	static func item(title: String, target: AnyObject? = nil, action: Selector? = nil, tag: Int = 0, representedObject: Any? = nil, keyEquivalent: String = "", keyEquivalentMask: NSEvent.ModifierFlags = []) -> NSMenuItem
