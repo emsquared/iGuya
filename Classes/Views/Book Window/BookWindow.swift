@@ -143,8 +143,6 @@ class BookWindow: NSWindowController
 	@IBOutlet private(set) var tbPagePopup: NSPopUpButton!
 	@IBOutlet private(set) var tbVolumePopup: NSPopUpButton!
 
-	fileprivate var chapterListView: BookChaptersView?
-
 	typealias Release = Chapter.Release
 	typealias Page = Chapter.Release.Page
 
@@ -238,6 +236,18 @@ class BookWindow: NSWindowController
 	}
 
 	///
+	/// Reference to visible chapter list sheet.
+	///
+	fileprivate var chapterListView: BookChaptersView?
+	{
+		guard let controller = window?.attachedSheet?.contentViewController as? BookChaptersView else {
+			return nil
+		}
+
+		return controller
+	}
+
+	///
 	/// Present chapter list sheet.
 	///
 	func presentChapterList()
@@ -257,8 +267,6 @@ class BookWindow: NSWindowController
 		}
 
 		contentViewController?.presentAsSheet(controller)
-
-		self.chapterListView = controller
 	}
 
 	///
@@ -274,8 +282,6 @@ class BookWindow: NSWindowController
 			   log: Logging.Subsystem.general, type: .debug)
 
 		contentViewController?.dismiss(chapterListView)
-
-		self.chapterListView = nil
 	}
 
 	///
