@@ -34,53 +34,39 @@
 *
 *********************************************************************** */
 
-import Cocoa
+import Foundation
+import iGuyaAPI
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate
+final class Preferences
 {
-	fileprivate var homeWindow: NSWindowController?
-
-	func applicationDidFinishLaunching(_ aNotification: Notification)
+	///
+	/// Preferred release group.
+	///
+	static var preferredGroup: Group?
 	{
-		Preferences.registerDefaults()
+		get {
+			guard let value = UserDefaults.standard.string(forKey: "PreferredReleaseGroup") else {
+				return nil
+			}
 
-		instantiateHomeWindow()
+			return Group.group(with: value)
+		} // get
 
-		makeHomeWindowKey()
-	}
+		set {
+			UserDefaults.standard.set(newValue?.identifier, forKey: "PreferredReleaseGroup")
+		} // set
+	} // preferredGroup
 
-	func applicationWillTerminate(_ aNotification: Notification)
+	///
+	/// Register default preference values with `UserDefaults`.
+	///
+	static func registerDefaults()
 	{
-		// Insert code here to tear down your application
-	}
-
-	func applicationOpenUntitledFile(_ sender: NSApplication) -> Bool
-	{
-		makeHomeWindowKey()
-
-		return true
-	}
-
-	fileprivate func makeHomeWindowKey()
-	{
-		homeWindow?.window?.makeKeyAndOrderFront(nil)
-	}
-
-	fileprivate func instantiateHomeWindow()
-	{
-		var storyboard: NSStoryboard?
-
-		if #available(OSX 10.13, *) {
-			storyboard = NSStoryboard.main
-		} else {
-			storyboard = NSStoryboard(name: "Main", bundle: nil)
+		guard 	let file = Bundle.main.url(forResource: "RegisteredDefaults", withExtension: "plist"),
+				let defaults = NSDictionary(contentsOf: file) as? [String : Any] else {
+			fatalError("'RegisteredDefaults.plist' file is missing or malformed.")
 		}
 
-		guard let controller = storyboard?.instantiateController(withIdentifier: "BookList") as? NSWindowController else {
-			fatalError("Error: Storyboard does not contain a 'BooksList' controller.")
-		}
-
-		homeWindow = controller
+		UserDefaults.standard.register(defaults: defaults)
 	}
 }

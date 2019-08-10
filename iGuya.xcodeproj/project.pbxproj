@@ -38,6 +38,8 @@
 		4C91039822FABB85005D63C7 /* BookReader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C91039622FABB85005D63C7 /* BookReader.storyboard */; };
 		4CAAB92D22F69C26007ED15C /* API.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CAAB92B22F69C26007ED15C /* API.strings */; };
 		4CAAB93D22F6A870007ED15C /* iGuyaAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */; };
+		4CAB50AA22FEB9DE00128AA5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB50A922FEB9DE00128AA5 /* Preferences.swift */; };
+		4CAB50AF22FEC3FE00128AA5 /* RegisteredDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAB50AE22FEC3FE00128AA5 /* RegisteredDefaults.plist */; };
 		4CAFD9F622F85D9C00458644 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAFD9F522F85D9C00458644 /* Views.swift */; };
 		4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756022F3F5F200D73686 /* AppDelegate.swift */; };
 		4CB0756322F3F5F200D73686 /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0756222F3F5F200D73686 /* BookList.swift */; };
@@ -107,6 +109,8 @@
 		4C91039722FABB85005D63C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BookReader.storyboard; sourceTree = "<group>"; };
 		4CAAB92C22F69C26007ED15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/API.strings; sourceTree = "<group>"; };
 		4CAAB93C22F6A870007ED15C /* iGuyaAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iGuyaAPI.framework; path = ".tmp/SharedBuildProducts-Frameworks/iGuyaAPI.framework"; sourceTree = "<group>"; };
+		4CAB50A922FEB9DE00128AA5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		4CAB50AE22FEC3FE00128AA5 /* RegisteredDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RegisteredDefaults.plist; sourceTree = "<group>"; };
 		4CAFD9F522F85D9C00458644 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		4CB0755D22F3F5F200D73686 /* iGuya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGuya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CB0756022F3F5F200D73686 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +232,22 @@
 			path = "Language Files";
 			sourceTree = "<group>";
 		};
+		4CAB50A822FEB95100128AA5 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB50A922FEB9DE00128AA5 /* Preferences.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		4CAB50AD22FEC3E200128AA5 /* Property Lists */ = {
+			isa = PBXGroup;
+			children = (
+				4CAB50AE22FEC3FE00128AA5 /* RegisteredDefaults.plist */,
+			);
+			path = "Property Lists";
+			sourceTree = "<group>";
+		};
 		4CAF7FBB22F3FBC000173D34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,11 +286,12 @@
 		4CB0757022F3F7DF00D73686 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4CB097A922FD3CC3009886D9 /* Headers */,
-				4CB6FD5622F8173700A2783C /* Helpers */,
 				4C080E6F22F5464600BC8C28 /* Controllers */,
 				4CAAB92222F69865007ED15C /* Extensions */,
+				4CB097A922FD3CC3009886D9 /* Headers */,
+				4CB6FD5622F8173700A2783C /* Helpers */,
 				4C080E6D22F5461A00BC8C28 /* Library */,
+				4CAB50A822FEB95100128AA5 /* Preferences */,
 				4C080E7022F5465E00BC8C28 /* Views */,
 			);
 			path = Classes;
@@ -279,6 +300,7 @@
 		4CB0757122F3F7E700D73686 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CAB50AD22FEC3E200128AA5 /* Property Lists */,
 				4CB0758822F3FA7500D73686 /* Assets */,
 				4CB0757422F3F80B00D73686 /* Documentation */,
 				4CAAB92522F69BBE007ED15C /* Language Files */,
@@ -474,6 +496,7 @@
 				4CCA1BED22FACA1E00DC6AD5 /* Reader.xcassets in Resources */,
 				4CB0757622F3F81E00D73686 /* LICENSE.txt in Resources */,
 				4C91039122FABA68005D63C7 /* BookWindow.strings in Resources */,
+				4CAB50AF22FEC3FE00128AA5 /* RegisteredDefaults.plist in Resources */,
 				4CB6FD5D22F818E800A2783C /* BookList.storyboard in Resources */,
 				4CC8AD3222FA61D400C96941 /* BookWindow.storyboard in Resources */,
 				4C91039522FABB50005D63C7 /* BookChapters.storyboard in Resources */,
@@ -529,6 +552,7 @@
 				4CB6FD5F22F8202100A2783C /* CrossfadeStoryboard.swift in Sources */,
 				4C50FE0622FDEFDB00C5F8F2 /* BookWindowConstructors.swift in Sources */,
 				4CB0756322F3F5F200D73686 /* BookList.swift in Sources */,
+				4CAB50AA22FEB9DE00128AA5 /* Preferences.swift in Sources */,
 				4C0B96D222F672E40067BF34 /* BookDetails.swift in Sources */,
 				4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */,
 				4CB097AD22FD3D37009886D9 /* Localization.m in Sources */,
