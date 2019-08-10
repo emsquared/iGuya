@@ -38,7 +38,7 @@ import Cocoa
 import iGuyaAPI
 import os.log
 
-class BookWindow: NSWindowController
+final class BookWindow: NSWindowController
 {
 	///
 	/// Navigation actions which can be performed.

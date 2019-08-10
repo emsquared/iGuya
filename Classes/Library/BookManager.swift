@@ -38,7 +38,7 @@ import Foundation
 import iGuyaAPI
 import os.log
 
-class BookManager
+final class BookManager
 {
 	///
 	/// Shared instance of the book manager.

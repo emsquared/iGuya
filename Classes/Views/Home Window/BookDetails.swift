@@ -37,7 +37,7 @@
 import Cocoa
 import iGuyaAPI
 
-class BookDetailsView: NSViewController
+final class BookDetailsView: NSViewController
 {
 	@IBAction private func readNewestChapter(_ sender: Any?)
 	{

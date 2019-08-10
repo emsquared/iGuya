@@ -46,7 +46,7 @@ import os.log
 ///
 /// - SeeAlso: [NSURLRequestUseProtocolCachePolicy](https://developer.apple.com/documentation/foundation/nsurlrequestcachepolicy/nsurlrequestuseprotocolcachepolicy)
 ///
-class ImageManager
+final class ImageManager
 {
 	///
 	/// Shared instance of the image manager.

@@ -38,7 +38,7 @@ import Cocoa
 import iGuyaAPI
 import os.log
 
-class BookListCell: NSCollectionViewItem, BookCoverImage
+final class BookListCell: NSCollectionViewItem, BookCoverImage
 {
 	@IBOutlet weak var bookCoverImageView: NSImageView!
 	@IBOutlet weak var bookCoverNotAvailField: NSTextField!

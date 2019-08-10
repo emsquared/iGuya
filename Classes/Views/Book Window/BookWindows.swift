@@ -51,7 +51,7 @@ import os.log
 /// function will create a new window for the book passed to it
 /// or it will simply make that window the frontmost.
 ///
-class BookWindows
+final class BookWindows
 {
 	///
 	/// Shared instance of `BookWindows`.

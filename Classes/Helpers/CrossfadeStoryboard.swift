@@ -39,7 +39,7 @@ import Cocoa
 ///
 /// Custom segue to crossfade two view controllers on a parent.
 ///
-class CrossfadeStoryboardSegue: NSStoryboardSegue
+final class CrossfadeStoryboardSegue: NSStoryboardSegue
 {
     override func perform()
 	{
