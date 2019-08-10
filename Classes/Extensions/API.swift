@@ -40,8 +40,14 @@ import iGuyaAPI
 extension Volume
 {
 	///
-	/// First page of first chapter in the volume.
+	/// First page of first chapter in the volume
+	/// by preferred group.
 	///
+	/// Returns first page by **any group** if there
+	/// is **no preferred group** or they **do not have
+	/// a release for the chapter**.
+	///
+	@inlinable
 	var firstPage: Chapter.Release.Page?
 	{
 		return chapters.first?.firstPage
@@ -51,12 +57,22 @@ extension Volume
 extension Chapter
 {
 	///
-	/// First page of the chapter.
+	/// First page of the chapter by preferred group.
 	///
-	/// TODO: Honor preferred group.
+	/// Returns first page by **any group** if there
+	/// is **no preferred group** or they **do not have
+	/// a release for the chapter**.
 	///
+	@inlinable
 	var firstPage: Release.Page?
 	{
-		return releases.first?.pages.first
+		guard	let group = Preferences.preferredGroup,
+				let release = releases.first(where: { $0.group == group })
+			else
+		{
+			return releases.first?.pages.first
+		}
+
+		return release.pages.first
 	}
 }
