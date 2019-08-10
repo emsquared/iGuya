@@ -27,6 +27,7 @@
 		4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6422F9213700E77A30 /* Localization.swift */; };
 		4C50FE0622FDEFDB00C5F8F2 /* BookWindowConstructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50FE0522FDEFDA00C5F8F2 /* BookWindowConstructors.swift */; };
 		4C50FE0822FDF00800C5F8F2 /* BookWindowActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50FE0722FDF00800C5F8F2 /* BookWindowActions.swift */; };
+		4C683A4A22FE9F000013517B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C683A4922FE9F000013517B /* API.swift */; };
 		4C6AE9B022F9388E00ECF3DF /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9AE22F9388E00ECF3DF /* BookListCell.swift */; };
 		4C6AE9B422F938B100ECF3DF /* BookListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B222F938B100ECF3DF /* BookListCell.xib */; };
 		4C6AE9B622F9481A00ECF3DF /* BookCoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */; };
@@ -88,6 +89,7 @@
 		4C4B5B6422F9213700E77A30 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4C50FE0522FDEFDA00C5F8F2 /* BookWindowConstructors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowConstructors.swift; sourceTree = "<group>"; };
 		4C50FE0722FDF00800C5F8F2 /* BookWindowActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowActions.swift; sourceTree = "<group>"; };
+		4C683A4922FE9F000013517B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4C68AF2C22F3FD8E00AA2401 /* BuildFrameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = BuildFrameworks.sh; path = "Build Scripts/BuildFrameworks.sh"; sourceTree = "<group>"; };
 		4C68AF2D22F3FD8E00AA2401 /* UpdateVersionInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = UpdateVersionInfo.sh; path = "Build Scripts/UpdateVersionInfo.sh"; sourceTree = "<group>"; };
 		4C68AF3122F3FFD600AA2401 /* iGuya.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = iGuya.xcconfig; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB097A722FD3BAE009886D9 /* API.m */,
+				4C683A4922FE9F000013517B /* API.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				4C50FE0822FDF00800C5F8F2 /* BookWindowActions.swift in Sources */,
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
 				4C91039322FABB0D005D63C7 /* BookReader.swift in Sources */,
+				4C683A4A22FE9F000013517B /* API.swift in Sources */,
 				4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */,
 				4CB6FD5F22F8202100A2783C /* CrossfadeStoryboard.swift in Sources */,
 				4C50FE0622FDEFDB00C5F8F2 /* BookWindowConstructors.swift in Sources */,

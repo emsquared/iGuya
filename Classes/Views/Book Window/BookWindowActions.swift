@@ -36,6 +36,7 @@
 
 import Cocoa
 import iGuyaAPI
+import os.log
 
 extension BookWindow
 {
@@ -45,7 +46,24 @@ extension BookWindow
 	@objc
 	func volumeListPopupChanged(_ sender: Any?)
 	{
+		Logging.logFunctionCall()
 
+		guard  	let sender = sender as? NSMenuItem,
+				let index = sender.representedObject as? Int else {
+			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+		}
+
+		let volume = book.volumes[index]
+
+		guard let page = volume.firstPage else {
+			/* This should be impossible. */
+			os_log("Volume does not contain a first page.",
+				   log: Logging.Subsystem.general, type: .fault)
+
+			return
+		}
+
+		changePage(toPage: page)
 	}
 
 	///
@@ -54,7 +72,24 @@ extension BookWindow
 	@objc
 	func chapterListPopupChanged(_ sender: Any?)
 	{
+		Logging.logFunctionCall()
 
+		guard  	let sender = sender as? NSMenuItem,
+				let index = sender.representedObject as? Int else {
+			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+		}
+
+		let chapter = book.chapters[index]
+
+		guard let page = chapter.firstPage else {
+			/* This should be impossible. */
+			os_log("Chapter does not contain a first page.",
+				   log: Logging.Subsystem.general, type: .fault)
+
+			return
+		}
+
+		changePage(toPage: page)
 	}
 
 	///
@@ -63,6 +98,8 @@ extension BookWindow
 	@objc
 	func chapterListPopupPresentList(_ sender: Any?)
 	{
+		Logging.logFunctionCall()
+
 		presentChapterList()
 	}
 
@@ -72,6 +109,23 @@ extension BookWindow
 	@objc
 	func pageListPopupChanged(_ sender: Any?)
 	{
+		Logging.logFunctionCall()
 
+		guard  	let sender = sender as? NSMenuItem,
+				let index = sender.representedObject as? Int else {
+			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+		}
+
+		guard let release = selectedRelease else {
+			/* This should be impossible. */
+			os_log("Tried to change to a page with no chapter selected.",
+				   log: Logging.Subsystem.general, type: .fault)
+
+			return
+		}
+
+		let page = release.pages[index]
+
+		changePage(toPage: page)
 	}
 }
