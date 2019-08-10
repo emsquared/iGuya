@@ -50,4 +50,10 @@ struct Logging
 //			return OSLog(subsystem: "app.unstable.frameworks.iGuya", category: "Performance")
 //		}()
 	}
+
+	static func logFunctionCall(_ function: String = #function)
+	{
+		os_log("%@ called.",
+			   log: Subsystem.general, type: .debug, function)
+	}
 }
