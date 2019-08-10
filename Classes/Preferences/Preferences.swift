@@ -37,12 +37,12 @@
 import Foundation
 import iGuyaAPI
 
-final class Preferences
+final public class Preferences
 {
 	///
 	/// Preferred release group.
 	///
-	static var preferredGroup: Group?
+	static public var preferredGroup: Group?
 	{
 		get {
 			guard let value = UserDefaults.standard.string(forKey: "PreferredReleaseGroup") else {
