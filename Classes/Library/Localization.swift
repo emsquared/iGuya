@@ -39,6 +39,7 @@ import Foundation
 ///
 /// Performs localization with input string.
 ///
+@inlinable
 public func LocalizedString(_ string: String, table: String? = nil, bundle: Bundle = Bundle.main, _ arguments: CVarArg...) -> String
 {
 	let formatter = bundle.localizedString(forKey: string, value: string, table: table)

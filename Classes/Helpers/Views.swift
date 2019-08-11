@@ -102,7 +102,7 @@ extension NSViewController
 	///
 	/// - Returns: `true` on success. `false` otherwise.
 	///
-	@discardableResult
+	@discardableResult @inlinable
 	func crossfade(to nextController: NSViewController) -> Bool
 	{
 		guard let prevController = children.first else {
@@ -124,7 +124,7 @@ extension NSViewController
 	///
 	/// - Returns: `true` on success. `false` otherwise.
 	///
-	@discardableResult
+	@discardableResult @usableFromInline
 	static func crossfade(from prevController: NSViewController, to nextController: NSViewController) -> Bool
 	{
 		/* Let's be sane. */
@@ -181,6 +181,7 @@ extension NSWindow
 	///
 	/// `true` if window is full screen. `false` otherwise.
 	///
+	@inlinable
 	var isFullscreen: Bool
 	{
 		return styleMask.contains(.fullScreen)

@@ -51,6 +51,7 @@ struct Logging
 //		}()
 	}
 
+	@inlinable
 	static func logFunctionCall(_ function: String = #function)
 	{
 		os_log("%{public}@ called.",
