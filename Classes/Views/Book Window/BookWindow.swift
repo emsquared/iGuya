@@ -146,7 +146,7 @@ final class BookWindow: NSWindowController
 	typealias Release = Chapter.Release
 	typealias Page = Chapter.Release.Page
 
-	var selectedPage: Page?
+	fileprivate(set) var selectedPage: Page?
 
 	@inlinable
 	var selectedRelease: Release?
