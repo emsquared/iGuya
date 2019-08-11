@@ -35,58 +35,26 @@
 *********************************************************************** */
 
 import Foundation
-import iGuyaAPI
 
-final public class Preferences
+protocol NotificationName
+{
+	var name: Notification.Name { get }
+}
+
+extension RawRepresentable where RawValue == String, Self: NotificationName
 {
 	///
-	/// Notifications posted when a preference changes.
+	/// `self` reflected is used as the notification name.
 	///
-	/// Notification `object` value is `nil`.
+	/// For example:
+	///    - `iGuya.Preferences.ChangeNotifications.preferredGroup`
 	///
-	enum ChangeNotifications: String, RawRepresentable, NotificationName
-	{
-		case preferredGroup
-	}
-
-	///
-	/// Preferred release group.
-	///
-	static public var preferredGroup: Group?
+	var name: Notification.Name
 	{
 		get {
-			guard let value = UserDefaults.standard.string(forKey: "PreferredReleaseGroup") else {
-				return nil
-			}
+			let description = String(reflecting: self)
 
-			return Group.group(with: value)
-		} // get
-
-		set {
-			UserDefaults.standard.set(newValue?.identifier, forKey: "PreferredReleaseGroup")
-
-			postChangeNotification(.preferredGroup)
-		} // set
-	} // preferredGroup
-
-	///
-	/// Register default preference values with `UserDefaults`.
-	///
-	static func registerDefaults()
-	{
-		guard 	let file = Bundle.main.url(forResource: "RegisteredDefaults", withExtension: "plist"),
-				let defaults = NSDictionary(contentsOf: file) as? [String : Any] else {
-			fatalError("Error: 'RegisteredDefaults.plist' file is missing or malformed.")
+			return Notification.Name(description)
 		}
-
-		UserDefaults.standard.register(defaults: defaults)
-	}
-
-	///
-	/// Post change notification.
-	///
-	static private func postChangeNotification(_ notification: Preferences.ChangeNotifications)
-	{
-		NotificationCenter.default.post(name: notification.name, object: nil)
-	}
+	} // name
 }
