@@ -81,9 +81,6 @@ final class BookChaptersView: NSViewController, BookWindowAccessors
 
 	func updateNoResultsField()
 	{
-		os_log("Refreshing 'No Results' button.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		guard let objects = chapterList.arrangedObjects as? [Any] else {
 			fatalError("Error: Chapter list is not an array.")
 		}

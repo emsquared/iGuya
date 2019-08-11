@@ -218,7 +218,7 @@ final class BookWindow: NSWindowController
 				presentChapterList()
 			case .none:
 				os_log("Tried to navigate window to '.none'.",
-					   log: Logging.Subsystem.general, type: .fault)
+					   log: Logging.Subsystem.general, type: .info)
 			default:
 				break
 		}
@@ -251,13 +251,7 @@ final class BookWindow: NSWindowController
 	///
 	func presentChapterList()
 	{
-		os_log("Preparing to present chapter list sheet.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		if (chapterListView != nil) {
-			os_log("Cancelled chapter list sheet because one already is visible.",
-				   log: Logging.Subsystem.general, type: .fault)
-
 			return
 		}
 
@@ -276,9 +270,6 @@ final class BookWindow: NSWindowController
 		guard let chapterListView = chapterListView else {
 			return
 		}
-
-		os_log("Dismissing chapter list sheet.",
-			   log: Logging.Subsystem.general, type: .debug)
 
 		contentViewController?.dismiss(chapterListView)
 	}

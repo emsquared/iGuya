@@ -82,9 +82,6 @@ final class BookWindows
 	///
 	fileprivate func constructObservers()
 	{
-		os_log("Constructing observers for 'BookWindows'.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		NotificationManager.shared.add(observer: self, forName: NSWindow.willCloseNotification) { [weak self] (notification) in
 			guard let window = notification.object as? NSWindow else {
 				return
@@ -99,9 +96,6 @@ final class BookWindows
 	///
 	fileprivate func teardownObservers()
 	{
-		os_log("Tearing down observers for 'BookWindows'.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		NotificationManager.shared.remove(observer: self, forName: NSWindow.willCloseNotification)
 	}
 
@@ -118,9 +112,6 @@ final class BookWindows
 		workerQueue.sync {
 			if let key = windows.firstIndex(where: { $1 === controller }) {
 				windows.remove(at: key)
-
-				os_log("Removing window '%{public}@' from store.",
-					   log: Logging.Subsystem.general, type: .debug, controller)
 			}
 		}
 	}
@@ -140,9 +131,6 @@ final class BookWindows
 	///
 	func presentWindow(forBook book: Book, navigationAction: BookWindow.NavigationAction = .none)
 	{
-		os_log("Presenting window for '%{public}@' with navigation action: '%{public}@'",
-			   log: Logging.Subsystem.general, type: .debug, book.identifier, String(describing: navigationAction))
-
 		var window = self.window(forBook: book)
 
 		if (window == nil) {
@@ -187,9 +175,6 @@ final class BookWindows
 
 			windows[key] = controller
 		}
-
-		os_log("Adding window '%{public}@' to store.",
-			   log: Logging.Subsystem.general, type: .debug, controller)
 
 		return controller
 	}

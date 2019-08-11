@@ -77,20 +77,11 @@ final class BookManager
 	@discardableResult
 	func requestBooks(returningLocalCache: Bool = true, _ completionHandler: @escaping Request<Books>.CompletionHandler) -> Bool
 	{
-		os_log("Preparing to request books.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		if (requestingBooks) {
-			os_log("Request cancelled becauase another is already in progress.",
-				   log: Logging.Subsystem.general, type: .fault)
-
 			return false
 		}
 
 		if (returningLocalCache && books != nil) {
-			os_log("Returning books from local cache.",
-				   log: Logging.Subsystem.general, type: .debug)
-
 			completionHandler(.success(books!))
 
 			return true
@@ -106,9 +97,6 @@ final class BookManager
 
 		request.start()
 
-		os_log("Queued request for books.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		return true
 	}
 
@@ -117,9 +105,6 @@ final class BookManager
 	///
 	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult, completionHandler: Request<Books>.CompletionHandler)
 	{
-		os_log("Book request completed.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		booksRequest = nil
 
 		requestingBooks = false

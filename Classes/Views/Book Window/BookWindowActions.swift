@@ -46,8 +46,6 @@ extension BookWindow
 	@objc
 	func volumeListPopupChanged(_ sender: Any?)
 	{
-		Logging.logFunctionCall()
-
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
@@ -57,8 +55,6 @@ extension BookWindow
 
 		guard let page = volume.firstPage else {
 			/* This should be impossible. */
-			os_log("Volume does not contain a first page.",
-				   log: Logging.Subsystem.general, type: .fault)
 
 			return
 		}
@@ -72,8 +68,6 @@ extension BookWindow
 	@objc
 	func chapterListPopupChanged(_ sender: Any?)
 	{
-		Logging.logFunctionCall()
-
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
@@ -83,8 +77,6 @@ extension BookWindow
 
 		guard let page = chapter.firstPage else {
 			/* This should be impossible. */
-			os_log("Chapter does not contain a first page.",
-				   log: Logging.Subsystem.general, type: .fault)
 
 			return
 		}
@@ -98,8 +90,6 @@ extension BookWindow
 	@objc
 	func chapterListPopupPresentList(_ sender: Any?)
 	{
-		Logging.logFunctionCall()
-
 		presentChapterList()
 	}
 
@@ -109,8 +99,6 @@ extension BookWindow
 	@objc
 	func pageListPopupChanged(_ sender: Any?)
 	{
-		Logging.logFunctionCall()
-
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
@@ -118,8 +106,6 @@ extension BookWindow
 
 		guard let release = selectedRelease else {
 			/* This should be impossible. */
-			os_log("Tried to change to a page with no chapter selected.",
-				   log: Logging.Subsystem.general, type: .fault)
 
 			return
 		}

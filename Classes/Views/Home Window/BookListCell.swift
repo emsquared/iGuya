@@ -58,22 +58,13 @@ final class BookListCell: NSCollectionViewItem, BookCoverImage
 		super.dismiss(viewController)
 
 		if (bookDetailsPopover == viewController) {
-			os_log("Dismissing details popover.",
-				   log: Logging.Subsystem.general, type: .debug)
-
 			bookDetailsPopover = nil
 		}
 	}
 
 	fileprivate func presentBookDetails()
 	{
-		os_log("Preparing to present details popover.",
-			   log: Logging.Subsystem.general, type: .debug)
-
 		if (bookDetailsPopover != nil) {
-			os_log("Cancelled details popover because one already is visible.",
-				   log: Logging.Subsystem.general, type: .fault)
-
 			return
 		}
 

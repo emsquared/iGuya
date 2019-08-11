@@ -115,17 +115,11 @@ final class ImageManager
 	///
 	func image(at url: URL, _ completionHandler: @escaping CompletionHandler)
 	{
-		os_log("Preparing to load cover at URL: '%{public}@'.",
-			   log: Logging.Subsystem.general, type: .debug, url.description)
-
 		/* Hash of URL is used as a way to map tasks to a dictionary. */
 		let key = url.hashValue
 
 		/* Do not allow more than one task to run for the same URL. */
 		if let task = tasks[key] {
-			os_log("Load cancelled becauase another is already in progress.",
-				   log: Logging.Subsystem.general, type: .fault)
-
 			return
 		}
 
@@ -187,9 +181,6 @@ final class ImageManager
 				return
 			}
 
-			os_log("Loading cover at '%{public}@' completed.",
-				   log: Logging.Subsystem.general, type: .debug, url.description)
-
 			completionHandler(.success(image))
 		} // sessionTask
 
@@ -198,8 +189,5 @@ final class ImageManager
 
 		/* Start task */
 		sessionTask.resume()
-
-		os_log("Queued task to load cover at '%{public}@' as task '%{public}@'.",
-			   log: Logging.Subsystem.general, type: .debug, url.description, sessionTask)
 	}
 }
