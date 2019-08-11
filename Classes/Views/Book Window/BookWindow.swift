@@ -135,7 +135,6 @@ final class BookWindow: NSWindowController
 
 	@IBOutlet private(set) var toolbar: NSToolbar!
 	@IBOutlet private(set) var tbLayoutButton: NSButton!
-	@IBOutlet private(set) var tbPreloadButton: NSButton!
 	@IBOutlet private(set) var tbScalingButton: NSButton!
 	@IBOutlet private(set) var tbPageNavigator: NSSegmentedControl!
 	@IBOutlet private(set) var tbGroupPopup: NSPopUpButton!
