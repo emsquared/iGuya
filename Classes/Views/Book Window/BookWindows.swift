@@ -69,9 +69,6 @@ final class BookWindows
 	///
 	fileprivate let workerQueue = DispatchQueue(label: "BookWindowsQueue")
 
-	/* Token for observing notifications. */
-	fileprivate var notificationObserver: NSObjectProtocol?
-
 	init() {
 		constructObservers()
 	}
@@ -88,8 +85,7 @@ final class BookWindows
 		os_log("Constructing observers for 'BookWindows'.",
 			   log: Logging.Subsystem.general, type: .debug)
 
-		notificationObserver =
-		NotificationCenter.default.addObserver(forName: NSWindow.willCloseNotification, object: nil, queue: nil) { [weak self] (notification) in
+		NotificationManager.shared.add(observer: self, forName: NSWindow.willCloseNotification) { [weak self] (notification) in
 			guard let window = notification.object as? NSWindow else {
 				return
 			}
@@ -106,10 +102,7 @@ final class BookWindows
 		os_log("Tearing down observers for 'BookWindows'.",
 			   log: Logging.Subsystem.general, type: .debug)
 
-		if let observer = notificationObserver {
-			NotificationCenter.default.removeObserver(observer)
-			notificationObserver = nil
-		}
+		NotificationManager.shared.remove(observer: self, forName: NSWindow.willCloseNotification)
 	}
 
 	///
