@@ -50,7 +50,7 @@ extension BookWindow
 
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
-			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
 
 		let volume = book.volumes[index]
@@ -76,7 +76,7 @@ extension BookWindow
 
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
-			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
 
 		let chapter = book.chapters[index]
@@ -113,7 +113,7 @@ extension BookWindow
 
 		guard  	let sender = sender as? NSMenuItem,
 				let index = sender.representedObject as? Int else {
-			fatalError("Unexpected object passed to \(#function) as 'sender'.")
+			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
 
 		guard let release = selectedRelease else {

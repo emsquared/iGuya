@@ -104,7 +104,7 @@ final class BookListCell: NSCollectionViewItem, BookCoverImage
 		 screen. It's still good to document this here in case
 		 the codebase of the cell if ever expanded. */
 		guard let book = representedObject as? Book else {
-			fatalError("Represented object is of unexpected type.")
+			fatalError("Error: Represented object is of unexpected type.")
 		}
 
 		loadBookCoverImage(at: book.cover)

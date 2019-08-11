@@ -64,7 +64,7 @@ final public class Preferences
 	{
 		guard 	let file = Bundle.main.url(forResource: "RegisteredDefaults", withExtension: "plist"),
 				let defaults = NSDictionary(contentsOf: file) as? [String : Any] else {
-			fatalError("'RegisteredDefaults.plist' file is missing or malformed.")
+			fatalError("Error: 'RegisteredDefaults.plist' file is missing or malformed.")
 		}
 
 		UserDefaults.standard.register(defaults: defaults)

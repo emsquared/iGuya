@@ -53,7 +53,7 @@ struct Logging
 
 	static func logFunctionCall(_ function: String = #function)
 	{
-		os_log("%@ called.",
+		os_log("%{public}@ called.",
 			   log: Subsystem.general, type: .debug, function)
 	}
 }
