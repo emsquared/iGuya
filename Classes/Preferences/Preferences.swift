@@ -52,6 +52,8 @@ final public class Preferences
 	///
 	/// Preferred release group.
 	///
+	/// Defaults to Jaimini's Box.
+	///
 	static public var preferredGroup: Group?
 	{
 		get {
