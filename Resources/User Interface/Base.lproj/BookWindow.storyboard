@@ -144,12 +144,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yKq-RW-RHT">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="Select a chapter to read" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="yyT-Ba-ybm">
                                                 <items>
-                                                    <menuItem title="1" id="fMD-gW-agk"/>
+                                                    <menuItem title="Select a chapter to read" enabled="NO" id="fMD-gW-agk"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>

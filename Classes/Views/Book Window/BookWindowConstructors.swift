@@ -139,17 +139,13 @@ extension BookWindow
 	{
 		let menu = tbPagePopup.menu
 
-		/* Remove all items already present in the menu. */
-		menu?.removeAllItems()
-
 		/* Show message if a chapter isn't selected. */
 		guard let release = selectedRelease else {
-			let item = NSMenuItem.selectChapterItem
-
-			menu?.addItem(item)
-
 			return
 		}
+
+		/* Remove all items already present in the menu. */
+		menu?.removeAllItems()
 
 		/* Add item for each page. */
 		/* Represented object for the item is the index of object
@@ -164,19 +160,5 @@ extension BookWindow
 
 			 menu?.addItem(item)
 		 }
-	}
-}
-
-/* ------------------------------------------------------ */
-
-fileprivate extension NSMenuItem
-{
-	static var selectChapterItem: NSMenuItem
-	{
-		let item = NSMenuItem.item(title: LocalizedString("Select a chapter to read", table: "BookWindow"))
-
-		item.isEnabled = false
-
-		return item
 	}
 }
