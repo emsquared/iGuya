@@ -64,6 +64,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="commentButtonClicked:" target="wTd-qX-AY1" id="KeW-ka-g7z"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="57D8D270-0346-4A78-8D15-AE5602CF3147" label="Layout" paletteLabel="Layout" image="LayoutDirectionLTRTemplate" id="BEW-9G-YJG">

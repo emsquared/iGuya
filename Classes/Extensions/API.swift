@@ -75,4 +75,22 @@ extension Chapter
 
 		return release.pages.first
 	}
+
+	///
+	/// URL of comment page for the chapter.
+	///
+	/// This property is computed on the fly which is why
+	/// it can return `nil`. It might not always have enough
+	/// context at the time it's called.
+	///
+	var commentPage: URL?
+	{
+		guard let identifier = volume?.book?.identifier else {
+			return nil
+		}
+
+		let link = "https://guya.moe/reader/series/\(identifier)/\(numberFormatted)/comments"
+
+		return URL(string: link)
+	}
 }

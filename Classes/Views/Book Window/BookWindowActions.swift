@@ -41,6 +41,18 @@ import os.log
 extension BookWindow
 {
 	///
+	/// Action for comment button.
+	///
+	@IBAction func commentButtonClicked(_ sender: Any)
+	{
+		guard let commentPage = selectedChapter?.commentPage else {
+			return
+		}
+
+		NSWorkspace.shared.open(commentPage)
+	}
+
+	///
 	/// Action for layout direction button.
 	///
 	@IBAction func layoutDirectionButtonClicked(_ sender: Any?)
@@ -97,8 +109,7 @@ extension BookWindow
 	///
 	/// Action to present chapter list sheet in the chapter list popup button.
 	///
-	@objc
-	func chapterListPopupPresentList(_ sender: Any?)
+	@IBAction func chapterListPopupPresentList(_ sender: Any?)
 	{
 		presentChapterList()
 	}
