@@ -38,17 +38,17 @@ import Foundation
 import iGuyaAPI
 import os.log
 
-final class BookManager
+final public class BookManager
 {
 	///
 	/// Shared instance of the book manager.
 	///
-	static let shared = BookManager()
+	static public let shared = BookManager()
 
 	///
 	/// List of books.
 	///
-	fileprivate(set) var books: Books?
+	fileprivate(set) public var books: Books?
 
 	///
 	/// The books request.
@@ -58,7 +58,7 @@ final class BookManager
 	///
 	/// `true` if a books request is in progress. `false` otherwise.
 	///
-	fileprivate(set) var requestingBooks = false
+	fileprivate(set) public var requestingBooks = false
 
 	///
 	/// Request books.
@@ -75,7 +75,7 @@ final class BookManager
 	/// - Returns: `true` on success creating request. `false` otherwise.
 	///
 	@discardableResult
-	func requestBooks(returningLocalCache: Bool = true, _ completionHandler: @escaping Request<Books>.CompletionHandler) -> Bool
+	public func requestBooks(returningLocalCache: Bool = true, _ completionHandler: @escaping Request<Books>.CompletionHandler) -> Bool
 	{
 		if (requestingBooks) {
 			return false

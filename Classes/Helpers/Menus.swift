@@ -36,7 +36,7 @@
 
 import Cocoa
 
-extension NSMenu
+public extension NSMenu
 {
 	func setItemList(_ itemList: [NSMenuItem])
 	{
@@ -53,7 +53,7 @@ extension NSMenu
 	} // setItemList
 }
 
-extension NSMenuItem
+public extension NSMenuItem
 {
 	static func item(title: String, target: AnyObject? = nil, action: Selector? = nil, tag: Int = 0, representedObject: Any? = nil, keyEquivalent: String = "", keyEquivalentMask: NSEvent.ModifierFlags = []) -> NSMenuItem
 	{

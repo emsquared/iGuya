@@ -46,17 +46,17 @@ import os.log
 ///
 /// - SeeAlso: [NSURLRequestUseProtocolCachePolicy](https://developer.apple.com/documentation/foundation/nsurlrequestcachepolicy/nsurlrequestuseprotocolcachepolicy)
 ///
-final class ImageManager
+final public class ImageManager
 {
 	///
 	/// Shared instance of the image manager.
 	///
-	static let shared = ImageManager()
+	static public let shared = ImageManager()
 
 	///
 	/// Errors thrown by `ImageManager`.
 	///
-	enum Failure: Error
+	public enum Failure: Error
 	{
 		///
 		/// Data received from endpoint is in a form which
@@ -92,7 +92,7 @@ final class ImageManager
 	///
 	/// Both parameters will never be `nil` at the same time.
 	///
-	typealias CompletionResult = Result<NSImage, Failure>
+	public typealias CompletionResult = Result<NSImage, Failure>
 
 	///
 	/// Completion handler that is called when the request finishes.
@@ -101,7 +101,7 @@ final class ImageManager
 	///
 	/// Both parameters will never be `nil` at the same time.
 	///
-	typealias CompletionHandler = (CompletionResult) -> Void
+	public typealias CompletionHandler = (CompletionResult) -> Void
 
 	/* Hard references to asks which is mapped to hash of URL. */
 	fileprivate var tasks: [Int: URLSessionTask] = [:]
@@ -113,7 +113,7 @@ final class ImageManager
 	/// - Parameter completionHandler: Completion handler that is called
 	/// when the download finishes or an error is returned.
 	///
-	func image(at url: URL, _ completionHandler: @escaping CompletionHandler)
+	public func image(at url: URL, _ completionHandler: @escaping CompletionHandler)
 	{
 		/* Hash of URL is used as a way to map tasks to a dictionary. */
 		let key = url.hashValue

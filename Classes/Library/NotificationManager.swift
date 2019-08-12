@@ -45,22 +45,22 @@ import os.log
 /// `NotificationManager` uses `NotificationCenter.default` as its notification center.
 ///
 
-final class NotificationManager
+final public class NotificationManager
 {
 	///
 	/// Shared instance of the notification manager.
 	///
-	static let shared = NotificationManager()
+	static public let shared = NotificationManager()
 
 	///
 	/// Type of the observer for a notification.
 	///
-	typealias Observer = AnyObject
+	public typealias Observer = AnyObject
 
 	///
 	/// Type of the name of the notification to observe.
 	///
-	typealias Name = Notification.Name
+	public typealias Name = Notification.Name
 
 	///
 	/// `Observation` is used internally as a store to
@@ -99,7 +99,7 @@ final class NotificationManager
 	/// The `observer` is not interacted with when notification is posted.
 	/// Only the block passed to the `block` parameter is.
 	///
-	func add(observer: Observer, forName name: Name?, object: Any? = nil, queue: OperationQueue? = nil, using block: @escaping (Notification) -> Void)
+	public func add(observer: Observer, forName name: Name?, object: Any? = nil, queue: OperationQueue? = nil, using block: @escaping (Notification) -> Void)
 	{
 		observationsQueue.sync {
 			if let _ = observations.first(where: { (observation) in
@@ -127,7 +127,7 @@ final class NotificationManager
 	/// - Parameter observer: The observer of the notification.
 	/// - Parameter name: The name of the notification.
 	///
-	func remove(observer: Observer, forName name: Name?)
+	public func remove(observer: Observer, forName name: Name?)
 	{
 		observationsQueue.sync {
 			guard let index = observations.firstIndex(where: { (observation) in

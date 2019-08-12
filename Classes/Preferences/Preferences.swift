@@ -44,7 +44,7 @@ final public class Preferences
 	///
 	/// Notification `object` value is `nil`.
 	///
-	enum ChangeNotifications: String, RawRepresentable, NotificationName
+	public enum ChangeNotifications: String, RawRepresentable, NotificationName
 	{
 		case preferredGroup
 	}
@@ -87,7 +87,7 @@ final public class Preferences
 	///
 	/// Post change notification.
 	///
-	static private func postChangeNotification(_ notification: Preferences.ChangeNotifications)
+	static fileprivate func postChangeNotification(_ notification: Preferences.ChangeNotifications)
 	{
 		NotificationCenter.default.post(name: notification.name, object: nil)
 	}

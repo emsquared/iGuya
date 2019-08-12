@@ -36,12 +36,12 @@
 
 import Foundation
 
-protocol NotificationName
+public protocol NotificationName
 {
 	var name: Notification.Name { get }
 }
 
-extension RawRepresentable where RawValue == String, Self: NotificationName
+public extension RawRepresentable where RawValue == String, Self: NotificationName
 {
 	///
 	/// `self` reflected is used as the notification name.

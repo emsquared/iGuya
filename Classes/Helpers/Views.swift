@@ -36,18 +36,25 @@
 
 import Cocoa
 
-extension NSView
+public extension NSView
 {
 	struct HugEdgesOfSuperviewOptions: OptionSet
 	{
-		let rawValue: Int
+		public typealias RawValue = Int
 
-		static let top			= Self(rawValue: 1 << 0)
-		static let bottom		= Self(rawValue: 1 << 1)
-		static let leading		= Self(rawValue: 1 << 2)
-		static let trailing		= Self(rawValue: 1 << 3)
+		public var rawValue = 0
 
-		static let all: Self = [.top, .bottom, .leading, .trailing]
+		static public let top			= Self(rawValue: 1 << 0)
+		static public let bottom		= Self(rawValue: 1 << 1)
+		static public let leading		= Self(rawValue: 1 << 2)
+		static public let trailing		= Self(rawValue: 1 << 3)
+
+		static public let all: Self = [.top, .bottom, .leading, .trailing]
+
+		public init(rawValue: RawValue)
+		{
+			self.rawValue = rawValue
+		}
 	}
 	///
 	/// Toggle auto layout top, bottom, left, right anchors against superview.
@@ -89,7 +96,7 @@ extension NSView
 	}
 }
 
-extension NSViewController
+public extension NSViewController
 {
 	///
 	/// Perform crossfade transition to a view controller.
@@ -124,7 +131,7 @@ extension NSViewController
 	///
 	/// - Returns: `true` on success. `false` otherwise.
 	///
-	@discardableResult @usableFromInline
+	@discardableResult
 	static func crossfade(from prevController: NSViewController, to nextController: NSViewController) -> Bool
 	{
 		/* Let's be sane. */
@@ -176,7 +183,7 @@ extension NSViewController
 	}
 }
 
-extension NSWindow
+public extension NSWindow
 {
 	///
 	/// `true` if window is full screen. `false` otherwise.
