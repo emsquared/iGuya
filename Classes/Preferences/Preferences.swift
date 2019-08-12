@@ -34,7 +34,7 @@
 *
 *********************************************************************** */
 
-import Foundation
+import Cocoa
 import iGuyaAPI
 
 final public class Preferences
@@ -47,6 +47,7 @@ final public class Preferences
 	public enum ChangeNotifications: String, RawRepresentable, NotificationName
 	{
 		case preferredGroup
+		case layoutDirection
 	}
 
 	///
@@ -70,6 +71,59 @@ final public class Preferences
 			postChangeNotification(.preferredGroup)
 		} // set
 	} // preferredGroup
+
+	///
+	/// Layout direction for pages.
+	///
+	public enum LayoutDirection: Int
+	{
+		///
+		/// Layout direction is right to left.
+		///
+		case rightToLeft = 1
+
+		///
+		/// Layout direction is left to right.
+		///
+		case leftToRight = 2
+
+		///
+		/// Layout direction is top to bottom.
+		///
+		case topToBottom = 3
+	}
+
+	///
+	/// Layout direction for pages.
+	///
+	/// The layout direction of the app's user interface,
+	/// which depends on the user's region, is used as
+	/// the default.
+	///
+	static public var layoutDirection: LayoutDirection
+	{
+		get {
+			let value = UserDefaults.standard.integer(forKey: "LayoutDirection")
+
+			guard let direction = LayoutDirection(rawValue: value) else {
+				switch (NSApp.userInterfaceLayoutDirection) {
+					case .rightToLeft:
+						return .rightToLeft
+					default:
+						return .leftToRight
+				}
+			}
+
+			return direction
+		} // get
+
+		set {
+			UserDefaults.standard.set(newValue.rawValue, forKey: "LayoutDirection")
+
+			postChangeNotification(.layoutDirection)
+		} // set
+
+	} // layoutDirection
 
 	///
 	/// Register default preference values with `UserDefaults`.
