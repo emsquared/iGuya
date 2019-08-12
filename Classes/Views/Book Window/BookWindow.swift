@@ -233,7 +233,7 @@ final class BookWindow: NSWindowController
 	///
 	/// - Parameter page: Page to change the window to.
 	///
-	func changePage(toPage: Page)
+	func changePage(to page: Page)
 	{
 
 	}

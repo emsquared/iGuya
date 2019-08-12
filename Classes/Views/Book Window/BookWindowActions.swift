@@ -69,7 +69,7 @@ extension BookWindow
 			return
 		}
 
-		changePage(toPage: page)
+		changePage(to: page)
 	}
 
 	///
@@ -91,7 +91,7 @@ extension BookWindow
 			return
 		}
 
-		changePage(toPage: page)
+		changePage(to: page)
 	}
 
 	///
@@ -122,6 +122,6 @@ extension BookWindow
 
 		let page = release.pages[index]
 
-		changePage(toPage: page)
+		changePage(to: page)
 	}
 }
