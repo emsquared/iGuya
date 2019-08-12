@@ -78,14 +78,14 @@ final public class Preferences
 	public enum LayoutDirection: Int
 	{
 		///
-		/// Layout direction is right to left.
-		///
-		case rightToLeft = 1
-
-		///
 		/// Layout direction is left to right.
 		///
-		case leftToRight = 2
+		case leftToRight = 1
+
+		///
+		/// Layout direction is right to left.
+		///
+		case rightToLeft = 2
 
 		///
 		/// Layout direction is top to bottom.
