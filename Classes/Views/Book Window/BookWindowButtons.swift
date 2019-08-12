@@ -36,92 +36,25 @@
 
 import Cocoa
 import iGuyaAPI
-import os.log
 
 extension BookWindow
 {
 	///
-	/// Action for layout direction button.
+	/// Update appearance of layout direction button.
 	///
-	@IBAction func layoutDirectionButtonClicked(_ sender: Any?)
+	func updateLayoutDirectionButton()
 	{
-		changeLayoutDirection(to: layoutDirection.next)
+		let image: String
 
-		updateLayoutDirectionButton()
-	}
-
-	///
-	/// Action for volume changes in the volume list popup button.
-	///
-	@objc
-	func volumeListPopupChanged(_ sender: Any?)
-	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
-			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
+		switch (layoutDirection) {
+			case .rightToLeft:
+				image = "LayoutDirectionRTLTemplate"
+			case .leftToRight:
+				image = "LayoutDirectionLTRTemplate"
+			case .topToBottom:
+				image = "LayoutDirectionTTBTemplate"
 		}
 
-		let volume = book.volumes[index]
-
-		guard let page = volume.firstPage else {
-			/* This should be impossible. */
-
-			return
-		}
-
-		changePage(toPage: page)
-	}
-
-	///
-	/// Action for chapter changes in the chapter list popup button.
-	///
-	@objc
-	func chapterListPopupChanged(_ sender: Any?)
-	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
-			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
-		}
-
-		let chapter = book.chapters[index]
-
-		guard let page = chapter.firstPage else {
-			/* This should be impossible. */
-
-			return
-		}
-
-		changePage(toPage: page)
-	}
-
-	///
-	/// Action to present chapter list sheet in the chapter list popup button.
-	///
-	@objc
-	func chapterListPopupPresentList(_ sender: Any?)
-	{
-		presentChapterList()
-	}
-
-	///
-	/// Action for page changes in the page list popup button.
-	///
-	@objc
-	func pageListPopupChanged(_ sender: Any?)
-	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
-			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
-		}
-
-		guard let release = selectedRelease else {
-			/* This should be impossible. */
-
-			return
-		}
-
-		let page = release.pages[index]
-
-		changePage(toPage: page)
+		tbLayoutButton.image = NSImage(named: image)
 	}
 }

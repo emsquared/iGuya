@@ -66,17 +66,20 @@
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="57D8D270-0346-4A78-8D15-AE5602CF3147" label="Layout" paletteLabel="Layout" image="KeyboardTabTemplate" id="BEW-9G-YJG">
+                                <toolbarItem implicitItemIdentifier="57D8D270-0346-4A78-8D15-AE5602CF3147" label="Layout" paletteLabel="Layout" image="LayoutDirectionLTRTemplate" id="BEW-9G-YJG">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="42" height="25"/>
                                     <size key="maxSize" width="42" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="yY7-ti-nNT">
                                         <rect key="frame" x="1" y="14" width="42" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="KeyboardTabTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0xf-Q7-7Ke">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="LayoutDirectionLTRTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0xf-Q7-7Ke">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="layoutDirectionButtonClicked:" target="wTd-qX-AY1" id="VKV-0y-hJk"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="A8350714-92DB-43BA-A5EB-30405FCD3455" label="Scaling" paletteLabel="Scaling" image="CodeTemplate" id="sOB-8R-PX5">
@@ -137,7 +140,7 @@
                                 <toolbarItem implicitItemIdentifier="2C4D3BE9-BF7D-4552-AC2C-A28A1B507954" label="Page" paletteLabel="Page" id="LQ2-Pe-0C0">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="46" height="24"/>
-                                    <size key="maxSize" width="46" height="24"/>
+                                    <size key="maxSize" width="47" height="24"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yKq-RW-RHT">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -270,7 +273,7 @@
         <image name="CodeTemplate" width="250" height="250"/>
         <image name="KeyboardArrowLeftTemplate" width="250" height="250"/>
         <image name="KeyboardArrowRightTemplate" width="250" height="250"/>
-        <image name="KeyboardTabTemplate" width="250" height="250"/>
+        <image name="LayoutDirectionLTRTemplate" width="250" height="250"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="SearchTemplate" width="250" height="250"/>
     </resources>

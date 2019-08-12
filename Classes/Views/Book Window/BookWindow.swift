@@ -142,6 +142,8 @@ final class BookWindow: NSWindowController
 	@IBOutlet private(set) var tbPagePopup: NSPopUpButton!
 	@IBOutlet private(set) var tbVolumePopup: NSPopUpButton!
 
+	fileprivate(set) var layoutDirection = Preferences.layoutDirection
+
 	typealias Release = Chapter.Release
 	typealias Page = Chapter.Release.Page
 
@@ -164,6 +166,8 @@ final class BookWindow: NSWindowController
 		super.windowDidLoad()
 
 		attachContentBorderView()
+
+		updateLayoutDirectionButton()
 	}
 
 	///
@@ -272,6 +276,17 @@ final class BookWindow: NSWindowController
 		}
 
 		contentViewController?.dismiss(chapterListView)
+	}
+
+	///
+	/// Change layout direction.
+	///
+	/// Changing the layout direction using this function
+	/// will only change it for the book. Not all books.
+	///
+	func changeLayoutDirection(to layoutDirection: Preferences.LayoutDirection)
+	{
+		self.layoutDirection = layoutDirection
 	}
 
 	///
