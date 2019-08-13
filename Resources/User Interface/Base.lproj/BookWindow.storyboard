@@ -15,7 +15,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="323" width="681" height="399"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <toolbar key="toolbar" implicitIdentifier="DBD9F0CF-139F-442F-83C5-542B7A2570DA" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="fIp-IY-dQ2">
+                        <toolbar key="toolbar" implicitIdentifier="DBD9F0CF-139F-442F-83C5-542B7A2570DA" displayMode="iconAndLabel" sizeMode="regular" id="fIp-IY-dQ2">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hey-ZI-3zk"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Aay-69-ZlF"/>
@@ -42,12 +42,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yI0-xm-D9t">
                                         <rect key="frame" x="0.0" y="14" width="200" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1 - I Want to be Invited to a Movie" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="A4i-6g-pXx" id="VNH-Mu-8Wk">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="1 - I Want to be Invited to a Movie" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="A4i-6g-pXx" id="VNH-Mu-8Wk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="DHH-Mb-IUV">
                                                 <items>
-                                                    <menuItem title="1 - I Want to be Invited to a Movie" id="A4i-6g-pXx"/>
+                                                    <menuItem title="1 - I Want to be Invited to a Movie" state="on" id="A4i-6g-pXx"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -147,12 +147,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="yKq-RW-RHT">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="Select a chapter to read" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="Select a chapter to read" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="fMD-gW-agk" id="n9E-qO-sFW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="yyT-Ba-ybm">
                                                 <items>
-                                                    <menuItem title="Select a chapter to read" enabled="NO" id="fMD-gW-agk"/>
+                                                    <menuItem title="Select a chapter to read" state="on" enabled="NO" id="fMD-gW-agk"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -165,12 +165,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="WaP-ae-3Yd">
                                         <rect key="frame" x="0.0" y="14" width="47" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="Y4j-B5-hoh" id="blf-P4-SVh">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Y4j-B5-hoh" id="blf-P4-SVh">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="3mA-Fb-qxd">
                                                 <items>
-                                                    <menuItem title="1" id="Y4j-B5-hoh"/>
+                                                    <menuItem title="1" state="on" id="Y4j-B5-hoh"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -215,12 +215,12 @@
                     <subviews>
                         <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="JML-oU-E2z">
                             <rect key="frame" x="507" y="2" width="151" height="18"/>
-                            <popUpButtonCell key="cell" type="bevel" title="Select a chapter to read" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
+                            <popUpButtonCell key="cell" type="bevel" title="Select a chapter to read" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="controlContent" size="11"/>
                                 <menu key="menu" id="rYH-xs-1Ua">
                                     <items>
-                                        <menuItem title="Select a chapter to read" enabled="NO" id="yZu-4a-Shq"/>
+                                        <menuItem title="Select a chapter to read" state="on" enabled="NO" id="yZu-4a-Shq"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
