@@ -64,13 +64,6 @@ final class BookChaptersView: NSViewController, BookWindowAccessors
 		}
 	}
 
-	override func viewDidAppear()
-	{
-		super.viewDidAppear()
-
-		view.window?.title = LocalizedString("iGuya - Chapter List - %@", table: "Windows", book.title)
-	}
-
 	override func viewWillDisappear()
 	{
 		super.viewWillDisappear()
