@@ -158,6 +158,15 @@ extension Chapter.Release
 	{
 		return pages.last
 	}
+
+	///
+	/// Number of pages in the release.
+	///
+	@inlinable
+	var numberOfPages: Int
+	{
+		return pages.count
+	}
 }
 
 extension Chapter.Release.Page

@@ -86,19 +86,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-#pragma mark -
-
-@interface Release (iGuyaHelper)
-@property (nonatomic, readonly) NSUInteger numberOfPages;
-@end
-
-@implementation Release (iGuyaHelper)
-
-- (NSUInteger)numberOfPages
-{
-	return self.pages.count;
-}
-
-@end
-
 NS_ASSUME_NONNULL_END
