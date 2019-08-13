@@ -68,10 +68,11 @@ extension BookWindow
 	@objc
 	func volumeListPopupChanged(_ sender: Any?)
 	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
+		guard let sender = sender as? NSMenuItem else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
+
+		let index = sender.tag
 
 		let volume = book.volumes[index]
 
@@ -90,10 +91,11 @@ extension BookWindow
 	@objc
 	func chapterListPopupChanged(_ sender: Any?)
 	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
+		guard let sender = sender as? NSMenuItem else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
+
+		let index = sender.tag
 
 		let chapter = book.chapters[index]
 
@@ -120,8 +122,7 @@ extension BookWindow
 	@objc
 	func pageListPopupChanged(_ sender: Any?)
 	{
-		guard  	let sender = sender as? NSMenuItem,
-				let index = sender.representedObject as? Int else {
+		guard let sender = sender as? NSMenuItem else {
 			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
 		}
 
@@ -130,6 +131,8 @@ extension BookWindow
 
 			return
 		}
+
+		let index = sender.tag
 
 		let page = release.pages[index]
 

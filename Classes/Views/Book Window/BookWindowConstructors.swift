@@ -69,15 +69,13 @@ extension BookWindow
 		menu?.removeAllItems()
 
 		/* Add item for each volume. */
-		/* Represented object for the item is the index of object
-		 in the `volumes` array. */
 		for (index, volume) in book.volumes.enumerated() {
 			let title = String(volume.number)
 
 			let item = NSMenuItem.item(title: title,
 									   target: self,
 									   action: #selector(volumeListPopupChanged),
-									   representedObject: index)
+									   tag: index)
 
 			menu?.addItem(item)
 		}
@@ -94,8 +92,6 @@ extension BookWindow
 		menu?.removeAllItems()
 
 		/* Create item for each chapter. */
-		/* Represented object for the item is the index of object
-		 in the `chapters` array. */
 		var items: [NSMenuItem] = []
 
 		for (index, chapter) in book.chapters.enumerated() {
@@ -104,19 +100,15 @@ extension BookWindow
 			let item = NSMenuItem.item(title: title,
 									   target: self,
 									   action: #selector(chapterListPopupChanged),
-									   representedObject: index)
+									   tag: index)
 
 			items.append(item)
 		}
 
 		/* Reverse order of items. */
 		/* Items are reversed after enumeration so that the index
-		 assigned to `representedObject` is equal to what it is
-		 in the original array. Not the reversed array.
-		 That way we don't have to reverse the array every time
-		 we want to access an index. */
-		 /* This function is only called once so this overhead is
-		  actually not that worrisome. */
+		 assigned to `tag` is equal to what it is in the original
+		 array. Not the reversed array. */
 		items.reverse()
 
 		/* Add item to access detailed chapter list. */
@@ -148,15 +140,13 @@ extension BookWindow
 		menu?.removeAllItems()
 
 		/* Add item for each page. */
-		/* Represented object for the item is the index of object
-		 in the `pages` array. */
 		for (index, page) in release.pages.enumerated() {
 			 let title = String(page.number)
 
 			 let item = NSMenuItem.item(title: title,
 										target: self,
 										action: #selector(pageListPopupChanged),
-										representedObject: index)
+										tag: index)
 
 			 menu?.addItem(item)
 		 }
