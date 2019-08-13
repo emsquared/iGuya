@@ -40,6 +40,22 @@ import iGuyaAPI
 extension BookWindow
 {
 	///
+	/// Update "page of page" label in content border view.
+	///
+	fileprivate func updateCurrentPageField()
+	{
+		guard let page = selectedPage,
+			  let release = selectedRelease else
+		{
+			cbvCurrentPageField.stringValue = ""
+
+			return
+		}
+
+		cbvCurrentPageField.stringValue = LocalizedString("Page %1$ld of %2$ld", table: "BookWindow", page.number, release.numberOfPages)
+	}
+
+	///
 	/// Update group popup by selecting the group associated
 	/// with the selected release.
 	///

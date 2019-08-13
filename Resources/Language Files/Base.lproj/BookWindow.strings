@@ -36,5 +36,7 @@
 
 "iGuya - %@" = "iGuya - %@";
 
+"Page %1$ld of %2$ld" = "Page %1$ld of %2$ld";
+
 /* Popup menus */
 "Detailed chapter list..." = "Detailed chapter list…";
