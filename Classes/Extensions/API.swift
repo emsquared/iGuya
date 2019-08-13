@@ -57,32 +57,13 @@ extension Volume
 extension Chapter
 {
 	///
-	/// First page of the chapter by preferred group.
-	///
-	/// Returns first page by **any group** if there
-	/// is **no preferred group** or they **do not have
-	/// a release for the chapter**.
-	///
-	@inlinable
-	var firstPage: Release.Page?
-	{
-		guard	let group = Preferences.preferredGroup,
-				let release = releases.first(where: { $0.group == group })
-			else
-		{
-			return releases.first?.pages.first
-		}
-
-		return release.pages.first
-	}
-
-	///
 	/// URL of comment page for the chapter.
 	///
 	/// This property is computed on the fly which is why
 	/// it can return `nil`. It might not always have enough
 	/// context at the time it's called.
 	///
+	@inlinable
 	var commentPage: URL?
 	{
 		guard let identifier = volume?.book?.identifier else {
@@ -92,5 +73,139 @@ extension Chapter
 		let link = "https://guya.moe/reader/series/\(identifier)/\(numberFormatted)/comments"
 
 		return URL(string: link)
+	}
+
+	///
+	/// First page of the chapter by preferred group.
+	///
+	/// Returns first page by **any group** if there
+	/// is **no preferred group** or they **do not have
+	/// a release for the chapter**.
+	///
+	@inlinable
+	var firstPage: Release.Page?
+	{
+		if let release = releaseByPreferredGroup {
+			return release.firstPage
+		}
+
+		return releases.first?.firstPage
+	}
+
+	///
+	/// Release in the chapter by preferred group.
+	///
+	/// - Returns: Release by the group or `nil` if the group does
+	/// not have a release in the chapter.
+	///
+	@inlinable
+	var releaseByPreferredGroup: Release?
+	{
+		guard let group = Preferences.preferredGroup else {
+			return nil
+		}
+
+		return release(byGroup: group)
+	}
+
+	///
+	/// Release by `group` in the chapter.
+	///
+	/// - Parameter group: The group to return release for.
+	///
+	/// - Returns: Release by the group or `nil` if the group does
+	/// not have a release in the chapter.
+	///
+	@inlinable
+	func release(byGroup group: Group) -> Release?
+	{
+		return releases.first { $0.group == group }
+	}
+}
+
+extension Chapter.Release
+{
+	///
+	/// Page numbered `number` in the release.
+	///
+	/// - Parameter number: The page number. **Page numbers begin at 1.**
+	///
+	/// - Returns: The page or `nil` if the release does not have a
+	/// page with that number.
+	///
+	@inlinable
+	func page(numbered number: Int) -> Page?
+	{
+		precondition(number > 0)
+
+		return pages.first { $0.number == number }
+	}
+
+	///
+	/// First page of the release.
+	///
+	@inlinable
+	var firstPage: Page?
+	{
+		return pages.first
+	}
+
+	///
+	/// Last page of the release.
+	///
+	@inlinable
+	var lastPage: Page?
+	{
+		return pages.last
+	}
+}
+
+extension Chapter.Release.Page
+{
+	///
+	/// Page equivalent to the current page by a different group.
+	///
+	/// - Warning: This function does not guarantee the `number`
+	/// of the page returned will be the same as the `number`
+	/// of the current page. Releases do not always have the
+	/// same number of pages so this function may return a
+	/// best choice instead of a 1:1 of page numbers.
+	///
+	/// - Parameter group: Group to return equivalent page for.
+	///
+	/// - Returns: Equivalent page or `nil` if the group does
+	/// not have a release in the chapter.
+	///
+	func equivalentPage(byGroup group: Group) -> Chapter.Release.Page?
+	{
+		guard let prevRelease = release else {
+			return nil
+		}
+
+		/* Return self is the group is the same. */
+		if (prevRelease.group == group) {
+			return self
+		}
+
+		guard let chapter = prevRelease.chapter else {
+			return nil
+		}
+
+		/* Does the group have a release in the chapter? */
+		guard let nextRelease = chapter.release(byGroup: group) else {
+			return nil
+		}
+
+		/* Return the last page of the next release if the current
+		 page has a higher number than that of the last page. */
+		/* The previous release had more pages than the next release. */
+		if let lastPage = nextRelease.lastPage {
+			if (lastPage.number < number) {
+				return lastPage
+			}
+		}
+
+		/* Return 1:1 of page numbers. */
+		return nextRelease.page(numbered: number)
 	}
 }

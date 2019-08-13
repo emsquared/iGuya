@@ -59,6 +59,45 @@ extension BookWindow
 	}
 
 	///
+	/// Constructor for group list popup buttons.
+	///
+	func populateGroupPopup()
+	{
+		/* Show message if a chapter isn't selected. */
+		guard let releases = selectedChapter?.releases else {
+			return
+		}
+
+		/* Remove all items already present in the menu. */
+		tbGroupPopup.menu?.removeAllItems()
+		cbvGroupPopup.menu?.removeAllItems()
+
+		/* Add item for each group. */
+		var items: [NSMenuItem] = []
+
+		for release in releases {
+			let group = release.group
+
+			let title = group.name
+
+			let item = NSMenuItem.item(title: title,
+									   target: self,
+									   action: #selector(groupListPopupChanged),
+									   representedObject: group)
+
+			items.append(item)
+		}
+
+		/* Add items to menu. */
+		tbGroupPopup.menu?.setItemList(items)
+		cbvGroupPopup.menu?.setItemList(items.mapCopy)
+
+		/* Toggle arrow hidden if there is only one group. */
+		tbGroupPopup.toggleArrowVisibility()
+		cbvGroupPopup.toggleArrowVisibility()
+	}
+
+	///
 	/// Constructor for volume list popup button.
 	///
 	func populateVolumeListPopup()

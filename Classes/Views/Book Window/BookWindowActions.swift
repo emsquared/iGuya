@@ -63,6 +63,25 @@ extension BookWindow
 	}
 
 	///
+	/// Action for group changes in the group list popup button.
+	///
+	@objc
+	func groupListPopupChanged(_ sender: Any)
+	{
+		guard 	let sender = sender as? NSMenuItem,
+				let group = sender.representedObject as? Group else {
+			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
+		}
+
+		guard 	let prevPage = selectedPage,
+				let nextPage = prevPage.equivalentPage(byGroup: group) else {
+			return
+		}
+
+		changePage(to: nextPage)
+	}
+
+	///
 	/// Action for volume changes in the volume list popup button.
 	///
 	@objc
@@ -77,8 +96,6 @@ extension BookWindow
 		let volume = book.volumes[index]
 
 		guard let page = volume.firstPage else {
-			/* This should be impossible. */
-
 			return
 		}
 
@@ -100,8 +117,6 @@ extension BookWindow
 		let chapter = book.chapters[index]
 
 		guard let page = chapter.firstPage else {
-			/* This should be impossible. */
-
 			return
 		}
 
@@ -127,8 +142,6 @@ extension BookWindow
 		}
 
 		guard let release = selectedRelease else {
-			/* This should be impossible. */
-
 			return
 		}
 

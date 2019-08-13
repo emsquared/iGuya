@@ -24,12 +24,12 @@
                                     <popUpButton key="view" verticalHuggingPriority="750" id="IDa-on-d0d">
                                         <rect key="frame" x="0.0" y="14" width="150" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="roundTextured" title="Fans Scans | Jaimini's~Box~" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RDl-xK-vBa" id="Rax-zb-eXt">
+                                        <popUpButtonCell key="cell" type="roundTextured" title="Select a chapter to read" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RDl-xK-vBa" id="Rax-zb-eXt">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <menu key="menu" id="nHS-tj-a4F">
                                                 <items>
-                                                    <menuItem title="Fans Scans | Jaimini's~Box~" state="on" id="RDl-xK-vBa"/>
+                                                    <menuItem title="Select a chapter to read" state="on" enabled="NO" id="RDl-xK-vBa"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -214,13 +214,13 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="JML-oU-E2z">
-                            <rect key="frame" x="485" y="2" width="173" height="18"/>
-                            <popUpButtonCell key="cell" type="bevel" title="Fans Scans | Jaimini's~Box~" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
+                            <rect key="frame" x="507" y="2" width="151" height="18"/>
+                            <popUpButtonCell key="cell" type="bevel" title="Select a chapter to read" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="controlContent" size="11"/>
                                 <menu key="menu" id="rYH-xs-1Ua">
                                     <items>
-                                        <menuItem title="Fans Scans | Jaimini's~Box~" id="yZu-4a-Shq"/>
+                                        <menuItem title="Select a chapter to read" enabled="NO" id="yZu-4a-Shq"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
@@ -234,7 +234,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7mT-OB-yXo">
-                            <rect key="frame" x="447" y="4" width="40" height="14"/>
+                            <rect key="frame" x="469" y="4" width="40" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Group:" id="B8q-0x-IYs">
                                 <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
