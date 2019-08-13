@@ -37,62 +37,42 @@
 import Cocoa
 import iGuyaAPI
 
-extension BookWindow
+///
+/// Prtoocol assigned to view controllers within window
+/// to allow them access to the window controller.
+///
+protocol BookWindowAccessors
 {
-	///
-	/// Update title of the window.
-	///
-	func updateTitle()
-	{
-		window?.title = LocalizedString("iGuya - %@", table: "BookWindow",	book.title)
-	}
+	var bookWindow: BookWindow { get }
+	var book: Book { get }
+}
 
-	///
-	/// Update "page of page" label in content border view.
-	///
-	func updateCurrentPageField()
+///
+/// Default implementation for protocol.
+///
+extension BookWindowAccessors where Self: NSViewController
+{
+	@inlinable
+	var bookWindow: BookWindow
 	{
-		guard let page = selectedPage,
-			  let release = selectedRelease else
-		{
-			cbvCurrentPageField.stringValue = ""
-
-			return
+		if let window = view.window?.windowController as? BookWindow {
+			return window
+		} else if let window = view.window?.sheetParent?.windowController as? BookWindow {
+			return window
 		}
 
-		cbvCurrentPageField.stringValue = LocalizedString("Page %1$ld of %2$ld", table: "BookWindow", page.number, release.numberOfPages)
+		fatalError("Error: Window controller is not correct class.")
 	}
 
-	///
-	/// Update group popup by selecting the group associated
-	/// with the selected release.
-	///
-	func updateGroupPopup()
+	@inlinable
+	var book: Book
 	{
-		guard let group = selectedRelease?.group else {
-			return
-		}
-
-		tbGroupPopup.selectItem(withRepresentedObject: group)
-		cbvGroupPopup.selectItem(withRepresentedObject: group)
+		return bookWindow.book
 	}
 
-	///
-	/// Update appearance of layout direction button.
-	///
-	func updateLayoutDirectionButton()
+	@inlinable
+	var representedObject: Any?
 	{
-		let image: String
-
-		switch (layoutDirection) {
-			case .rightToLeft:
-				image = "LayoutDirectionRTLTemplate"
-			case .leftToRight:
-				image = "LayoutDirectionLTRTemplate"
-			case .topToBottom:
-				image = "LayoutDirectionTTBTemplate"
-		}
-
-		tbLayoutButton.image = NSImage(named: image)
+		return book
 	}
 }
