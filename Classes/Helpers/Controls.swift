@@ -66,4 +66,29 @@ public extension NSPopUpButton
 			arrowPosition = defaultArrowPosition
 		}
 	}
+
+	///
+	/// Select first item that whose represented object is equal
+	/// to the `representedObject` parameter.
+	///
+	/// Selection will not change if the represented object and the
+	/// `representedObject` parameter do not equal using `===`.
+	///
+	/// - Parameter representedObject: Object to compare against
+	/// each menu item's represented object to perform selection.
+	///
+	func selectItem(withRepresentedObject representedObject: Any)
+	{
+		let lhs = representedObject as AnyObject
+
+		guard let item = menu?.items.first(where: { (item) in
+			let rhs = item.representedObject as AnyObject
+
+			return (lhs === rhs)
+		}) /* guard */ else {
+			return
+		}
+
+		select(item)
+	}
 }
