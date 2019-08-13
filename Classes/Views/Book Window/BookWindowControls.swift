@@ -40,6 +40,20 @@ import iGuyaAPI
 extension BookWindow
 {
 	///
+	/// Update group popup by selecting the group associated
+	/// with the selected release.
+	///
+	func updateGroupPopup()
+	{
+		guard let group = selectedRelease?.group else {
+			return
+		}
+
+		tbGroupPopup.selectItem(withRepresentedObject: group)
+		cbvGroupPopup.selectItem(withRepresentedObject: group)
+	}
+
+	///
 	/// Update appearance of layout direction button.
 	///
 	func updateLayoutDirectionButton()
