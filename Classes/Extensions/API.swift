@@ -148,6 +148,42 @@ extension Chapter
 	{
 		return volume?.book?.chapters.firstIndex(of: self)
 	}
+
+	///
+	/// Is the chapter the first chapter in the volume?
+	///
+	@inlinable
+	var isFirstChapter: Bool
+	{
+		return (volume?.chapters.first == self)
+	}
+
+	///
+	/// Is the chapter the last chapter in the volume?
+	///
+	@inlinable
+	var isLastChapter: Bool
+	{
+		return (volume?.chapters.last == self)
+	}
+
+	///
+	/// Is the chapter the first chapter in the book?
+	///
+	@inlinable
+	var isFirstChapterInBook: Bool
+	{
+		return (volume?.book?.chapters.first == self)
+	}
+
+	///
+	/// Is the chapter the last chapter in the book?
+	///
+	@inlinable
+	var isLastChapterInBook: Bool
+	{
+		return (volume?.book?.chapters.last == self)
+	}
 }
 
 extension Chapter.Release
@@ -279,5 +315,41 @@ extension Chapter.Release.Page
 	var index: Int?
 	{
 		return release?.pages.firstIndex(of: self)
+	}
+
+	///
+	/// Is the page the first page in the release?
+	///
+	@inlinable
+	var isFirstPage: Bool
+	{
+		return (release?.pages.first == self)
+	}
+
+	///
+	/// Is the page the last page in the release?
+	///
+	@inlinable
+	var isLastPage: Bool
+	{
+		return (release?.pages.last == self)
+	}
+
+	///
+	/// Is the page the first page in the book?
+	///
+	@inlinable
+	var isFirstPageInBook: Bool
+	{
+		return (isFirstPage && release?.chapter?.isFirstChapterInBook == true)
+	}
+
+	///
+	/// Is the page the last page in the book?
+	///
+	@inlinable
+	var isLastPageInBook: Bool
+	{
+		return (isLastPage && release?.chapter?.isLastChapterInBook == true)
 	}
 }

@@ -134,10 +134,13 @@
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="OW3-cw-cin">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="KeyboardArrowLeftTemplate" width="25"/>
-                                                <segment image="KeyboardArrowRightTemplate" width="25"/>
+                                                <segment image="KeyboardArrowLeftTemplate" width="25" enabled="NO"/>
+                                                <segment image="KeyboardArrowRightTemplate" width="25" enabled="NO" tag="1"/>
                                             </segments>
                                         </segmentedCell>
+                                        <connections>
+                                            <action selector="pageNavigatorClicked:" target="wTd-qX-AY1" id="9Ek-xq-ANS"/>
+                                        </connections>
                                     </segmentedControl>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="2C4D3BE9-BF7D-4552-AC2C-A28A1B507954" label="Page" paletteLabel="Page" id="LQ2-Pe-0C0">

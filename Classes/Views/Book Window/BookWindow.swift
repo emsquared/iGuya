@@ -290,6 +290,9 @@ final class BookWindow: NSWindowController
 		/* Select page in page list popup. */
 		updatePageListPopupSelection()
 
+		/* Enable/disable back and forward page buttons. */
+		updatePageNavigatorState()
+
 		/* Update "page of page" label. */
 		updateCurrentPageField()
 	}

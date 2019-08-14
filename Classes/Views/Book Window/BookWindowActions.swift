@@ -151,4 +151,24 @@ extension BookWindow
 
 		changePage(to: page)
 	}
+
+	///
+	/// Action for page changes in the page navigator segmented control.
+	///
+	@IBAction
+	func pageNavigatorClicked(_ sender: Any?)
+	{
+		guard let sender = sender as? NSSegmentedControl else {
+			fatalError("Error: Unexpected object passed to \(#function) as 'sender'.")
+		}
+
+		switch (sender.selectedSegment) {
+			case 0: // Back
+				performNavigation(.nextPage)
+			case 1: // Forward
+				performNavigation(.previousPage)
+			default:
+				break
+		} // switch
+	}
 }

@@ -116,6 +116,24 @@ extension BookWindow
 	}
 
 	///
+	/// Update page navigator segmented control to disable
+	/// or enable buttons based on whether there is a page
+	/// available to navigate to.
+	///
+	func updatePageNavigatorState()
+	{
+		/* Back */
+		tbPageNavigator.setEnabled(
+			(selectedPage?.isFirstPageInBook == false),
+			forSegment: 0)
+
+		/* Forward */
+		tbPageNavigator.setEnabled(
+			(selectedPage?.isLastPageInBook == false),
+			forSegment: 1)
+	}
+
+	///
 	/// Update appearance of layout direction button.
 	///
 	func updateLayoutDirectionButton()
