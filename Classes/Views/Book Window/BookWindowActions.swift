@@ -43,7 +43,8 @@ extension BookWindow
 	///
 	/// Action for comment button.
 	///
-	@IBAction func commentButtonClicked(_ sender: Any)
+	@IBAction
+	func commentButtonClicked(_ sender: Any)
 	{
 		guard let commentPage = selectedChapter?.commentPage else {
 			return
@@ -55,7 +56,8 @@ extension BookWindow
 	///
 	/// Action for layout direction button.
 	///
-	@IBAction func layoutDirectionButtonClicked(_ sender: Any?)
+	@IBAction
+	func layoutDirectionButtonClicked(_ sender: Any?)
 	{
 		changeLayoutDirection(to: layoutDirection.next)
 
@@ -126,7 +128,7 @@ extension BookWindow
 	///
 	/// Action to present chapter list sheet in the chapter list popup button.
 	///
-	@IBAction func chapterListPopupPresentList(_ sender: Any?)
+	func chapterListPopupPresentList(_ sender: Any?)
 	{
 		presentChapterList()
 	}

@@ -220,7 +220,7 @@
                             <rect key="frame" x="507" y="2" width="151" height="18"/>
                             <popUpButtonCell key="cell" type="bevel" title="Select a chapter to read" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="menu" size="11"/>
                                 <menu key="menu" id="rYH-xs-1Ua">
                                     <items>
                                         <menuItem title="Select a chapter to read" state="on" enabled="NO" id="yZu-4a-Shq"/>
@@ -231,7 +231,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-lM-qXB">
                             <rect key="frame" x="18" y="4" width="62" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Page ? of ?" id="ceE-Q8-BoY">
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="menu" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -239,7 +239,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7mT-OB-yXo">
                             <rect key="frame" x="469" y="4" width="40" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Group:" id="B8q-0x-IYs">
-                                <font key="font" metaFont="label" size="11"/>
+                                <font key="font" metaFont="menu" size="11"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>

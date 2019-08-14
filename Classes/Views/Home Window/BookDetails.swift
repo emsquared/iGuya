@@ -39,17 +39,20 @@ import iGuyaAPI
 
 final class BookDetailsView: NSViewController
 {
-	@IBAction private func readNewestChapter(_ sender: Any?)
+	@IBAction
+	private func readNewestChapter(_ sender: Any?)
 	{
 		readBook(navigationAction: .newestChapter)
 	}
 
-	@IBAction private func readOldestChapter(_ sender: Any?)
+	@IBAction
+	private func readOldestChapter(_ sender: Any?)
 	{
 		readBook(navigationAction: .oldestChapter)
 	}
 
-	@IBAction private func viewChapterList(_ sender: Any?)
+	@IBAction
+	private func viewChapterList(_ sender: Any?)
 	{
 		readBook(navigationAction: .chapterList)
 	}
