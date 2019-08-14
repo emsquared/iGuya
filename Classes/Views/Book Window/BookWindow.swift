@@ -161,12 +161,20 @@ final class BookWindow: NSWindowController
 		return selectedRelease?.chapter
 	}
 
+	@inlinable
+	var selectedVolume: Volume?
+	{
+		return selectedChapter?.volume
+	}
+
 	override func windowDidLoad()
 	{
 		super.windowDidLoad()
 
+		/* Attach content view bottom border to window. */
 		attachContentBorderView()
 
+		/* Set initial appearance of layout button. */
 		updateLayoutDirectionButton()
 	}
 
@@ -181,11 +189,13 @@ final class BookWindow: NSWindowController
 			fatalError("Error: Book not assigned to represented object.")
 		}
 
+		/* The following functions require access to `book`. */
+		/* They cannot be called until `representedObject` is set
+		 during which time performConstruction() is called. */
 		updateTitle()
 
-		populatePageListPopup() // requires access to book
-		populateChapterListPopup() // requires access to book
-		populateVolumeListPopup() // requires access to book
+		populateVolumeListPopup()
+		populateChapterListPopup()
 	}
 
 	///
@@ -235,7 +245,53 @@ final class BookWindow: NSWindowController
 	///
 	func changePage(to page: Page)
 	{
+		/* Do not change to the same page. */
+		if (selectedPage == page) {
+			return
+		}
 
+		/* Figure out what changed to only update UI where needed. */
+		/* A note on performance: */
+		/* This function is called by user interactions, such as changing
+		 selection in a popup, and internally by scrolling the reader.
+		 For the former, this function still performs selection on the
+		 popup the user interacted with. I could have optimized this
+		 double selection away (1. from user 2. then by this function),
+		 but that feels like an over-optimization when you consider
+		 the fact the user wont be changing selection every second. */
+		let differentRelease = (selectedPage?.release != page.release)
+		let differentChapter = (selectedPage?.chapter != page.chapter)
+		let differentVolume = (selectedPage?.volume != page.volume)
+
+		/* Assign page to window. */
+		selectedPage = page
+
+		/* Volume changed */
+		if (differentVolume) {
+			/* Select volume in volume list popup. */
+			updateVolumeListPopupSelection()
+		}
+
+		/* Chapter changed */
+		if (differentChapter) {
+			/* Select chapter in chapter list popup. */
+			updateChapterListPopupSelection()
+		}
+
+		/* Release changed */
+		if (differentRelease) {
+			/* Select group in group list popup. */
+			updateGroupPopupSelection()
+
+			/* Populate page list popup with number of pages. */
+			populatePageListPopup()
+		}
+
+		/* Select page in page list popup. */
+		updatePageListPopupSelection()
+
+		/* Update "page of page" label. */
+		updateCurrentPageField()
 	}
 
 	///

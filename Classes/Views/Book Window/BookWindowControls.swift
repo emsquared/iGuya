@@ -65,9 +65,9 @@ extension BookWindow
 
 	///
 	/// Update group popup by selecting the group associated
-	/// with the selected release.
+	/// with the selected page.
 	///
-	func updateGroupPopup()
+	func updateGroupPopupSelection()
 	{
 		guard let group = selectedRelease?.group else {
 			return
@@ -75,6 +75,44 @@ extension BookWindow
 
 		tbGroupPopup.selectItem(withRepresentedObject: group)
 		cbvGroupPopup.selectItem(withRepresentedObject: group)
+	}
+
+	///
+	/// Update volume list popup by selecting the volume associated
+	/// with the selected page.
+	///
+	func updateVolumeListPopupSelection()
+	{
+		guard let tag = selectedVolume?.index else {
+			return
+		}
+
+		tbVolumePopup.selectItem(withTag: tag)
+	}
+
+	///
+	/// Update chapter list popup by selecting the chapter associated
+	/// with the selected page.
+	///
+	func updateChapterListPopupSelection()
+	{
+		guard let tag = selectedChapter?.bookIndex else {
+			return
+		}
+
+		tbChaptersPopup.selectItem(withTag: tag)
+	}
+
+	///
+	/// Update page list popup by selecting the selected page.
+	///
+	func updatePageListPopupSelection()
+	{
+		guard let tag = selectedPage?.index else {
+			return
+		}
+
+		tbPagePopup.selectItem(withTag: tag)
 	}
 
 	///

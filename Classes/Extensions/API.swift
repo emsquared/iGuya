@@ -52,6 +52,15 @@ extension Volume
 	{
 		return chapters.first?.firstPage
 	}
+
+	///
+	/// The index of the volume in the `volumes` array of the book.
+	///
+	@inlinable
+	var index: Int?
+	{
+		return book?.volumes.firstIndex(of: self)
+	}
 }
 
 extension Chapter
@@ -121,6 +130,24 @@ extension Chapter
 	{
 		return releases.first { $0.group == group }
 	}
+
+	///
+	/// The index of the chapter in the `chapters` array of the volume.
+	///
+	@inlinable
+	var volumeIndex: Int?
+	{
+		return volume?.chapters.firstIndex(of: self)
+	}
+
+	///
+	/// The index of the chapter in the `chapters` array of the book.
+	///
+	@inlinable
+	var bookIndex: Int?
+	{
+		return volume?.book?.chapters.firstIndex(of: self)
+	}
 }
 
 extension Chapter.Release
@@ -166,6 +193,15 @@ extension Chapter.Release
 	var numberOfPages: Int
 	{
 		return pages.count
+	}
+
+	///
+	/// The index of the release in the `releases` array of the chapter.
+	///
+	@inlinable
+	var index: Int?
+	{
+		return chapter?.releases.firstIndex(of: self)
 	}
 }
 
@@ -216,5 +252,32 @@ extension Chapter.Release.Page
 
 		/* Return 1:1 of page numbers. */
 		return nextRelease.page(numbered: number)
+	}
+
+	///
+	/// The chapter the page belongs to.
+	///
+	@inlinable
+	var chapter: Chapter?
+	{
+		return release?.chapter
+	}
+
+	///
+	/// The volume the page belongs to.
+	///
+	@inlinable
+	var volume: Volume?
+	{
+		return chapter?.volume
+	}
+
+	///
+	/// The index of the page in the `pages` array of the release.
+	///
+	@inlinable
+	var index: Int?
+	{
+		return release?.pages.firstIndex(of: self)
 	}
 }
