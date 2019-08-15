@@ -85,17 +85,20 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A8350714-92DB-43BA-A5EB-30405FCD3455" label="Scaling" paletteLabel="Scaling" image="CodeTemplate" id="sOB-8R-PX5">
+                                <toolbarItem implicitItemIdentifier="A8350714-92DB-43BA-A5EB-30405FCD3455" label="Scaling" paletteLabel="Scaling" image="ScaleWidthTemplate" id="sOB-8R-PX5">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="42" height="25"/>
                                     <size key="maxSize" width="42" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="WOW-KY-d3K">
                                         <rect key="frame" x="2" y="14" width="42" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="CodeTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e8h-LV-jda">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="ScaleWidthTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e8h-LV-jda">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="scalingButtonClicked:" target="wTd-qX-AY1" id="wig-7z-OkO"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="5DDF27AE-4D70-466F-B174-73BA2309A0E4" label="Search" paletteLabel="Search" image="SearchTemplate" id="UZY-cT-5FM">
@@ -277,11 +280,11 @@
     </scenes>
     <resources>
         <image name="ChatTemplate" width="250" height="250"/>
-        <image name="CodeTemplate" width="250" height="250"/>
         <image name="KeyboardArrowLeftTemplate" width="250" height="250"/>
         <image name="KeyboardArrowRightTemplate" width="250" height="250"/>
         <image name="LayoutDirectionLTRTemplate" width="250" height="250"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="ScaleWidthTemplate" width="250" height="250"/>
         <image name="SearchTemplate" width="250" height="250"/>
     </resources>
 </document>

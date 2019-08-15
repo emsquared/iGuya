@@ -4,5 +4,7 @@
 <dict>
 	<key>PreferredReleaseGroup</key>
 	<string>3</string>
+	<key>ScalingMode</key>
+	<integer>0</integer>
 </dict>
 </plist>

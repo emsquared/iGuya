@@ -65,6 +65,17 @@ extension BookWindow
 	}
 
 	///
+	/// Action for scaling button.
+	///
+	@IBAction
+	func scalingButtonClicked(_ sender: Any?)
+	{
+		changeScalingMode(to: scalingMode.next)
+
+		updateScalingButton()
+	}
+
+	///
 	/// Action for group changes in the group list popup button.
 	///
 	@objc

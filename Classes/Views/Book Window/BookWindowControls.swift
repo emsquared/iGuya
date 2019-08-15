@@ -151,4 +151,25 @@ extension BookWindow
 
 		tbLayoutButton.image = NSImage(named: image)
 	}
+
+	///
+	/// Update appearance of scaling button.
+	///
+	func updateScalingButton()
+	{
+		let image: String
+
+		switch (scalingMode) {
+			case .width:
+				image = "ScaleWidthTemplate"
+			case .height:
+				image = "ScaleHeightTemplate"
+			case .proportionally:
+				image = "ScaleBothTemplate"
+			case .original:
+				image = "ScaleOriginalTemplate"
+		}
+
+		tbScalingButton.image = NSImage(named: image)
+	}
 }

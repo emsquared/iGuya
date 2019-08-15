@@ -143,6 +143,7 @@ final class BookWindow: NSWindowController
 	@IBOutlet private(set) var tbVolumePopup: NSPopUpButton!
 
 	fileprivate(set) var layoutDirection = Preferences.layoutDirection
+	fileprivate(set) var scalingMode = Preferences.scalingMode
 
 	typealias Release = Chapter.Release
 	typealias Page = Chapter.Release.Page
@@ -174,8 +175,9 @@ final class BookWindow: NSWindowController
 		/* Attach content view bottom border to window. */
 		attachContentBorderView()
 
-		/* Set initial appearance of layout button. */
+		/* Set initial appearance of buttons. */
 		updateLayoutDirectionButton()
+		updateScalingButton()
 	}
 
 	///
@@ -397,5 +399,16 @@ final class BookWindow: NSWindowController
 	func changeLayoutDirection(to layoutDirection: Preferences.LayoutDirection)
 	{
 		self.layoutDirection = layoutDirection
+	}
+
+	///
+	/// Change scaling mode.
+	///
+	/// Changing the scaling mode using this function
+	/// will only change it for the book. Not all books.
+	///
+	func changeScalingMode(to scalingMode: Preferences.ScalingMode)
+	{
+		self.scalingMode = scalingMode
 	}
 }

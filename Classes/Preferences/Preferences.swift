@@ -48,6 +48,7 @@ final public class Preferences
 	{
 		case preferredGroup
 		case layoutDirection
+		case scalingMode
 	}
 
 	///
@@ -122,8 +123,58 @@ final public class Preferences
 
 			postChangeNotification(.layoutDirection)
 		} // set
-
 	} // layoutDirection
+
+
+	///
+	/// Scaling mode for pages.
+	///
+	public enum ScalingMode: Int, CaseIterable
+	{
+		///
+		/// Scale to fit width.
+		///
+		case width = 0
+
+		///
+		/// Scale to fit height.
+		///
+		case height = 1
+
+		///
+		/// Scale to fit width and height.
+		///
+		case proportionally = 2
+
+		///
+		/// Do not scale.
+		///
+		case original = 3
+	}
+
+	///
+	/// Scaling mode for pages.
+	///
+	/// Defaults to `.width`.
+	///
+	static public var scalingMode: ScalingMode
+	{
+		get {
+			let value = UserDefaults.standard.integer(forKey: "ScalingMode")
+
+			guard let scaling = ScalingMode(rawValue: value) else {
+				return .width
+			}
+
+			return scaling
+		} // get
+
+		set {
+			UserDefaults.standard.set(newValue.rawValue, forKey: "ScalingMode")
+
+			postChangeNotification(.scalingMode)
+		} // set
+	} // scaling
 
 	///
 	/// Register default preference values with `UserDefaults`.
