@@ -167,9 +167,9 @@ extension BookWindow
 
 		switch (sender.selectedSegment) {
 			case 0: // Back
-				performNavigation(.nextPage)
-			case 1: // Forward
 				performNavigation(.previousPage)
+			case 1: // Forward
+				performNavigation(.nextPage)
 			default:
 				break
 		} // switch
