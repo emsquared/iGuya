@@ -227,7 +227,6 @@ final class BookWindow: NSWindowController
 	func performNavigation(_ navigationAction: BookWindow.NavigationAction)
 	{
 		#warning("TODO: Implement logic to dismiss chapter list sheet.")
-		#warning("TODO: Add preference for which group to prefer.")
 
 		switch (navigationAction) {
 			case .chapterList:
