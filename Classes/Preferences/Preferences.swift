@@ -91,23 +91,6 @@ final public class Preferences
 		/// Layout direction is top to bottom.
 		///
 		case topToBottom = 3
-
-		///
-		/// Next layout direction after `self`.
-		///
-		/// This value is circular.
-		///
-		var next: Self
-		{
-			let cases = Self.allCases
-
-			let thisIndex = cases.firstIndex(of: self)!
-			let nextIndex = cases.index(after: thisIndex)
-
-			let finalIndex = ((nextIndex == cases.endIndex) ? cases.startIndex : nextIndex)
-
-			return cases[finalIndex]
-		}
 	}
 
 	///

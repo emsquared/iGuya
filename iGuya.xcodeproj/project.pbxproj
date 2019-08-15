@@ -60,6 +60,7 @@
 		4CBAD98A22F6CC9100207C84 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD98922F6CC9100207C84 /* ImageManager.swift */; };
 		4CBAD99322F6D7FE00207C84 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBAD99222F6D7FE00207C84 /* Logging.swift */; };
 		4CBD94C02302E62F00EADD77 /* BookWindowHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD94BF2302E62F00EADD77 /* BookWindowHelpers.swift */; };
+		4CC5261523053A7000A53A50 /* EnumIteration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5261423053A7000A53A50 /* EnumIteration.swift */; };
 		4CC8AD3222FA61D400C96941 /* BookWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC8AD3022FA61D400C96941 /* BookWindow.storyboard */; };
 		4CC8AD3522FA697D00C96941 /* BookChapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8AD3322FA62FE00C96941 /* BookChapters.swift */; };
 		4CC8AD3722FA798100C96941 /* BookWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC8AD3622FA798100C96941 /* BookWindow.swift */; };
@@ -140,6 +141,7 @@
 		4CBAD98922F6CC9100207C84 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		4CBAD99222F6D7FE00207C84 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4CBD94BF2302E62F00EADD77 /* BookWindowHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowHelpers.swift; sourceTree = "<group>"; };
+		4CC5261423053A7000A53A50 /* EnumIteration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumIteration.swift; sourceTree = "<group>"; };
 		4CC8AD3122FA61D400C96941 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BookWindow.storyboard; sourceTree = "<group>"; };
 		4CC8AD3322FA62FE00C96941 /* BookChapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChapters.swift; sourceTree = "<group>"; };
 		4CC8AD3622FA798100C96941 /* BookWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindow.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				4CB097A722FD3BAE009886D9 /* API.m */,
 				4C683A4922FE9F000013517B /* API.swift */,
 				4C47D33C22FFE1C200B9B07C /* Notifications.swift */,
+				4CC5261423053A7000A53A50 /* EnumIteration.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				4C47D34123012C7900B9B07C /* BookWindowControls.swift in Sources */,
 				4C080E6C22F4AFFC00BC8C28 /* BookManager.swift in Sources */,
 				4C91039322FABB0D005D63C7 /* BookReader.swift in Sources */,
+				4CC5261523053A7000A53A50 /* EnumIteration.swift in Sources */,
 				4C77B1F423024E6300EE5A81 /* Collections.swift in Sources */,
 				4C47D33D22FFE1C200B9B07C /* Notifications.swift in Sources */,
 				4C683A4A22FE9F000013517B /* API.swift in Sources */,
