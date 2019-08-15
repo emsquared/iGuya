@@ -80,7 +80,7 @@ extension BookWindow
 			return
 		}
 
-		changePage(to: nextPage)
+		performNavigation(toPage: nextPage)
 	}
 
 	///
@@ -101,7 +101,7 @@ extension BookWindow
 			return
 		}
 
-		changePage(to: page)
+		performNavigation(toPage: page)
 	}
 
 	///
@@ -122,12 +122,13 @@ extension BookWindow
 			return
 		}
 
-		changePage(to: page)
+		performNavigation(toPage: page)
 	}
 
 	///
 	/// Action to present chapter list sheet in the chapter list popup button.
 	///
+	@objc
 	func chapterListPopupPresentList(_ sender: Any?)
 	{
 		presentChapterList()
@@ -151,7 +152,7 @@ extension BookWindow
 
 		let page = release.pages[index]
 
-		changePage(to: page)
+		performNavigation(toPage: page)
 	}
 
 	///

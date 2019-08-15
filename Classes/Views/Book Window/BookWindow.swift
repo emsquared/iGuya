@@ -230,6 +230,30 @@ final class BookWindow: NSWindowController
 		switch (navigationAction) {
 			case .chapterList:
 				presentChapterList()
+			case .newestChapter:
+				if let chapter = book.newestChapter {
+					performNavigation(toChapter: chapter)
+				}
+			case .oldestChapter:
+				if let chapter = book.oldestChapter {
+					performNavigation(toChapter: chapter)
+				}
+			case .nextChapter:
+				if let chapter = selectedChapter?.nextChapter(escapeVolume: true) {
+					performNavigation(toChapter: chapter)
+				}
+			case .previousChapter:
+				if let chapter = selectedChapter?.previousChapter(escapeVolume: true) {
+					performNavigation(toChapter: chapter)
+				}
+			case .nextPage:
+				if let page = selectedPage?.nextPage(escapeChapter: true) {
+					performNavigation(toPage: page)
+				}
+			case .previousPage:
+				if let page = selectedPage?.previousPage(escapeChapter: true) {
+					performNavigation(toPage: page)
+				}
 			case .none:
 				os_log("Tried to navigate window to '.none'.",
 					   log: Logging.Subsystem.general, type: .info)
@@ -239,11 +263,35 @@ final class BookWindow: NSWindowController
 	}
 
 	///
+	/// Navigate to first page of the chapter by preferred group.
+	///
+	/// Navigates to first page by **any group** if there
+	/// is **no preferred group** or they **do not have
+	/// a release for the chapter**.
+	///
+	func performNavigation(toChapter chapter: Chapter)
+	{
+		guard let page = chapter.firstPage else {
+			return
+		}
+
+		performNavigation(toPage: page)
+	}
+
+	///
+	/// Navigate to a specific page in the book.
+	///
+	func performNavigation(toPage page: Page)
+	{
+		changePage(to: page)
+	}
+
+	///
 	/// Change page in the window to `page`.
 	///
 	/// - Parameter page: Page to change the window to.
 	///
-	func changePage(to page: Page)
+	fileprivate func changePage(to page: Page)
 	{
 		/* Do not change to the same page. */
 		if (selectedPage == page) {
@@ -280,6 +328,9 @@ final class BookWindow: NSWindowController
 
 		/* Release changed */
 		if (differentRelease) {
+			/* Populate group list popup. */
+			populateGroupPopup()
+
 			/* Select group in group list popup. */
 			updateGroupPopupSelection()
 

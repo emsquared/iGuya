@@ -36,6 +36,45 @@
 
 import Cocoa
 
+public extension Array where Element: Equatable
+{
+	///
+	/// Item after `item`.
+	///
+	func after(_ item: Element) -> Element?
+	{
+		guard let itemIndex = firstIndex(of: item) else {
+			return nil
+		}
+
+		let nextIndex = index(after: itemIndex)
+
+		if (nextIndex == endIndex) {
+			return nil
+		}
+
+		return self[nextIndex]
+	}
+
+	///
+	/// Item before `item`.
+	///
+	func before(_ item: Element) -> Element?
+	{
+		guard let itemIndex = firstIndex(of: item) else {
+			return nil
+		}
+
+		if (itemIndex == startIndex) {
+			return nil
+		}
+
+		let prevIndex = index(before: itemIndex)
+
+		return self[prevIndex]
+	}
+}
+
 public extension Array where Element: NSCopying
 {
 	///

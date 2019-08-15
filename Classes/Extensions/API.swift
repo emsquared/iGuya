@@ -37,6 +37,27 @@
 import Foundation
 import iGuyaAPI
 
+extension Book
+{
+	///
+	/// Oldest chapter of the book.
+	///
+	@inlinable
+	var oldestChapter: Chapter?
+	{
+		return chapters.first
+	}
+
+	///
+	/// Newest chapter of the book.
+	///
+	@inlinable
+	var newestChapter: Chapter?
+	{
+		return chapters.last
+	}
+}
+
 extension Volume
 {
 	///
@@ -66,6 +87,15 @@ extension Volume
 extension Chapter
 {
 	///
+	/// The book the chapter belongs to.
+	///
+	@inlinable
+	var book: Book?
+	{
+		return volume?.book
+	}
+
+	///
 	/// URL of comment page for the chapter.
 	///
 	/// This property is computed on the fly which is why
@@ -75,7 +105,7 @@ extension Chapter
 	@inlinable
 	var commentPage: URL?
 	{
-		guard let identifier = volume?.book?.identifier else {
+		guard let identifier = book?.identifier else {
 			return nil
 		}
 
@@ -99,6 +129,23 @@ extension Chapter
 		}
 
 		return releases.first?.firstPage
+	}
+
+	///
+	/// Last page of the chapter by preferred group.
+	///
+	/// Returns last page by **any group** if there
+	/// is **no preferred group** or they **do not have
+	/// a release for the chapter**.
+	///
+	@inlinable
+	var lastPage: Release.Page?
+	{
+		if let release = releaseByPreferredGroup {
+			return release.lastPage
+		}
+
+		return releases.first?.lastPage
 	}
 
 	///
@@ -146,7 +193,7 @@ extension Chapter
 	@inlinable
 	var bookIndex: Int?
 	{
-		return volume?.book?.chapters.firstIndex(of: self)
+		return book?.chapters.firstIndex(of: self)
 	}
 
 	///
@@ -173,7 +220,7 @@ extension Chapter
 	@inlinable
 	var isFirstChapterInBook: Bool
 	{
-		return (volume?.book?.chapters.first == self)
+		return (book?.chapters.first == self)
 	}
 
 	///
@@ -182,8 +229,49 @@ extension Chapter
 	@inlinable
 	var isLastChapterInBook: Bool
 	{
-		return (volume?.book?.chapters.last == self)
+		return (book?.chapters.last == self)
 	}
+
+	///
+	/// Chapter before the current chapter.
+	///
+	/// The behavior of this function, by default, is to
+	/// return chapters from the current volume.
+	///
+	/// - Parameter escapeVolume: `true` to jump to previous
+	/// volume once the first chapter of the current volume
+	/// is reached. `false` to return `nil` in that case.
+	///
+	@inlinable
+	func previousChapter(escapeVolume: Bool = false) -> Chapter?
+	{
+		if (escapeVolume) {
+			return book?.chapters.before(self)
+		}
+
+		return volume?.chapters.before(self)
+	}
+
+	///
+	/// Chapter after the current chapter.
+	///
+	/// The behavior of this function, by default, is to
+	/// return chapters from the current volume.
+	///
+	/// - Parameter escapeVolume: `true` to jump to next
+	/// volume once the last chapter of the current volume
+	/// is reached. `false` to return `nil` in that case.
+	///
+	@inlinable
+	func nextChapter(escapeVolume: Bool = false) -> Chapter?
+	{
+		if (escapeVolume) {
+			return book?.chapters.after(self)
+		}
+
+		return volume?.chapters.after(self)
+	}
+
 }
 
 extension Chapter.Release
@@ -341,7 +429,7 @@ extension Chapter.Release.Page
 	@inlinable
 	var isFirstPageInBook: Bool
 	{
-		return (isFirstPage && release?.chapter?.isFirstChapterInBook == true)
+		return (isFirstPage && chapter?.isFirstChapterInBook == true)
 	}
 
 	///
@@ -350,6 +438,64 @@ extension Chapter.Release.Page
 	@inlinable
 	var isLastPageInBook: Bool
 	{
-		return (isLastPage && release?.chapter?.isLastChapterInBook == true)
+		return (isLastPage && chapter?.isLastChapterInBook == true)
+	}
+
+	///
+	/// Page before the current page.
+	///
+	/// The behavior of this function, by default, is to
+	/// return pages from the current chapter.
+	///
+	/// - Parameter escapeChapter: `true` to jump to previous
+	/// chapter once the first page of the current chapter is
+	/// reached. `false` to return `nil` in that case.
+	///
+	/// If this function has to jump to the previous chapter
+	/// to return a page, then it will call the property
+	/// `Chapter.lastPage` to do so. See the documentation for
+	/// that property to understand how the release is picked.
+	///
+	@inlinable
+	func previousPage(escapeChapter: Bool = false) -> Chapter.Release.Page?
+	{
+		if let page = release?.pages.before(self) {
+			return page
+		}
+
+		if (escapeChapter == false) {
+			return nil
+		}
+
+		return chapter?.previousChapter(escapeVolume: true)?.lastPage
+	}
+
+	///
+	/// Page after the current page.
+	///
+	/// The behavior of this function, by default, is to
+	/// return pages from the current chapter.
+	///
+	/// - Parameter escapeChapter: `true` to jump to next
+	/// chapter once the last page of the current chapter is
+	/// reached. `false` to return `nil` in that case.
+	///
+	/// If this function has to jump to the next chapter
+	/// to return a page, then it will call the property
+	/// `Chapter.firstPage` to do so. See the documentation for
+	/// that property to understand how the release is picked.
+	///
+	@inlinable
+	func nextPage(escapeChapter: Bool = false) -> Chapter.Release.Page?
+	{
+		if let page = release?.pages.after(self) {
+			return page
+		}
+
+		if (escapeChapter == false) {
+			return nil
+		}
+
+		return chapter?.nextChapter(escapeVolume: true)?.firstPage
 	}
 }
