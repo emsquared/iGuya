@@ -151,11 +151,12 @@ extension BookWindow
 		items.reverse()
 
 		/* Add item to access detailed chapter list. */
-		items.insert(NSMenuItem.separator(), at: 0)
+		items.insert(NSMenuItem.separator(withTag: Int.max), at: 0)
 
 		let clsItem = NSMenuItem.item(title: LocalizedString("Detailed chapter list...", table: "BookWindow"),
 									  target: self,
-									  action: #selector(chapterListPopupPresentList))
+									  action: #selector(chapterListPopupPresentList),
+									  tag: Int.max)
 
 		items.insert(clsItem, at: 0)
 

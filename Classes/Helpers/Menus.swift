@@ -55,6 +55,15 @@ public extension NSMenu
 
 public extension NSMenuItem
 {
+	static func separator(withTag tag: Int) -> NSMenuItem
+	{
+		let item = separator()
+
+		item.tag = tag
+
+		return item
+	}
+
 	static func item(title: String, target: AnyObject? = nil, action: Selector? = nil, tag: Int = 0, representedObject: Any? = nil, keyEquivalent: String = "", keyEquivalentMask: NSEvent.ModifierFlags = []) -> NSMenuItem
 	{
 		let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
