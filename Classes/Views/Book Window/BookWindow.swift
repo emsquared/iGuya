@@ -193,7 +193,7 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 
 		/* The following functions require access to `book`. */
 		/* They cannot be called until `representedObject` is set
-		 during which time performConstruction() is called. */
+		 during which time `performConstruction()` is called. */
 		updateTitle()
 
 		populateVolumeListPopup()
