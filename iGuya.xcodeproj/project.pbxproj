@@ -247,8 +247,12 @@
 			children = (
 				4CB097A722FD3BAE009886D9 /* API.m */,
 				4C683A4922FE9F000013517B /* API.swift */,
-				4C47D33C22FFE1C200B9B07C /* Notifications.swift */,
+				4C77B1F323024E6300EE5A81 /* Collections.swift */,
+				4C77B1F12302461500EE5A81 /* Controls.swift */,
 				4CC5261423053A7000A53A50 /* EnumIteration.swift */,
+				4C47435E22FD66CC00A20399 /* Menus.swift */,
+				4C47D33C22FFE1C200B9B07C /* Notifications.swift */,
+				4CAFD9F522F85D9C00458644 /* Views.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,11 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				4C47D7DF2306886A00DF173B /* Transformers */,
-				4C77B1F323024E6300EE5A81 /* Collections.swift */,
-				4C77B1F12302461500EE5A81 /* Controls.swift */,
 				4CB6FD5E22F8202100A2783C /* CrossfadeStoryboard.swift */,
-				4C47435E22FD66CC00A20399 /* Menus.swift */,
-				4CAFD9F522F85D9C00458644 /* Views.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
