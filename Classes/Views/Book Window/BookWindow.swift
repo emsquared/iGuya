@@ -38,7 +38,7 @@ import Cocoa
 import iGuyaAPI
 import os.log
 
-final class BookWindow: NSWindowController
+final class BookWindow: NSWindowController, BookChaptersViewDelegate
 {
 	///
 	/// Navigation actions which can be performed.
@@ -374,6 +374,8 @@ final class BookWindow: NSWindowController
 			fatalError("Error: Storyboard does not contain a 'BookChapters' controller.")
 		}
 
+		controller.delegate = self
+
 		contentViewController?.presentAsSheet(controller)
 	}
 
@@ -387,6 +389,16 @@ final class BookWindow: NSWindowController
 		}
 
 		contentViewController?.dismiss(chapterListView)
+	}
+
+	///
+	/// Delegate call when a chapter is selected in the chapter list sheet.
+	///
+	func bookChaptersView(_ bookChaptersView: BookChaptersView, selectedChapter chapter: Chapter)
+	{
+		dismissChapterList()
+
+		performNavigation(toChapter: chapter)
 	}
 
 	///

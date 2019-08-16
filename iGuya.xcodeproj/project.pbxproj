@@ -27,6 +27,8 @@
 		4C47D33D22FFE1C200B9B07C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47D33C22FFE1C200B9B07C /* Notifications.swift */; };
 		4C47D33F22FFE52600B9B07C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47D33E22FFE52600B9B07C /* NotificationManager.swift */; };
 		4C47D34123012C7900B9B07C /* BookWindowControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47D34023012C7900B9B07C /* BookWindowControls.swift */; };
+		4C47D7DE230684B700DF173B /* IndexSetSelectedOneTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47D7DD230684B700DF173B /* IndexSetSelectedOneTransformer.swift */; };
+		4C47D7E12306888900DF173B /* ArrayNotEmptyTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47D7E02306888900DF173B /* ArrayNotEmptyTransformer.swift */; };
 		4C4B5B6522F9213700E77A30 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4B5B6422F9213700E77A30 /* Localization.swift */; };
 		4C50FE0622FDEFDB00C5F8F2 /* BookWindowConstructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50FE0522FDEFDA00C5F8F2 /* BookWindowConstructors.swift */; };
 		4C50FE0822FDF00800C5F8F2 /* BookWindowActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50FE0722FDF00800C5F8F2 /* BookWindowActions.swift */; };
@@ -98,6 +100,8 @@
 		4C47D33C22FFE1C200B9B07C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4C47D33E22FFE52600B9B07C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4C47D34023012C7900B9B07C /* BookWindowControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowControls.swift; sourceTree = "<group>"; };
+		4C47D7DD230684B700DF173B /* IndexSetSelectedOneTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSetSelectedOneTransformer.swift; sourceTree = "<group>"; };
+		4C47D7E02306888900DF173B /* ArrayNotEmptyTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayNotEmptyTransformer.swift; sourceTree = "<group>"; };
 		4C4B5B6422F9213700E77A30 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4C50FE0522FDEFDA00C5F8F2 /* BookWindowConstructors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowConstructors.swift; sourceTree = "<group>"; };
 		4C50FE0722FDF00800C5F8F2 /* BookWindowActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookWindowActions.swift; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 				4C6AE9B522F9481A00ECF3DF /* BookCoverImage.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4C47D7DF2306886A00DF173B /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				4C47D7E02306888900DF173B /* ArrayNotEmptyTransformer.swift */,
+				4C47D7DD230684B700DF173B /* IndexSetSelectedOneTransformer.swift */,
+			);
+			path = Transformers;
 			sourceTree = "<group>";
 		};
 		4C68AF2B22F3FD7500AA2401 /* Scripts */ = {
@@ -413,6 +426,7 @@
 		4CB6FD5622F8173700A2783C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4C47D7DF2306886A00DF173B /* Transformers */,
 				4C77B1F323024E6300EE5A81 /* Collections.swift */,
 				4C77B1F12302461500EE5A81 /* Controls.swift */,
 				4CB6FD5E22F8202100A2783C /* CrossfadeStoryboard.swift */,
@@ -579,7 +593,9 @@
 				4CB6FD5F22F8202100A2783C /* CrossfadeStoryboard.swift in Sources */,
 				4C50FE0622FDEFDB00C5F8F2 /* BookWindowConstructors.swift in Sources */,
 				4CB0756322F3F5F200D73686 /* BookList.swift in Sources */,
+				4C47D7E12306888900DF173B /* ArrayNotEmptyTransformer.swift in Sources */,
 				4CAB50AA22FEB9DE00128AA5 /* Preferences.swift in Sources */,
+				4C47D7DE230684B700DF173B /* IndexSetSelectedOneTransformer.swift in Sources */,
 				4C0B96D222F672E40067BF34 /* BookDetails.swift in Sources */,
 				4C77B1F22302461500EE5A81 /* Controls.swift in Sources */,
 				4CB0756122F3F5F200D73686 /* AppDelegate.swift in Sources */,

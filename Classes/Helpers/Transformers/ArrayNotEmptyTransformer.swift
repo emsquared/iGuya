@@ -34,61 +34,27 @@
 *
 *********************************************************************** */
 
-import Cocoa
-import iGuyaAPI
+import Foundation
 
-protocol BookChaptersViewDelegate: class
+@objc
+public class ArrayNotEmptyTransformer : ValueTransformer
 {
-	/* Required */
-	func bookChaptersView(_ bookChaptersView: BookChaptersView, selectedChapter: Chapter)
-
-	/* Optional */
-	func bookChaptersViewWillDisappear(_ bookChaptersView: BookChaptersView)
-}
-
-final class BookChaptersView: NSViewController, BookWindowAccessors
-{
-	weak var delegate: BookChaptersViewDelegate?
-
-	@IBOutlet private var chapterList: NSArrayController!
-	@IBOutlet private weak var chapterListTable: NSTableView!
-
-	override func viewWillAppear()
+	override static public func allowsReverseTransformation() -> Bool
 	{
-		super.viewWillAppear()
-
-		chapterListTable.sortDescriptors = [
-			NSSortDescriptor(key: "number", ascending: false)
-		]
-
-		chapterList.add(contentsOf: book.chapters)
+		return false
 	}
 
-	override func viewWillDisappear()
+	override static public func transformedValueClass() -> AnyClass
 	{
-		super.viewWillDisappear()
-
-		delegate?.bookChaptersViewWillDisappear(self)
+		return NSNumber.self
 	}
 
-	@IBAction
-	func readChapter(_ sender: Any?)
+	override public func transformedValue(_ value: Any?) -> Any?
 	{
-		guard let chapter = chapterList.selectedObjects.first as? Chapter else {
-			return
+		if let array = value as? [Any] {
+			return (array.isEmpty == false)
 		}
 
-		delegate?.bookChaptersView(self, selectedChapter: chapter)
-	}
-}
-
-/* ------------------------------------------------------ */
-
-extension BookChaptersViewDelegate
-{
-	/* Optional */
-	func bookChaptersViewWillDisappear(_ bookChaptersView: BookChaptersView)
-	{
-
+		return false
 	}
 }

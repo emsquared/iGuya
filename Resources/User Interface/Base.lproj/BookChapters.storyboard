@@ -11,17 +11,17 @@
             <objects>
                 <viewController id="Xnw-S7-TK9" customClass="BookChaptersView" customModule="iGuya" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JNw-sm-ZDe">
-                        <rect key="frame" x="0.0" y="0.0" width="680" height="541"/>
+                        <rect key="frame" x="0.0" y="0.0" width="680" height="450"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-ib-n3v">
-                                <rect key="frame" x="20" y="76" width="640" height="374"/>
+                                <rect key="frame" x="20" y="76" width="640" height="324"/>
                                 <clipView key="contentView" id="jfC-6Q-zq3">
-                                    <rect key="frame" x="1" y="0.0" width="638" height="373"/>
+                                    <rect key="frame" x="1" y="0.0" width="638" height="323"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" headerView="hUL-Ss-uWw" viewBased="YES" id="Lp0-kM-8hK">
-                                            <rect key="frame" x="0.0" y="0.0" width="638" height="348"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="638" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -29,7 +29,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="number" width="95" minWidth="40" maxWidth="1000" id="lxZ-TT-yg9">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -70,7 +70,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="title" width="326" minWidth="40" maxWidth="1000" id="4LS-wW-h3q">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -111,7 +111,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="group" width="208" minWidth="10" maxWidth="3.4028234663852886e+38" id="QOq-6T-oH5">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Group">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -154,6 +154,7 @@
                                                 <binding destination="nYE-cz-oQ0" name="content" keyPath="arrangedObjects" id="AcC-KU-Lg3"/>
                                                 <binding destination="nYE-cz-oQ0" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="AcC-KU-Lg3" id="3XD-QP-wuN"/>
                                                 <binding destination="nYE-cz-oQ0" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="3XD-QP-wuN" id="4oY-I1-we1"/>
+                                                <outlet property="delegate" destination="Xnw-S7-TK9" id="ruh-qv-HuY"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -176,25 +177,56 @@
                                 </tableHeaderView>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcC-8w-WjS">
-                                <rect key="frame" x="291" y="244" width="98" height="23"/>
+                                <rect key="frame" x="291" y="219" width="98" height="23"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="No Results" id="rw7-qv-JAG">
                                     <font key="font" metaFont="system" size="20"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="nYE-cz-oQ0" name="hidden" keyPath="arrangedObjects" id="8w5-14-Zd4">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">iGuya.ArrayNotEmptyTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LB8-0d-siy">
-                                <rect key="frame" x="595" y="457" width="67" height="24"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="drP-ub-rq9">
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-MM-E1S">
+                                <rect key="frame" x="20" y="59" width="640" height="5"/>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-hi-BMq">
+                                <rect key="frame" x="592" y="13" width="71" height="32"/>
+                                <buttonCell key="cell" type="push" title="Read" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="msW-hP-Lln">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment image="NSListViewTemplate" selected="YES"/>
-                                        <segment image="NSIconViewTemplate" tag="1"/>
-                                    </segments>
-                                </segmentedCell>
-                            </segmentedControl>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="readChapter:" target="Xnw-S7-TK9" id="ImA-BH-T5c"/>
+                                    <binding destination="nYE-cz-oQ0" name="enabled" keyPath="selectionIndexes" id="Mh6-vH-inu">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">iGuya.IndexSetSelectedOneTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G7V-IR-PIz">
+                                <rect key="frame" x="510" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="68c-qZ-Uml">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="Xnw-S7-TK9" id="J0t-LD-BaH"/>
+                                </connections>
+                            </button>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT7-eR-v9x">
-                                <rect key="frame" x="20" y="458" width="200" height="22"/>
+                                <rect key="frame" x="460" y="408" width="200" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="XAr-DY-nlC"/>
                                 </constraints>
@@ -212,56 +244,24 @@
                                     </binding>
                                 </connections>
                             </searchField>
-                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Fhk-Ei-gqB">
-                                <rect key="frame" x="20" y="492" width="640" height="5"/>
-                            </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mdn-7X-JhL">
-                                <rect key="frame" x="263" y="510" width="154" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Select a chapter to read:" id="z5K-c9-RWK">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-MM-E1S">
-                                <rect key="frame" x="20" y="59" width="640" height="5"/>
-                            </box>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Qk-hi-BMq">
-                                <rect key="frame" x="588" y="13" width="75" height="32"/>
-                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="msW-hP-Lln">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="dismissController:" target="Xnw-S7-TK9" id="EF7-j5-ATI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="6Qk-hi-BMq" firstAttribute="top" secondItem="waZ-MM-E1S" secondAttribute="bottom" constant="20" id="60u-f3-A4b"/>
-                            <constraint firstItem="mdn-7X-JhL" firstAttribute="top" secondItem="JNw-sm-ZDe" secondAttribute="top" constant="15" id="68h-w0-0xS"/>
                             <constraint firstItem="waZ-MM-E1S" firstAttribute="leading" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="6vz-IH-g96"/>
+                            <constraint firstItem="LT7-eR-v9x" firstAttribute="top" secondItem="JNw-sm-ZDe" secondAttribute="top" constant="20" id="7Rr-Yr-cWo"/>
                             <constraint firstItem="EcC-8w-WjS" firstAttribute="centerY" secondItem="yvk-ib-n3v" secondAttribute="centerY" constant="8" id="DBG-xX-Axp"/>
                             <constraint firstItem="EcC-8w-WjS" firstAttribute="centerX" secondItem="yvk-ib-n3v" secondAttribute="centerX" id="GIE-Wf-yxy"/>
-                            <constraint firstItem="LB8-0d-siy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LT7-eR-v9x" secondAttribute="trailing" constant="20" id="JCK-70-I8E"/>
                             <constraint firstAttribute="bottom" secondItem="6Qk-hi-BMq" secondAttribute="bottom" constant="20" id="OYU-IE-w05"/>
+                            <constraint firstItem="G7V-IR-PIz" firstAttribute="firstBaseline" secondItem="6Qk-hi-BMq" secondAttribute="firstBaseline" id="RjV-3E-XSH"/>
                             <constraint firstItem="yvk-ib-n3v" firstAttribute="top" secondItem="LT7-eR-v9x" secondAttribute="bottom" constant="8" id="SGh-oR-NgV"/>
+                            <constraint firstAttribute="trailing" secondItem="LT7-eR-v9x" secondAttribute="trailing" constant="20" id="SmZ-cO-4P0"/>
                             <constraint firstAttribute="trailing" secondItem="yvk-ib-n3v" secondAttribute="trailing" constant="20" id="YzS-w1-JNn"/>
-                            <constraint firstAttribute="trailing" secondItem="Fhk-Ei-gqB" secondAttribute="trailing" constant="20" id="Zpq-mO-JNp"/>
                             <constraint firstAttribute="trailing" secondItem="6Qk-hi-BMq" secondAttribute="trailing" constant="23" id="bF4-DH-uWz"/>
-                            <constraint firstItem="mdn-7X-JhL" firstAttribute="centerX" secondItem="JNw-sm-ZDe" secondAttribute="centerX" id="f2P-Ws-McO"/>
-                            <constraint firstItem="LT7-eR-v9x" firstAttribute="leading" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="gHv-ud-dTd"/>
+                            <constraint firstItem="LT7-eR-v9x" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="daO-vc-5kj"/>
                             <constraint firstItem="yvk-ib-n3v" firstAttribute="leading" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="iHh-qv-RlA"/>
-                            <constraint firstAttribute="trailing" secondItem="LB8-0d-siy" secondAttribute="trailing" constant="20" id="jDK-fm-sUw"/>
-                            <constraint firstItem="6Qk-hi-BMq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="nDn-rr-9X0"/>
-                            <constraint firstItem="Fhk-Ei-gqB" firstAttribute="leading" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="rkf-da-uqC"/>
+                            <constraint firstItem="6Qk-hi-BMq" firstAttribute="leading" secondItem="G7V-IR-PIz" secondAttribute="trailing" constant="12" id="ihU-t4-hWv"/>
                             <constraint firstItem="waZ-MM-E1S" firstAttribute="top" secondItem="yvk-ib-n3v" secondAttribute="bottom" constant="14" id="sPe-r1-zEN"/>
-                            <constraint firstItem="Fhk-Ei-gqB" firstAttribute="top" secondItem="mdn-7X-JhL" secondAttribute="bottom" constant="15" id="twQ-pn-jAH"/>
-                            <constraint firstItem="LB8-0d-siy" firstAttribute="centerY" secondItem="LT7-eR-v9x" secondAttribute="centerY" id="wgY-di-nUH"/>
-                            <constraint firstItem="LT7-eR-v9x" firstAttribute="top" secondItem="Fhk-Ei-gqB" secondAttribute="bottom" constant="14" id="yDy-R0-Gu1"/>
+                            <constraint firstItem="G7V-IR-PIz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JNw-sm-ZDe" secondAttribute="leading" constant="20" id="xSd-du-37v"/>
                             <constraint firstAttribute="trailing" secondItem="waZ-MM-E1S" secondAttribute="trailing" constant="20" id="ygm-Mw-bkG"/>
                         </constraints>
                     </view>
@@ -278,8 +278,4 @@ Gw
             <point key="canvasLocation" x="183" y="814.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSIconViewTemplate" width="14" height="10"/>
-        <image name="NSListViewTemplate" width="14" height="10"/>
-    </resources>
 </document>
