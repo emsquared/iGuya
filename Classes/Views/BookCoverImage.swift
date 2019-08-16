@@ -35,7 +35,6 @@
 *********************************************************************** */
 
 import Cocoa
-import os.log
 
 protocol BookCoverImage: class
 {

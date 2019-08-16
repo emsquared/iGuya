@@ -36,7 +36,6 @@
 
 import Cocoa
 import iGuyaAPI
-import os.log
 
 final class BookListCell: NSCollectionViewItem, BookCoverImage
 {

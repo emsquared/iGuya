@@ -36,7 +36,6 @@
 
 import Cocoa
 import iGuyaAPI
-import os.log
 
 ///
 /// Each book is assigned a single window within the app which all

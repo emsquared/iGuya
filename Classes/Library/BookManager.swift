@@ -36,7 +36,6 @@
 
 import Foundation
 import iGuyaAPI
-import os.log
 
 final public class BookManager
 {
