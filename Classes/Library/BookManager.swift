@@ -60,6 +60,19 @@ final public class BookManager
 	fileprivate(set) public var requestingBooks = false
 
 	///
+	/// Dictionary mapping book identifier to a weight.
+	///
+	/// The weight is used when sorting the list of books.
+	/// Weight is sorted in descending order which means
+	/// the highest weight will always be first.
+	///
+	fileprivate static let bookWeights = [
+		"Kaguya-Wants-To-Be-Confessed-To" 					: 1000,
+		"Kaguya-Wants-To-Be-Confessed-To-Official-Doujin" 	: 99,
+		"We-Want-To-Talk-About-Kaguya" 						: 98
+	]
+
+	///
 	/// Request books.
 	///
 	/// The API is designed to cache books which means the books
@@ -108,10 +121,24 @@ final public class BookManager
 
 		requestingBooks = false
 
-		if case .success(let data) = result {
-			books = data
-		}
+		switch (result) {
+			case .success(var books):
+				books.sort(by: { (lhs, rhs) -> Bool in
+					guard 	let lhw = Self.bookWeights[lhs.identifier],
+							let rhw = Self.bookWeights[rhs.identifier] else
+					{
+						return false
+					}
 
-		completionHandler(result)
+					return (lhw > rhw)
+				}) // sort
+
+				self.books = books
+
+				/* Redeclare result to pass sorted result. */
+				completionHandler(.success(books))
+			default:
+				completionHandler(result)
+		}
 	}
 }
