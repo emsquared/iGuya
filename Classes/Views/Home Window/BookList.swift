@@ -48,6 +48,19 @@ final class BookListView: NSViewController, NSCollectionViewDelegate, NSCollecti
 
 	fileprivate var listSizingCell: BookListCell?
 
+	///
+	/// Dictionary mapping book identifier to a weight.
+	///
+	/// The weight is used when sorting the list of books.
+	/// Weight is sorted in descending order which means
+	/// the highest weight will always be first.
+	///
+	fileprivate static let bookWeights = [
+		"Kaguya-Wants-To-Be-Confessed-To" 					: 1000,
+		"Kaguya-Wants-To-Be-Confessed-To-Official-Doujin" 	: 99,
+		"We-Want-To-Talk-About-Kaguya" 						: 98
+	]
+
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -59,6 +72,20 @@ final class BookListView: NSViewController, NSCollectionViewDelegate, NSCollecti
 		}
 
 		listCollection.register(cell, forItemWithIdentifier: NSUserInterfaceItemIdentifier("BookListCell"))
+
+		list.sortDescriptors = [
+			NSSortDescriptor(key: "identifier", ascending: true, comparator: { (rhs, lhs) -> ComparisonResult in
+				guard	let lhstr = lhs as? String,
+						let rhstr = rhs as? String,
+						let lhwht = Self.bookWeights[lhstr],
+						let rhwht = Self.bookWeights[rhstr] else
+				{
+					return .orderedSame
+				}
+
+				return compare(lhs: lhwht, rhs: rhwht)
+			})
+		]
 
 		instantiateSizingTemplate(in: cell)
 	}

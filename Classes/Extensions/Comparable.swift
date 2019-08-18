@@ -35,83 +35,16 @@
 *********************************************************************** */
 
 import Foundation
-import iGuyaAPI
 
-final public class BookManager
+@inlinable
+func compare<T: Comparable>(lhs: T, rhs: T) -> ComparisonResult
 {
-	///
-	/// Shared instance of the book manager.
-	///
-	static public let shared = BookManager()
-
-	///
-	/// List of books.
-	///
-	fileprivate(set) public var books: Books?
-
-	///
-	/// The books request.
-	///
-	fileprivate var booksRequest: Request<Books>?
-
-	///
-	/// `true` if a books request is in progress. `false` otherwise.
-	///
-	fileprivate(set) public var requestingBooks = false
-
-	///
-	/// Request books.
-	///
-	/// The API is designed to cache books which means the books
-	/// returned may be those already cached in memory and/or disk.
-	///
-	/// - Parameter returningLocalCache: If `true`, then the contents of
-	/// `BookManager.books` is returned if it is already set.
-	/// This parameter **does not disable caching performed by API**.
-	/// - Parameter completionHandler: A completion handler
-	/// to call when request is finished.
-	///
-	/// - Returns: `true` on success creating request. `false` otherwise.
-	///
-	@discardableResult
-	public func requestBooks(returningLocalCache: Bool = true, _ completionHandler: @escaping Request<Books>.CompletionHandler) -> Bool
-	{
-		if (requestingBooks) {
-			return false
-		}
-
-		if (returningLocalCache && books != nil) {
-			completionHandler(.success(books!))
-
-			return true
-		}
-
-		let request = Gateway.getBooks { (result) in
-			self.requestBooksCompleted(with: result, completionHandler: completionHandler)
-		}
-
-		booksRequest = request
-
-		requestingBooks = true
-
-		request.start()
-
-		return true
+	if (lhs > rhs) {
+		return .orderedDescending
+	} else if (lhs < rhs) {
+		return .orderedAscending
 	}
 
-	///
-	/// Callback handler for books request.
-	///
-	fileprivate func requestBooksCompleted(with result: Request<Books>.CompletionResult, completionHandler: Request<Books>.CompletionHandler)
-	{
-		booksRequest = nil
-
-		requestingBooks = false
-
-		if case .success(let data) = result {
-			books = data
-		}
-
-		completionHandler(result)
-	}
+	return .orderedSame
 }
+
