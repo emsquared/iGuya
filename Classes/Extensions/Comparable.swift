@@ -47,4 +47,3 @@ func compare<T: Comparable>(lhs: T, rhs: T) -> ComparisonResult
 
 	return .orderedSame
 }
-

@@ -51,10 +51,8 @@ public extension RawRepresentable where RawValue == String, Self: NotificationNa
 	///
 	var name: Notification.Name
 	{
-		get {
-			let description = String(reflecting: self)
+		let description = String(reflecting: self)
 
-			return Notification.Name(description)
-		}
+		return Notification.Name(description)
 	} // name
 }

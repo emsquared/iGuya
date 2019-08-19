@@ -37,7 +37,7 @@
 import Foundation
 
 @objc
-public class IndexSetSelectedOneTransformer : ValueTransformer
+public class IndexSetSelectedOneTransformer: ValueTransformer
 {
 	override static public func allowsReverseTransformation() -> Bool
 	{

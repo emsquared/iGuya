@@ -125,7 +125,6 @@ final public class Preferences
 		} // set
 	} // layoutDirection
 
-
 	///
 	/// Scaling mode for pages.
 	///
@@ -182,7 +181,7 @@ final public class Preferences
 	static func registerDefaults()
 	{
 		guard 	let file = Bundle.main.url(forResource: "RegisteredDefaults", withExtension: "plist"),
-				let defaults = NSDictionary(contentsOf: file) as? [String : Any] else {
+				let defaults = NSDictionary(contentsOf: file) as? [String: Any] else {
 			fatalError("Error: 'RegisteredDefaults.plist' file is missing or malformed.")
 		}
 
