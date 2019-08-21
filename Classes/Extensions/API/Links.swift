@@ -42,6 +42,7 @@ extension Book
 	///
 	/// URL of cover for the book.
 	///
+	@inlinable
 	var coverPage: URL
 	{
 		let link = "https://ka.guya.moe\(cover)"
