@@ -69,7 +69,7 @@ extension Volume
 	/// a release for the chapter**.
 	///
 	@inlinable
-	var firstPage: Chapter.Release.Page?
+	var firstPage: Page?
 	{
 		return chapters.first?.firstPage
 	}
@@ -96,25 +96,6 @@ extension Chapter
 	}
 
 	///
-	/// URL of comment page for the chapter.
-	///
-	/// This property is computed on the fly which is why
-	/// it can return `nil`. It might not always have enough
-	/// context at the time it's called.
-	///
-	@inlinable
-	var commentPage: URL?
-	{
-		guard let identifier = book?.identifier else {
-			return nil
-		}
-
-		let link = "https://guya.moe/reader/series/\(identifier)/\(numberFormatted)/comments"
-
-		return URL(string: link)
-	}
-
-	///
 	/// First page of the chapter by preferred group.
 	///
 	/// Returns first page by **any group** if there
@@ -122,7 +103,7 @@ extension Chapter
 	/// a release for the chapter**.
 	///
 	@inlinable
-	var firstPage: Release.Page?
+	var firstPage: Page?
 	{
 		if let release = releaseByPreferredGroup {
 			return release.firstPage
@@ -139,7 +120,7 @@ extension Chapter
 	/// a release for the chapter**.
 	///
 	@inlinable
-	var lastPage: Release.Page?
+	var lastPage: Page?
 	{
 		if let release = releaseByPreferredGroup {
 			return release.lastPage
@@ -274,7 +255,7 @@ extension Chapter
 
 }
 
-extension Chapter.Release
+extension Release
 {
 	///
 	/// Page numbered `number` in the release.
@@ -329,7 +310,7 @@ extension Chapter.Release
 	}
 }
 
-extension Chapter.Release.Page
+extension Page
 {
 	///
 	/// Page equivalent to the current page by a different group.
@@ -345,7 +326,7 @@ extension Chapter.Release.Page
 	/// - Returns: Equivalent page or `nil` if the group does
 	/// not have a release in the chapter.
 	///
-	func equivalentPage(byGroup group: Group) -> Chapter.Release.Page?
+	func equivalentPage(byGroup group: Group) -> Page?
 	{
 		guard let prevRelease = release else {
 			return nil
@@ -457,7 +438,7 @@ extension Chapter.Release.Page
 	/// that property to understand how the release is picked.
 	///
 	@inlinable
-	func previousPage(escapeChapter: Bool = false) -> Chapter.Release.Page?
+	func previousPage(escapeChapter: Bool = false) -> Page?
 	{
 		if let page = release?.pages.before(self) {
 			return page
@@ -486,7 +467,7 @@ extension Chapter.Release.Page
 	/// that property to understand how the release is picked.
 	///
 	@inlinable
-	func nextPage(escapeChapter: Bool = false) -> Chapter.Release.Page?
+	func nextPage(escapeChapter: Bool = false) -> Page?
 	{
 		if let page = release?.pages.after(self) {
 			return page

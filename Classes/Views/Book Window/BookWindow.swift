@@ -145,9 +145,6 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 	fileprivate(set) var layoutDirection = Preferences.layoutDirection
 	fileprivate(set) var scalingMode = Preferences.scalingMode
 
-	typealias Release = Chapter.Release
-	typealias Page = Chapter.Release.Page
-
 	fileprivate(set) var selectedPage: Page?
 
 	@inlinable

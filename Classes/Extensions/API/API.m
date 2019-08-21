@@ -34,18 +34,12 @@
 *
 *********************************************************************** */
 
-#import <Foundation/Foundation.h>
-#import <iGuyaAPI/iGuyaAPI-Swift.h>
-
+#import "APIExtensionPrivate.h"
 #import "LocalizationPrivate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
-
-@interface Book (iGuyaHelper)
-@property (nonatomic, copy, readonly) NSString *numberOfChapters;
-@end
 
 @implementation Book (iGuyaHelper)
 
@@ -69,10 +63,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
 
-@interface Chapter (iGuyaHelper)
-@property (nonatomic, copy, readonly) NSString *groupsFormatted;
-@end
-
 @implementation Chapter (iGuyaHelper)
 
 - (NSString *)groupsFormatted
@@ -82,6 +72,18 @@ NS_ASSUME_NONNULL_BEGIN
 	} else {
 		return LocalizedString(@"Multiple groups", @"API");
 	}
+}
+
+- (NSString *)numberFormatted
+{
+	NSNumberFormatter *formatter = [NSNumberFormatter new];
+
+	formatter.minimumFractionDigits = 0;
+	formatter.maximumFractionDigits = 2;
+
+	formatter.numberStyle = NSNumberFormatterDecimalStyle;
+
+	return [formatter stringFromNumber:@(self.number)];
 }
 
 @end

@@ -97,6 +97,6 @@ final class BookListCell: NSCollectionViewItem, BookCoverImage
 			fatalError("Error: Represented object is of unexpected type.")
 		}
 
-		loadBookCoverImage(at: book.cover)
+		loadBookCoverImage(at: book.coverPage)
 	}
 }
