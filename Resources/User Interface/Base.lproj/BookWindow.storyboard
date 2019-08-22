@@ -10,7 +10,7 @@
         <scene sceneID="Kt9-mw-Uh4">
             <objects>
                 <windowController id="wTd-qX-AY1" customClass="BookWindow" customModule="iGuya" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="iGuya - Reader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="BKR-ci-dmz">
+                    <window key="window" title="iGuya - Reader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" id="BKR-ci-dmz">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="323" width="681" height="399"/>
