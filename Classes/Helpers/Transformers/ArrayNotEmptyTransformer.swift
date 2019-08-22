@@ -37,7 +37,7 @@
 import Foundation
 
 @objc
-public class ArrayNotEmptyTransformer : ValueTransformer
+public class ArrayNotEmptyTransformer: ValueTransformer
 {
 	override static public func allowsReverseTransformation() -> Bool
 	{
