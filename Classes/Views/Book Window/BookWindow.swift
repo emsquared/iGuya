@@ -82,7 +82,7 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 		/// An optional `page` parameter can be assigned
 		/// to navigate to a specific page within the chapter.
 		///
-		/// Page numbers begin at **1**.
+		/// **Page numbers begin at 1**.
 		///
 		case chapter(_ chapter: Double, page: Int = 1)
 
@@ -92,7 +92,7 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 		/// If the page does not exist in the chapter, then
 		/// nothing happens.
 		///
-		/// Page numbers begin at **1**
+		/// **Page numbers begin at 1**
 		///
 		case page(_ page: Int)
 
@@ -297,14 +297,6 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 		}
 
 		/* Figure out what changed to only update UI where needed. */
-		/* A note on performance: */
-		/* This function is called by user interactions, such as changing
-		 selection in a popup, and internally by scrolling the reader.
-		 For the former, this function still performs selection on the
-		 popup the user interacted with. I could have optimized this
-		 double selection away (1. from user 2. then by this function),
-		 but that feels like an over-optimization when you consider
-		 the fact the user wont be changing selection every second. */
 		let differentRelease = (selectedPage?.release != page.release)
 		let differentChapter = (selectedPage?.chapter != page.chapter)
 		let differentVolume = (selectedPage?.volume != page.volume)

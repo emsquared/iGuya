@@ -64,7 +64,7 @@ extension Volume
 	/// First page of first chapter in the volume
 	/// by preferred group.
 	///
-	/// Returns first page by **any group** if there
+	/// - Returns: First page by **any group** if there
 	/// is **no preferred group** or they **do not have
 	/// a release for the chapter**.
 	///
@@ -96,11 +96,11 @@ extension Chapter
 	}
 
 	///
-	/// First page of the chapter by preferred group.
+	/// First page of the chapter.
 	///
-	/// Returns first page by **any group** if there
-	/// is **no preferred group** or they **do not have
-	/// a release for the chapter**.
+	/// If the preferred group has a release for the chapter,
+	/// then the page will be returned from that release.
+	/// Otherwise, it is returned from any group.
 	///
 	@inlinable
 	var firstPage: Page?
@@ -113,11 +113,11 @@ extension Chapter
 	}
 
 	///
-	/// Last page of the chapter by preferred group.
+	/// Last page of the chapter.
 	///
-	/// Returns last page by **any group** if there
-	/// is **no preferred group** or they **do not have
-	/// a release for the chapter**.
+	/// If the preferred group has a release for the chapter,
+	/// then the page will be returned from that release.
+	/// Otherwise, it is returned from any group.
 	///
 	@inlinable
 	var lastPage: Page?
@@ -132,8 +132,8 @@ extension Chapter
 	///
 	/// Release in the chapter by preferred group.
 	///
-	/// - Returns: Release by the group or `nil` if the group does
-	/// not have a release in the chapter.
+	/// - Returns: Release by the group or `nil` if the group
+	/// does not have a release for the chapter.
 	///
 	@inlinable
 	var releaseByPreferredGroup: Release?
@@ -150,8 +150,8 @@ extension Chapter
 	///
 	/// - Parameter group: The group to return release for.
 	///
-	/// - Returns: Release by the group or `nil` if the group does
-	/// not have a release in the chapter.
+	/// - Returns: Release by the group or `nil` if the group
+	/// does not have a release in the chapter.
 	///
 	@inlinable
 	func release(byGroup group: Group) -> Release?
