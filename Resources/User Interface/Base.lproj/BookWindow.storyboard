@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wTd-qX-AY1">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="wTd-qX-AY1">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +21,7 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Aay-69-ZlF"/>
                                 <toolbarItem implicitItemIdentifier="86404B0E-220E-454A-9913-0FFDA77431AD" label="Group" paletteLabel="Group" sizingBehavior="auto" id="wqA-T9-kvA">
                                     <nil key="toolTip"/>
-                                    <popUpButton key="view" verticalHuggingPriority="750" id="IDa-on-d0d">
+                                    <popUpButton key="view" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="IDa-on-d0d">
                                         <rect key="frame" x="0.0" y="14" width="150" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="Select a chapter to read" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RDl-xK-vBa" id="Rax-zb-eXt">
@@ -39,7 +39,7 @@
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="200" height="24"/>
                                     <size key="maxSize" width="200" height="24"/>
-                                    <popUpButton key="view" verticalHuggingPriority="750" id="yI0-xm-D9t">
+                                    <popUpButton key="view" verticalHuggingPriority="750" allowsExpansionToolTips="YES" id="yI0-xm-D9t">
                                         <rect key="frame" x="0.0" y="14" width="200" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" title="1 - I Want to be Invited to a Movie" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="A4i-6g-pXx" id="VNH-Mu-8Wk">
@@ -219,7 +219,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="678" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="JML-oU-E2z">
+                        <popUpButton allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JML-oU-E2z">
                             <rect key="frame" x="507" y="2" width="151" height="18"/>
                             <popUpButtonCell key="cell" type="bevel" title="Select a chapter to read" bezelStyle="regularSquare" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" selectedItem="yZu-4a-Shq" id="Ump-Ia-pQE">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
