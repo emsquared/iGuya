@@ -93,7 +93,7 @@ extension BookWindow
 		cbvGroupPopup.menu?.setItemList(items.mapCopy)
 
 		/* Toggle arrow hidden if there is only one group. */
-		tbGroupPopup.toggleArrowVisibility()
+//		tbGroupPopup.toggleArrowVisibility()
 		cbvGroupPopup.toggleArrowVisibility()
 	}
 
