@@ -223,7 +223,7 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 	///
 	func performNavigation(_ navigationAction: BookWindow.NavigationAction)
 	{
-		#warning("TODO: Implement logic to dismiss chapter list sheet.")
+		/* Note: channel list is dismissed in `changePage(to:)` */
 
 		switch (navigationAction) {
 			case .chapterList:
@@ -231,32 +231,64 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 			case .newestChapter:
 				if let chapter = book.newestChapter {
 					performNavigation(toChapter: chapter)
+				} else {
+					os_log("Cannot navigate to newest chapter.",
+						   log: Logging.Subsystem.general, type: .error)
 				}
 			case .oldestChapter:
 				if let chapter = book.oldestChapter {
 					performNavigation(toChapter: chapter)
+				} else {
+					os_log("Cannot navigate to oldest chapter.",
+						   log: Logging.Subsystem.general, type: .error)
 				}
 			case .nextChapter:
 				if let chapter = selectedChapter?.nextChapter(escapeVolume: true) {
 					performNavigation(toChapter: chapter)
+				} else {
+					os_log("Cannot navigate to next chapter.",
+						   log: Logging.Subsystem.general, type: .error)
 				}
 			case .previousChapter:
 				if let chapter = selectedChapter?.previousChapter(escapeVolume: true) {
 					performNavigation(toChapter: chapter)
+				} else {
+					os_log("Cannot navigate to previous chapter.",
+						   log: Logging.Subsystem.general, type: .error)
+				}
+			case .chapter(let chapterNumber, let pageNumber):
+				if 	let chapter = book.chapter(numbered: chapterNumber),
+					let page = chapter.page(numbered: pageNumber)
+				{
+					performNavigation(toPage: page)
+				} else {
+					os_log("Cannot navigate to chapter %d page %ld.",
+						   log: Logging.Subsystem.general, type: .error, chapterNumber, pageNumber)
 				}
 			case .nextPage:
 				if let page = selectedPage?.nextPage(escapeChapter: true) {
 					performNavigation(toPage: page)
+				} else {
+					os_log("Cannot navigate to next page.",
+						   log: Logging.Subsystem.general, type: .error)
 				}
 			case .previousPage:
 				if let page = selectedPage?.previousPage(escapeChapter: true) {
 					performNavigation(toPage: page)
+				} else {
+					os_log("Cannot navigate to previous page.",
+						   log: Logging.Subsystem.general, type: .error)
+				}
+			case .page(let pageNumber):
+				if let page = selectedRelease?.page(numbered: pageNumber) {
+					performNavigation(toPage: page)
+				} else {
+					os_log("Cannot navigate to page %ld.",
+						   log: Logging.Subsystem.general, type: .error, pageNumber)
 				}
 			case .none:
 				os_log("Tried to navigate window to '.none'.",
 					   log: Logging.Subsystem.general, type: .info)
-			default:
-				break
 		}
 	}
 
@@ -295,6 +327,9 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 		if (selectedPage == page) {
 			return
 		}
+
+		/* Dismiss chapter list sheet. */
+		dismissChapterList()
 
 		/* Figure out what changed to only update UI where needed. */
 		let differentRelease = (selectedPage?.release != page.release)
@@ -385,7 +420,7 @@ final class BookWindow: NSWindowController, BookChaptersViewDelegate
 	///
 	func bookChaptersView(_ bookChaptersView: BookChaptersView, selectedChapter chapter: Chapter)
 	{
-		dismissChapterList()
+		/* Note: channel list is dismissed in `changePage(to:)` */
 
 		performNavigation(toChapter: chapter)
 	}

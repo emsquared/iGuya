@@ -56,6 +56,20 @@ extension Book
 	{
 		return chapters.last
 	}
+
+	///
+	/// Specific chapter in the book.
+	///
+	/// - Parameter number: The chapter number.
+	///
+	/// - Returns: The chapter or `nil` if the book does not
+	/// have a chapter with that number.
+	///
+	@inlinable
+	func chapter(numbered number: Double) -> Chapter?
+	{
+		return chapters.first { $0.number == number }
+	}
 }
 
 extension Volume
@@ -127,6 +141,30 @@ extension Chapter
 		}
 
 		return releases.first?.lastPage
+	}
+
+	///
+	/// Specific page of the chapter.
+	///
+	/// If the preferred group has a release for the chapter,
+	/// then the page will be returned from that release.
+	/// Otherwise, it is returned from any group.
+	///
+	/// - Parameter number: The page number. **Page numbers begin at 1.**
+	///
+	/// - Returns: The page or `nil` if the release does not have a
+	/// page with that number.
+	///
+	@inlinable
+	func page(numbered number: Int) -> Page?
+	{
+		precondition(number > 0)
+
+		if let release = releaseByPreferredGroup {
+			return release.page(numbered: number)
+		}
+
+		return releases.first?.page(numbered: number)
 	}
 
 	///
