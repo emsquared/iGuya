@@ -53,6 +53,17 @@ extension Book
 
 extension Chapter
 {
+	@inlinable
+	var numberURLEncoded: String
+	{
+		///
+		/// URLs expect point chapters (e.g. `151.1`) to have
+		/// a dash (`-`) in place of period (`.`).
+		///
+
+		return numberFormatted.replacingOccurrences(of: ".", with: "-")
+	}
+
 	///
 	/// URL of comment page for the chapter.
 	///
@@ -63,7 +74,7 @@ extension Chapter
 			return nil
 		}
 
-		let link = "https://guya.moe/reader/series/\(identifier)/\(numberFormatted)/comments"
+		let link = "https://guya.moe/reader/series/\(identifier)/\(numberURLEncoded)/comments"
 
 		return URL(string: link)
 	}
@@ -120,9 +131,9 @@ extension Page
 		/* "Kaguya Wants To Be Confessed To" is the only book
 		 that guya.moe supports short URLs for. */
 		if (identifier == "Kaguya-Wants-To-Be-Confessed-To") {
-			link = "https://ka.guya.moe/\(chapter.numberFormatted)/\(number)"
+			link = "https://ka.guya.moe/\(chapter.numberURLEncoded)/\(number)"
 		} else {
-			link = "https://ka.guya.moe/reader/series/\(identifier)/\(chapter.numberFormatted)/\(number)"
+			link = "https://ka.guya.moe/reader/series/\(identifier)/\(chapter.numberURLEncoded)/\(number)"
 		}
 
 		return URL(string: link)
